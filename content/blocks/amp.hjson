@@ -7,4 +7,5 @@ powerProduction: 1
 consume: {
   power: 1
 }
+group: power
 category: power
