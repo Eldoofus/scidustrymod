@@ -4,7 +4,7 @@ description: Instant Generator
 size: 1
 hasPower: true
 hasItems: true
-itemDuration: 1
+itemDuration: 5
 powerProduction: 1
 consumes: {
   items: {
