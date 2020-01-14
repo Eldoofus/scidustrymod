@@ -2,6 +2,7 @@ type: impactReactor
 name: Amplifier
 description: Amplifies the power input
 powerProduction: 1
+hasLiquid: false
 itemDuration: 6
 size: 1
 consumes: {
@@ -10,10 +11,6 @@ consumes: {
     items: [
       blast-compound/1
     ]
-  }
-  liquid: {
-    liquid: cryofluid
-    amount: 1.0
   }
 }
 requirements: [
