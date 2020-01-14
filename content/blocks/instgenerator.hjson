@@ -1,0 +1,22 @@
+type: SingleTypeGenerator
+name: Instant Generator
+description: Instant Generator
+size: 1
+hasPower: true
+hasItems: true
+itemDuration: 1
+powerProduction: 1
+consumes: {
+  items: {
+    items: [
+      pyratite/1
+    ]
+    optional: true
+  }
+}
+requirements: [
+  copper/25
+  lead/15
+]
+category: power
+research: combustiongenerator
