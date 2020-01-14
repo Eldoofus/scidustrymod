@@ -6,7 +6,7 @@ hasLiquid: false
 itemDuration: 6
 size: 1
 consumes: {
-  power: 1
+  power: 0.05
   items: {
     items: [
       blast-compound/1
