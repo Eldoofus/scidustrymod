@@ -1,0 +1,10 @@
+type: ImpactReactor
+name: Amplifier
+description: Amplifies the power input
+hasItems: false
+hasLiquids: false
+powerProduction: 1
+consume: {
+  power: 1
+}
+category: power
