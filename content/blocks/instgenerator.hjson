@@ -19,4 +19,4 @@ requirements: [
   lead/15
 ]
 category: power
-research: combustiongenerator
+research: combustionGenerator
