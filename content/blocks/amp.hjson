@@ -7,5 +7,13 @@ powerProduction: 1
 consume: {
   power: 1
 }
+requirements: [
+  lead/500
+  metaglass/250
+  graphite/400
+  thorium/100
+  silicon/300
+  surge-alloy/250
+]
 group: power
 category: power
