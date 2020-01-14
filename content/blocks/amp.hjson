@@ -1,7 +1,7 @@
 type: impactReactor
 name: Amplifier
 description: Amplifies the power input
-hasItems: false
+hasItems: true
 hasLiquids: false
 powerProduction: 1
 consume: {
