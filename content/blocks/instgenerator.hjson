@@ -1,5 +1,5 @@
 type: SingleTypeGenerator
-name: instgenerator
+name: Instant Generator
 description: Instant Generator
 size: 1
 hasPower: true
