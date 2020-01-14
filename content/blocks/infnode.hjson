@@ -1,0 +1,12 @@
+type: powerNode
+name: Infi-Node
+description: Extremely long range power node.
+group: power
+laserRange: 300
+maxNodes: 50
+size: 1
+requirements: [
+  copper/1
+  lead/3
+]
+category: power
