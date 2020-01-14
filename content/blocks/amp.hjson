@@ -7,6 +7,7 @@ itemCapacity: 0
 liquidCapacity: 0.0
 hasLiquid: false
 itemDuration: 6
+warmupSpeed: 30.0
 size: 1
 consumes: {
   power: 0.05
