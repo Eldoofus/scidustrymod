@@ -12,7 +12,8 @@ consumes: {
     ]
   }
   liquid: {
-    cryofluid/1.0
+    liquid: cryofluid
+    amount: 1.0
   }
 }
 requirements: [
