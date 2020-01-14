@@ -6,7 +6,7 @@ itemDuration: 6
 size: 1
 consumes: {
   power: 1
-  items: {
+  item: {
     items: [
       blast-compound/1
     ]
