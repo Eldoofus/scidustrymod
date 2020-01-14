@@ -2,16 +2,14 @@ type: impactReactor
 name: Amplifier
 description: Amplifies the power input
 powerProduction: 1
+hasItem: false
+itemCapacity: 0
+liquidCapacity: 0.0
 hasLiquid: false
 itemDuration: 6
 size: 1
 consumes: {
   power: 0.05
-  items: {
-    items: [
-      blast-compound/1
-    ]
-  }
 }
 requirements: [
   lead/500
