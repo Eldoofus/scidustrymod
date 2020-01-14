@@ -1,4 +1,4 @@
-type: ImpactReactor
+type: impactReactor
 name: Amplifier
 description: Amplifies the power input
 hasItems: false
