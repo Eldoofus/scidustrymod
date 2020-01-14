@@ -4,7 +4,7 @@ description: Amplifies the power input
 powerProduction: 1
 itemDuration: 6
 size: 1
-consume: {
+consumes: {
   power: 1
   items: {
     items: [
