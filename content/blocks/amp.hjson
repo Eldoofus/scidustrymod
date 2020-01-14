@@ -4,6 +4,7 @@ description: Amplifies the power input
 hasItems: true
 hasLiquids: false
 powerProduction: 1
+size: 1
 consume: {
   power: 1
 }
