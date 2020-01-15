@@ -2,7 +2,7 @@ type: itemSource
 name: Item Generator
 description: Generates Items from power magically
 size: 1
-//hasPower: true
+hasPower: true
 //consumePower: true
 //consumes: {
 //  power: 0.1
