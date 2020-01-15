@@ -1,0 +1,19 @@
+type: GenericCrafter
+name: Copper Generator
+description: Generates pyratite from power
+size: 1
+hasPower: true
+hasLiquids: false
+hasItems: true
+itemCapacity: 1
+craftTime: 1
+updateEffect: smeltsmoke
+consumes: {
+  power: 0.1
+}
+requirements: [
+  copper/1
+]
+group: transportation
+category: distribution
+outputItem: copper/1
