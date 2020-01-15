@@ -1,0 +1,8 @@
+type: itemSource
+name: Item Generator
+description: Generates Items from power magically
+consumesPower: true
+consumes: {
+  power: 0.1
+}
+category: distribution
