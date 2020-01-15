@@ -6,3 +6,4 @@ consumes: {
   power: 0.1
 }
 category: distribution
+group: transportation
