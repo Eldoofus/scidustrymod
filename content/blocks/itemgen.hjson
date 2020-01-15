@@ -1,13 +1,11 @@
 type: GenericCrafter
-name: Plastic Factory
-description: Turns Coal into Plastic,a weak but light material
-health: 400
-liquidCapacity: 30
-size: 2
+name: Pyratite Generator
+description: Generates pyratite from power
+size: 1
 hasPower: true
-hasLiquids: true
+hasLiquids: false
 hasItems: true
-craftTime: 60
+craftTime: 1
 updateEffect: smeltsmoke
 consumes: {
   power: 0.1
