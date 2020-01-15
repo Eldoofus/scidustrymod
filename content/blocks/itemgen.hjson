@@ -1,9 +1,7 @@
-type: itemSource
-name: Item Generator
-description: Generates Items from power magically
+type: genericSmelter
+name: Fuel Generator
+description: Generates fuel from power magically
 size: 1
-hasPower: true
-consumePower: true
 consumes: {
   power: 0.1
 }
