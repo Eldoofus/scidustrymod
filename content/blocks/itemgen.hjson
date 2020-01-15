@@ -1,14 +1,28 @@
-type: genericCrafter
-name: Fuel Generator
-description: Generates fuel from power magically
-size: 1
-craftTime:1
+type: GenericCrafter
+name: Plastic Factory
+description: Turns Coal into Plastic,a weak but light material
+health: 400
+liquidCapacity: 30
+size: 2
+hasPower: true
+hasLiquids: true
+hasItems: true
+craftTime: 60
 updateEffect: smeltsmoke
-//hasItems: true
-//hasPower: true
-//consumes: {
-//  power: 0.1
-//}
-category: distribution
-group: transportation
-outputItem: pyratite/1
+consumes: {
+  power: 0.1
+  items: {
+    items: [
+      coal/1
+    ]
+  }
+}
+requirements: [
+  copper/45
+  lead/60
+]
+category: crafting
+research: graphite-press
+idleSound: respawning
+idleSoundVolume: 0.5
+outputItem: plastic/4
