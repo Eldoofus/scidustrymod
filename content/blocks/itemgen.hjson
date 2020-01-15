@@ -13,5 +13,6 @@ consumes: {
 requirements: [
   copper/1
 ]
+group: transportation
 category: distribution
 outputItem: pyratite/1
