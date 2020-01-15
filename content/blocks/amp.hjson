@@ -1,6 +1,6 @@
 type: impactReactor
-name: Amplifier
-description: Amplifies the power input
+name: Tiny Impacct Reactor
+description: Tiny Impacct Reactor
 powerProduction: 1
 hasItem: false
 itemCapacity: 0
