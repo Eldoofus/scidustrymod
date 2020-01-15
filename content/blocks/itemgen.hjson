@@ -1,12 +1,12 @@
-type: genericSmelter
+type: genericCrafter
 name: Fuel Generator
 description: Generates fuel from power magically
 size: 1
+craftTime:1
+updateEffect: smeltsmoke
 consumes: {
   power: 0.1
 }
-requirements: [
-  copper/1
-]
 category: distribution
 group: transportation
+outputItem: pyratite/1
