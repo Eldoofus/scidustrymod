@@ -4,9 +4,9 @@ description: Generates Items from power magically
 size: 1
 hasPower: true
 consumePower: true
-//consumes: {
-//  power: 0.1
-//}
+consumes: {
+  power: 0.1
+}
 requirements: [
   copper/1
 ]
