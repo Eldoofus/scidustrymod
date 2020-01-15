@@ -8,7 +8,7 @@ size: 1
 //  power: 0.1
 //}
 requirements: [
-  copper: 1
+  copper/1
 ]
 category: distribution
 group: transportation
