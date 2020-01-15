@@ -2,11 +2,13 @@ type: genericCrafter
 name: Fuel Generator
 description: Generates fuel from power magically
 size: 1
-//craftTime:1
-//updateEffect: smeltsmoke
+craftTime:1
+updateEffect: smeltsmoke
+//hasItems: true
+//hasPower: true
 //consumes: {
 //  power: 0.1
 //}
 category: distribution
 group: transportation
-//outputItem: pyratite/1
+outputItem: pyratite/1
