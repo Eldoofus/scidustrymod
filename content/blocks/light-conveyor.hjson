@@ -1,0 +1,10 @@
+type: conveyor
+name: Buffered Conveyor
+description: Conveyor with high storage
+itemCapacity: 500
+speed: 12
+requirements: [
+  copper/1
+]
+group: transportation
+category: distribution
