@@ -9,15 +9,9 @@ craftTime: 1
 updateEffect: smeltsmoke
 consumes: {
   power: 0.1
-  items: {
-    items: [
-      coal/1
-    ]
-  }
 }
 requirements: [
-  copper/45
-  lead/60
+  copper/1
 ]
-category: crafting
-outputItem: pyratite/4
+category: distribution
+outputItem: pyratite/1
