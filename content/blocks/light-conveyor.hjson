@@ -2,7 +2,7 @@ type: conveyor
 name: Buffered Conveyor
 description: Conveyor with high storage
 itemCapacity: 500
-speed: 12
+speed: 0.08
 requirements: [
   copper/1
 ]
