@@ -1,5 +1,5 @@
 type: genericCrafter
-name: Fuel Generator
+name: Item Generator
 description: Generates fuel from power magically
 size: 1
 craftTime:1
