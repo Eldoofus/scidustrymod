@@ -1,8 +1,8 @@
 type: conveyor
-name: Buffered Conveyor
-description: Conveyor with high storage
-itemCapacity: 500
-speed: 0.08
+name: Hyper Conveyor
+description: Conveyor with high speed
+itemCapacity: 4
+speed: 0.16
 requirements: [
   copper/1
 ]
