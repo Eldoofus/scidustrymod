@@ -60,7 +60,7 @@ const duper = extendContent(Router, "dupe", {
             return output;
         }
 		
-		entity.time += 1 / overflow.speed * Time.delta();
+		entity.time += 1 / router.speed * Time.delta();
 		
         if(entity.lastItem !== null && entity.time >= 1){
             var target = getTargetAndFlip(tile, entity.lastItem, entity.lastInput);
