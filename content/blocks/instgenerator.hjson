@@ -1,4 +1,4 @@
-type: SingleTypeGenerator
+type: BurnerGenerator
 name: Instant Generator
 description: Instant Generator
 size: 1
@@ -6,14 +6,8 @@ hasPower: true
 hasItems: true
 itemDuration: 6
 powerProduction: 1
-consumes: {
-  items: {
-    items: [
-      pyratite/1
-    ]
-    optional: true
-  }
-}
+itemCapacity: 1
+
 requirements: [
   copper/25
   lead/15
