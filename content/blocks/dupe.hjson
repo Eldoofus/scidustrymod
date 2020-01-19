@@ -1,4 +1,4 @@
-type: block
+type: duper
 name: Duplicator
 description: Duplicates any item
 
