@@ -1,3 +1,4 @@
+type: block
 name: Duplicator
 description: Duplicates any item
 
