@@ -13,7 +13,7 @@ const duper = extendContent(Router, "dupe", {
 	// copy of the original method, modified to use the centralized dictionary
     removeStack(tile, item, amount){
         var entity = convert(tile.ent());
-        var result = overflow.removeStack(tile, item, amount);
+        var result = router.removeStack(tile, item, amount);
         if(result != 0 && item == entity.lastItem){
             entity.lastItem = null;
         }
