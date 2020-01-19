@@ -1,3 +1,4 @@
+type: block
 name: Inverted Overflow Gate
 description: An inverted overflow gate
 
