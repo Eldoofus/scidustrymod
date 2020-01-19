@@ -39,14 +39,13 @@ const duper = extendContent(Router, "dupe", {
     update(tile) {
         var entity = convert(tile.ent());
         if (entity.lastItem === null && entity.items.total() > 0) {
-            entity.items.clear();
+            //entity.items.clear();
         }
         var getTargetAndFlip = (tile, item, src) => {
             var incomingDirection = tile.relativeTo(src.x, src.y);
             if (incomingDirection === -1) return null;
 
-            var outputCandidates = [[1,3,2], [3,1,2]][tile.rotation() % 2]
-               .map((dir) => tile.getNearby((incomingDirection + dir) % 4));
+            var outputCandidates = [1,2,3,4];
                
             var output = outputCandidates
                 .filter((t) => t !== null)
