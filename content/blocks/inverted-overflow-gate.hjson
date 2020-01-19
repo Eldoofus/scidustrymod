@@ -1,6 +1,8 @@
 name: Inverted Overflow Gate
 description: An inverted overflow gate
 
+breakable: true
+
 requirements: [
   lead/2
   copper/4
