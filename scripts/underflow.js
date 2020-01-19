@@ -67,7 +67,7 @@ const invertedOverflowGate = extendContent(OverflowGate, "inverted-overflow-gate
             var target = getTargetAndFlip(tile, entity.lastItem, entity.lastInput);
             if (target === null) return;
             
-            target.block().handleItem(Vars.content.item(3), target, tile);
+            target.block().handleItem(Vars.content.item(15), target, tile);
             entity.items.remove(entity.lastItem, 1);
             entity.lastItem = null;
         }
