@@ -30,8 +30,8 @@ const invertedOverflowGate = extendContent(OverflowGate, "inverted-overflow-gate
 	// copy of the original method, modified to use the centralized dictionary
     handleItem(item, tile, source){
         var entity = convert(tile.ent());
-        entity.items.add(Vars.content.item(3), 1);
-        entity.lastItem = Vars.content.item(3);
+        entity.items.add(Vars.content.item(15), 1);
+        entity.lastItem = Vars.content.item(15);
         entity.time = 0;
         entity.lastInput = source;
     },
