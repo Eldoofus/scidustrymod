@@ -1,4 +1,3 @@
-type: inverted-overflow-gate
 name: Inverted Overflow Gate
 description: An inverted overflow gate
 
