@@ -1,7 +1,7 @@
 type: separator
 name: Randomizer
 description: Randomly outputs items
-size: 1
+size: 2
 results: [
   copper/1
   titanium/1
@@ -11,8 +11,7 @@ consumes: {
   power: 0.1
 }
 craftTime: 6
-spinnerRadius:1
+spinnerRadius:2.5
 spinnerLength:1
 spinnerThickness:1
-liquidRegion: 1
 category: crafting
