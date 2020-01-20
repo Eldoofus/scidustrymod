@@ -1,7 +1,7 @@
 type: separator
 name: Randomizer
 description: Randomly outputs items
-
+size: 1
 results: [
   copper/1
   titanium/1
