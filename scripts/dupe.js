@@ -9,32 +9,11 @@ function convert(entity) {
 const router = Vars.content.getByName(ContentType.block, 'router');
 
 const duper = extendContent(Router, "dupe", {
-    update(tile){
-        var entity = tile.ent();
-
-        if(entity.lastItem == null && entity.items.total() > 0){
-            entity.items.clear();
-        }
-
-        if(entity.lastItem != null){
-            entity.time += 1 / speed * Time.delta();
-            var target = getTileTarget(tile, entity.lastItem, entity.lastInput, false);
-
-            if(target != null && (entity.time >= 1 || !(target.block() instanceof Router))){
-                getTileTarget(tile, entity.lastItem, entity.lastInput, true);
-                target.block().handleItem(entity.lastItem, target, Edges.getFacingEdge(tile, target));
-                entity.items.remove(entity.lastItem, 1);
-                entity.lastItem = null;
-            }
-        }
-    }
-
     acceptItem(item, tile, source){
         var entity = tile.ent();
 
         return tile.getTeam() == source.getTeam() && entity.lastItem == null && entity.items.total() == 0;
     }
-
     handleItem(item, tile, source){
         var entity = tile.ent();
         entity.items.add(item, 1);
@@ -42,7 +21,6 @@ const duper = extendContent(Router, "dupe", {
         entity.time = 0;
         entity.lastInput = source;
     }
-
     getTileTarget(tile, item, from, set){
         var[] proximity = tile.entity.proximity();
         var counter = tile.rotation();
@@ -64,5 +42,24 @@ const duper = extendContent(Router, "dupe", {
             entity.lastItem = null;
         }
         return result;
+    }
+    update(tile){
+        var entity = tile.ent();
+
+        if(entity.lastItem == null && entity.items.total() > 0){
+            entity.items.clear();
+        }
+    
+        if(entity.lastItem != null){
+            entity.time += 1 / speed * Time.delta();
+            var target = getTileTarget(tile, entity.lastItem, entity.lastInput, false);
+
+            if(target != null && (entity.time >= 1 || !(target.block() instanceof Router))){
+                getTileTarget(tile, entity.lastItem, entity.lastInput, true);
+                target.block().handleItem(entity.lastItem, target, Edges.getFacingEdge(tile, target));
+                entity.items.remove(entity.lastItem, 1);
+                entity.lastItem = null;
+            }
+        }
     }
 })
