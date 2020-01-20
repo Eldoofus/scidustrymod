@@ -8,7 +8,7 @@ function convert(entity) {
 
 const router = Vars.content.getByName(ContentType.block, 'router');
 
-const duper = extendContent(Router, "dupe", {
+const dupe = extendContent(Router, "dupe", {
     acceptItem(item, tile, source){
         var entity = tile.ent();
 
@@ -36,7 +36,7 @@ const duper = extendContent(Router, "dupe", {
 
     removeStack(tile, item, amount){
         var entity = tile.ent();
-        var result = duper.removeStack(tile, item, amount);
+        var result = dupe.removeStack(tile, item, amount);
         if(result != 0 && item == entity.lastItem){
             entity.lastItem = null;
         }
