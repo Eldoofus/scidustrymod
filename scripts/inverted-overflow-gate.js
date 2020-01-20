@@ -73,3 +73,5 @@ const invertedOverflowGate = extendContent(OverflowGate, "inverted-overflow-gate
         }
     }
 })
+
+invertedOverflowGate.localizedName = "Inverted Overflow Gate";

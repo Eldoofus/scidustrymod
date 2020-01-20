@@ -1,0 +1,20 @@
+type: separator
+name: Randomizer
+description: Randomly outputs items
+size: 2
+results: [
+  copper/1
+  titanium/1
+]
+requirements: [
+  copper/1
+]
+consumes: {
+  liquid: water/1.0
+  power: 0.1
+}
+craftTime: 6
+spinnerRadius:2.5
+spinnerLength:1
+spinnerThickness:1
+category: crafting
