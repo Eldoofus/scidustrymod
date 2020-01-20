@@ -17,10 +17,10 @@ const duper = extendContent(Router, "dupe", {
         }
 
         if(entity.lastItem != null){
-            entity.time += 1f / speed * Time.delta();
+            entity.time += 1 / speed * Time.delta();
             var target = getTileTarget(tile, entity.lastItem, entity.lastInput, false);
 
-            if(target != null && (entity.time >= 1f || !(target.block() instanceof Router))){
+            if(target != null && (entity.time >= 1 || !(target.block() instanceof Router))){
                 getTileTarget(tile, entity.lastItem, entity.lastInput, true);
                 target.block().handleItem(entity.lastItem, target, Edges.getFacingEdge(tile, target));
                 entity.items.remove(entity.lastItem, 1);
@@ -39,7 +39,7 @@ const duper = extendContent(Router, "dupe", {
         var entity = tile.ent();
         entity.items.add(item, 1);
         entity.lastItem = item;
-        entity.time = 0f;
+        entity.time = 0;
         entity.lastInput = source;
     }
 
