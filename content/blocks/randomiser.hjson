@@ -1,0 +1,13 @@
+type: separator
+name: Randomizer
+description: Randomly outputs items
+
+results: [
+  copper/1
+  titanium/1
+]
+craftTime: 6
+spinnerRadius:1
+spinnerLength:1
+spinnerThickness:1
+liquidRegion: 1
