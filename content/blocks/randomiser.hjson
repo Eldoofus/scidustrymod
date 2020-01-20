@@ -6,6 +6,10 @@ results: [
   copper/1
   titanium/1
 ]
+consumes: {
+  liquid: water/1.0
+  power: 0.1
+}
 craftTime: 6
 spinnerRadius:1
 spinnerLength:1
