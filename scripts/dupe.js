@@ -37,7 +37,7 @@ const duper = extendContent(Router, "dupe", {
 
     removeStack(tile, item, amount){
         var entity = tile.ent();
-        var result = router.removeStack(tile, item, amount);
+        var result = duper.removeStack(tile, item, amount);
         if(result != 0 && item == entity.lastItem){
             entity.lastItem = null;
         }
