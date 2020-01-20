@@ -1,13 +1,3 @@
-var entities = {}; // using a centralized dictionary as fields of OverflowGateEntity are private
-function convert(entity) {
-    if (entities[entity.id] == undefined) {
-        entities[entity.id] = {lastItem: null, lastInput: null, time: 0, items: entity.items}
-    }
-    return entities[entity.id]
-}
-
-const router = Vars.content.getByName(ContentType.block, 'router');
-
 const dupe = extendContent(Router, "dupe", {
     acceptItem(item, tile, source){
         var entity = tile.ent();
