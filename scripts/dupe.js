@@ -22,11 +22,10 @@ const duper = extendContent(Router, "dupe", {
         entity.lastInput = source;
     }
     getTileTarget(tile, item, from, set){
-        var[] proximity = tile.entity.proximity();
         var counter = tile.rotation();
-        for(int i = 0; i < proximity.size; i++){
-            var other = proximity.get((i + counter) % proximity.size);
-            if(set) tile.rotation((byte)((tile.rotation() + 1) % proximity.size));
+        for(int i = 0; i < tile.entity.proximity().size; i++){
+            var other = tile.entity.proximity().get((i + counter) % tile.entity.proximity().size);
+            if(set) tile.rotation((byte)((tile.rotation() + 1) % tile.entity.proximity().size));
             if(other == from && from.block() == Blocks.overflowGate) continue;
             if(other.block().acceptItem(item, other, Edges.getFacingEdge(tile, other))){
                 return other;
