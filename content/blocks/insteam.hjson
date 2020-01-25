@@ -1,0 +1,21 @@
+type: burnerGenerator
+name: Instant Steam Generator
+description: Instant Steam Generator
+size: 1
+hasPower: true
+hasItems: true
+hasLiquids: true
+itemDuration: 6
+powerProduction: 1.5
+liquidCapacity: 1.0
+itemCapacity: 1
+consumes: {
+  liquid: [
+    water/1.0
+  ]
+}
+requirements: [
+  copper/25
+  lead/15
+]
+category: power
