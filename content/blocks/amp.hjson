@@ -1,6 +1,6 @@
 type: impactReactor
-name: Tiny Impacct Reactor
-description: Tiny Impacct Reactor
+name: Tiny Impact Reactor
+description: Somehow uses more energy than it produces
 powerProduction: 0.95
 hasItem: false
 itemCapacity: 0
