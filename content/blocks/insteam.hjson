@@ -10,10 +10,8 @@ powerProduction: 1.5
 liquidCapacity: 1.0
 itemCapacity: 1
 consumes: {
-  liquid: [
-    liquid: water
-    amount: 1.0
-  ]
+  liquid: water
+  amount: 1.0
 }
 requirements: [
   copper/25
