@@ -12,7 +12,7 @@ itemCapacity: 1
 consumes: {
   liquid: {
     liquid: water
-    amount: 1.0
+    amount: 0.05
   }
 }
 requirements: [
