@@ -1,0 +1,12 @@
+type: overdriveProjector
+name: Ultradrive Projector
+description: An ultra Overdrive Projector
+range: 1000
+speedBoost: 6.0
+requirements: [
+  lead/100
+  titanium/75
+  silicon/75
+  plastanium/30
+]
+category: effect
