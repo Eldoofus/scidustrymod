@@ -14,7 +14,6 @@ consumes: {
     liquid: water
     amount: 1.0
   }
-  amount: 1.0
 }
 requirements: [
   copper/25
