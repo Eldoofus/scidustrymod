@@ -8,7 +8,7 @@ itemDuration: 6
 powerProduction: 1.5
 itemCapacity: 1
 consumes: {
-  item: {
+  items: {
     items: [
       phase-fabric/1
     ]
