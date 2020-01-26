@@ -1,4 +1,4 @@
-type: singleTypeGenerator
+type: SingleTypeGenerator
 name: Instant Twin Generator
 description: Generates power from 2 items instead of 1
 size: 1
@@ -11,7 +11,7 @@ consumes: {
   items: {
     items: [
       pyratite/1
-      blast-compound/1
+      //blast-compound/1
     ]
   }
 }
