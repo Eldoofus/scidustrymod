@@ -1,0 +1,21 @@
+type: burnerGenerator
+name: Instant Twin Generator
+description: Generates power from 2 items instead of 1
+size: 1
+hasPower: true
+hasItems: true
+itemDuration: 6
+powerProduction: 1.5
+itemCapacity: 1
+consumes: {
+  item: {
+    items: [
+      phase-fabric/1
+    ]
+  }
+}
+requirements: [
+  copper/25
+  lead/15
+]
+category: power
