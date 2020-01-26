@@ -11,7 +11,7 @@ consumes: {
   items: {
     items: [
       pyratite/1
-      //blast-compound/1
+      blast-compound/1
     ]
   }
 }
