@@ -1,7 +1,9 @@
 type: battery
 name: Capacitor
 description: Low charge battery
-
+consumes: {
+  power: 0.1
+}
 requirements: [
   copper/4
   lead/20
