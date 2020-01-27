@@ -1,6 +1,7 @@
 type: vault
 name: Small Container
 description: A small container
+itemCapacity: 100
 requirements: [
   titanium/1
 ]
