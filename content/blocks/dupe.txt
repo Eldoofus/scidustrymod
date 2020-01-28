@@ -1,8 +1,0 @@
-name: Duplicator
-description: Duplicates any item
-
-group: transportation
-category: distribution
-requirements: [
-  copper/1
-]
