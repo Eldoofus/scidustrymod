@@ -11,7 +11,7 @@ consumes: {
   items: {
     items: [
       pyratite/1
-      coal/1
+      copper/1
     ]
   }
 }
