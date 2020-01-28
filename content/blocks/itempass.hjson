@@ -1,6 +1,6 @@
 type: GenericCrafter
-name: Pyratite Passer
-description: Instantly passes pyratite through using power
+name: Pyratite Transformer
+description: Magically transforms coal to pyratite using power
 size: 1
 hasPower: true
 hasLiquids: false
