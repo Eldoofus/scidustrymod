@@ -1,8 +1,14 @@
-type: incinerator
+type: genericSmelter
 name: Pixel
 description: A pixel for displays
 size: 2
+craftTime: 1
+consumes: {
+    power: 0.3
+}
+color: ffffff
 requirements: [
     copper/1
 ]
 category: power
+outputItem: copper/0
