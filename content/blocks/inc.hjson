@@ -1,0 +1,8 @@
+type: incinerator
+name: Pixel
+description: A pixel for displays
+size: 2
+requirements: [
+    copper/1
+]
+category: power
