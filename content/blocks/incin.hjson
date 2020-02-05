@@ -1,0 +1,21 @@
+type: genericCrafter
+name: Yinsinnerayter
+description: A better incinerator
+size: 1
+craftTime: 1
+consumes: {
+    power: 0.3
+    items: {
+        items:[
+            copper/1
+            lead/1
+        ]
+        optional: true
+    }
+}
+
+requirements: [
+    copper/1
+]
+category: distribution
+outputItem: copper/0
