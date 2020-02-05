@@ -3,6 +3,7 @@ name: Yinsinnerayter
 description: A better incinerator
 size: 1
 craftTime: 0
+itemCapacity: 1
 consumes: {
     power: 0.3
     items: {
