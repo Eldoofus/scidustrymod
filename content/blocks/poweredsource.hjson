@@ -1,6 +1,9 @@
 localizedName: Item Generator
 description: Generates items from power
 size: 1
+consumes: {
+  power: 0.3
+}
 category: distribution
 requirements: [
   copper/1
