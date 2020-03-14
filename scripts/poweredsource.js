@@ -8,37 +8,7 @@ const poweredsource = extendContent(itemSource, “poweredsource”, {
             entity.items.set(entity.outputItem, 0)
         }
     }
-    var lastItem;
-
-    poweredsource(name){
-        super(name);
-        hasItems = true;
-        update = true;
-        solid = true;
-        group = BlockGroup.transportation;
-        configurable = true;
-        entityType = ItemSourceEntity::new;
-    }
-
-    configured(tile, player, value){
-        tile.<ItemSourceEntity>ent().outputItem = content.item(value);
-    }
-
-    playerPlaced(tile){
-        if(lastItem != null){
-            Core.app.post(() -> tile.configure(lastItem.id));
-        }
-    }
-
-    setBars(){
-        super.setBars();
-        bars.remove("items");
-    }
-
-    drawRequestConfig(req, list){
-        drawRequestConfigCenter(req, content.item(req.config), "center");
-    }
-
+    
     outputsItems(){
         return true;
     }
@@ -60,10 +30,6 @@ const poweredsource = extendContent(itemSource, “poweredsource”, {
             lastItem = item;
             tile.configure(item == null ? -1 : item.id);
         });
-    }
-
-    acceptItem(item, tile, source){
-        return false;
     }
 
 }
