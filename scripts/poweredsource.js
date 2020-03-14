@@ -1,11 +1,11 @@
 const poweredsource = extendContent(itemSource, “poweredsource”, {
     update(tile){
         var entity = tile.ent();
-        if(entity.outputItem == null) {return;}
+        if(tile.entity.outputItem == null) {return;}
         if(tile.entity.cons.valid()){
-            entity.items.set(entity.outputItem, 1);
-            tryDump(tile, entity.outputItem);
-            entity.items.set(entity.outputItem, 0);
+            tile.entity.items.set(entity.outputItem, 1);
+            tryDump(tile, tile.entity.outputItem);
+            tile.entity.items.set(entity.outputItem, 0);
         }
     }
     
@@ -17,16 +17,16 @@ const poweredsource = extendContent(itemSource, “poweredsource”, {
         this.super$draw(tile);
 
         var entity = tile.ent();
-        if(entity.outputItem == null) return;
+        if(tile.entity.outputItem == null) return;
 
-        Draw.color(entity.outputItem.color);
+        Draw.color(tile.entity.outputItem.color);
         Draw.rect("center", tile.worldx(), tile.worldy());
         Draw.color();
     }
 
     buildConfiguration(tile, table){
         var entity = tile.ent();
-        ItemSelection.buildTable(table, content.items(), () => entity.outputItem, item => {
+        ItemSelection.buildTable(table, content.items(), () => tile.entity.outputItem, item => {
             lastItem = item;
             tile.configure(item == null ? -1 : item.id);
         });
