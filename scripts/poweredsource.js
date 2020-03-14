@@ -26,7 +26,7 @@ const poweredsource = extendContent(itemSource, “poweredsource”, {
 
     buildConfiguration(tile, table){
         var entity = tile.ent();
-        ItemSelection.buildTable(table, content.items(), () -> entity.outputItem, item -> {
+        ItemSelection.buildTable(table, content.items(), () => entity.outputItem, item => {
             lastItem = item;
             tile.configure(item == null ? -1 : item.id);
         });
