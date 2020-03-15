@@ -1,36 +1,11 @@
-type: genericCrafter
-name: Yinsinnerayter
+name: Inst-cinerator
 description: A better incinerator
 size: 1
-craftTime: 0
 itemCapacity: 1
 consumes: {
     power: 0.3
-    items: {
-        items:[
-            copper/1
-            lead/1
-            graphite/1
-            coal/1
-            plastanium/1
-            surge-alloy/1
-            blast-compound/1
-            silicon/1
-            spore-pod/1
-            thorium/1
-            titanium/1
-            scrap/1
-            phase-fabric/1
-            sand/1
-            metaglass/1
-            pyratite/1
-        ]
-        optional: true
-    }
 }
-
 requirements: [
     copper/1
 ]
 category: distribution
-outputItem: lead/0
