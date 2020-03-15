@@ -7,7 +7,7 @@ const dupe=extendContent(Block,"dupe",{
     if(tile.entity.lastItem != null){
       tile.entity.items.add(tile.entity.lastItem, 1);
       tryDump();
-      tile.entity.items.add(tile.entity.lastItem, 1);
+      tile.entity.items.remove(tile.entity.lastItem, 1);
     }
   }
 });
