@@ -1,8 +1,8 @@
-const incin=extendContent(ItemVoid,"incin",{
+const incin=extendContent(incinerator,"incin",{
   update(tile){
     var entity=tile.ent();
     if(tile.entity.cons.valid()){
-      this.super$handleItem(tile, Vars.content.items(1), tile);
+      this.super$update(tile);
       entity.cons.trigger();
     }
     else return;
