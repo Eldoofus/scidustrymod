@@ -1,10 +1,13 @@
-const dupe=extendContent(ItemSource,"dupe",{
+const dupe=extendContent(Block,"dupe",{
   update(tile){
     var entity=tile.ent();
-    if(tile.entity.cons.valid()){
-      this.super$update(tile);
-      entity.cons.trigger();
+    if(tile.entity.lastItem == null && tile.entity.items.total() > 0){
+      tile.entity.items.clear();
     }
-    else return;
+    if(tile.entity.lastItem != null){
+      tile.entity.items.add(tile.entity.lastItem, 1);
+      tryDump();
+      tile.entity.items.add(tile.entity.lastItem, 1);
+    }
   }
 });
