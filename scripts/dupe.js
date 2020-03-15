@@ -1,4 +1,4 @@
-const poweredsource=extendContent(ItemSource,"poweredsource",{
+const dupe=extendContent(ItemSource,"dupe",{
   update(tile){
     var entity=tile.ent();
     if(tile.entity.cons.valid()){
