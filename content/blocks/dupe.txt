@@ -1,9 +1,0 @@
-type: router
-name: RØµȶᏋɾ
-description: Router with a lot of storage
-itemCapacity: 200
-group: transportation
-category: distribution
-requirements: [
-  copper/1
-]

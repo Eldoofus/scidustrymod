@@ -1,0 +1,8 @@
+name: Duplicator
+description: Duplicates items
+itemCapacity: 2
+group: transportation
+category: distribution
+requirements: [
+  copper/1
+]
