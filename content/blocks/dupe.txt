@@ -1,7 +1,7 @@
-type: router
-name: RØµȶᏋɾ
-description: Router with a lot of storage
-itemCapacity: 200
+name: Duplicator
+description: Duplicates items
+breakable: true
+itemCapacity: 2
 group: transportation
 category: distribution
 requirements: [
