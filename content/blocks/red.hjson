@@ -1,7 +1,7 @@
 type: genericSmelter
 name: Red Pixel Part
 description: A pixel for displays
-size: 2
+size: 1
 craftTime: 1
 consumes: {
     power: 0.3
