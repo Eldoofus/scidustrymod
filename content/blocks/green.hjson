@@ -1,0 +1,14 @@
+type: genericSmelter
+name: Green Pixel Part
+description: A pixel for displays
+size: 1
+craftTime: 1
+consumes: {
+    power: 0.3
+}
+color: 00ff00
+requirements: [
+    copper/1
+]
+category: power
+outputItem: copper/0

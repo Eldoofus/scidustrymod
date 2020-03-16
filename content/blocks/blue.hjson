@@ -1,0 +1,14 @@
+type: genericSmelter
+name: Blue Pixel Part
+description: A pixel for displays
+size: 1
+craftTime: 1
+consumes: {
+    power: 0.3
+}
+color: 0000ff
+requirements: [
+    copper/1
+]
+category: power
+outputItem: copper/0
