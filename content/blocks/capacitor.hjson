@@ -2,7 +2,7 @@ type: battery
 name: Capacitor
 description: Low charge battery
 consumes: {
-  powerBuffered: 10
+  powerBuffered: 1
 }
 requirements: [
   copper/4
