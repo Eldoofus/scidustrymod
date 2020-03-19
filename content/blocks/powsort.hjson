@@ -1,0 +1,14 @@
+localizedName: Item Pass
+description: Lets items through using power
+size: 1
+invert: true
+breakable: true
+update: true
+configurable: true
+consumes: {
+  power: 0.3
+}
+category: distribution
+requirements: [
+  copper/1
+]
