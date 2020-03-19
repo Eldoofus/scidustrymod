@@ -1,3 +1,4 @@
+type: Sorter
 localizedName: Item Pass
 description: Lets items through using power
 size: 1
