@@ -1,2 +1,2 @@
-require(scripts/poweredsource);
-require(scripts/powsort);
+require(poweredsource);
+require(powsort);
