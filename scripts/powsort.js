@@ -1,8 +1,8 @@
 const powsort=extendContent(Sorter,"powsort",{
-  update(tile){
+  acceptItem(item, tile, source){
     var entity=tile.ent();
     if(tile.entity.cons.valid()){
-      this.super$update(tile);
+      this.super$acceptItem(item, tile, source);
       entity.cons.trigger();
     }
     else return;
