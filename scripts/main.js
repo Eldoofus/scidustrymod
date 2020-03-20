@@ -1,2 +1,2 @@
-require(poweredsource.js);
-require(powsort.js);
+require(scripts/poweredsource.js);
+require(scripts/powsort.js);
