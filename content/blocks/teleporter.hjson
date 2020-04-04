@@ -1,0 +1,18 @@
+type: massDriver
+name: Teleporter
+description: Teleports items magically.
+range: 10000000000000
+rotateSpeed: 1
+translation: 7
+minDistribute: 1
+knockback: 0
+reloadTime: 1
+shootEffect: shootBig2
+smokeEffect: shootBigSmoke2
+recieveEffect: mineBig
+shake: 0
+size: 1
+category: distribution
+requirements: [
+  copper/1
+]
