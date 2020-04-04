@@ -3,7 +3,7 @@ const powsort=extendContent(Sorter,"powsort",{
     var entity=tile.ent();
     if(tile.entity.cons.valid()){
       this.super$acceptItem(item, tile, source);
-      entity.cons.trigger();
+      tile.entity.cons.trigger();
     }
     else return;
   }
