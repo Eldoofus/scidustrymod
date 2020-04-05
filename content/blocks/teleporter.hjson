@@ -6,10 +6,11 @@ rotateSpeed: 1
 translation: 7
 minDistribute: 1
 knockback: 0
-reloadTime: 1
-shootEffect: shootBig2
-smokeEffect: shootBigSmoke2
-recieveEffect: mineBig
+reloadTime: 0
+itemCapacity: 1
+shootEffect: none
+smokeEffect: none
+recieveEffect: none
 shake: 0
 size: 1
 category: distribution
