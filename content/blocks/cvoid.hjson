@@ -20,4 +20,4 @@ requirements: [
 ]
 group: transportation
 category: distribution
-outputLiquid: water/1.0
+outputLiquid: water/0.0
