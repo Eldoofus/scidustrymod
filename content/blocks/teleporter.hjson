@@ -1,7 +1,7 @@
 type: massDriver
 name: Teleporter
-description: Teleports items magically.
-range: 10000000000000
+description: Teleports items magically using power.
+range: 1000
 rotateSpeed: 1
 translation: 7
 minDistribute: 1
@@ -13,6 +13,9 @@ recieveEffect: mineBig
 shake: 0
 size: 1
 category: distribution
+consumes: {
+  power: 0.3
+}
 requirements: [
   copper/1
 ]
