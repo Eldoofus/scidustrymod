@@ -9,6 +9,7 @@ itemCapacity: 1
 craftTime: 0.1
 updateEffect: smeltsmoke
 consumes: {
+  power: 1000000000
   items: {
     items: [
         surge-alloy/1
