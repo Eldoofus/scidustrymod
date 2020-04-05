@@ -10,9 +10,9 @@ craftTime: 0.1
 updateEffect: smeltsmoke
 consumes: {
   item: {
-      items: {
+      items: [
         surge/1
-      }
+      ]
   }
   power: 100000000
 }
