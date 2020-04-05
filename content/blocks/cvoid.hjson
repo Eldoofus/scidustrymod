@@ -3,7 +3,7 @@ name: Controlled Void
 description: Voids all connected power when items are inputted.
 size: 1
 hasPower: true
-hasLiquids: false
+hasLiquids: true
 hasItems: true
 itemCapacity: 1
 craftTime: 0.1
@@ -20,4 +20,4 @@ requirements: [
 ]
 group: transportation
 category: distribution
-outputLiquid: water/0
+outputLiquid: water/1.0
