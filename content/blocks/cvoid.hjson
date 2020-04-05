@@ -1,0 +1,20 @@
+type: genericCrafter
+name: Controlled Void
+description: Voids all connected power when items are inputted.
+size: 1
+hasPower: true
+hasLiquids: false
+hasItems: true
+itemCapacity: 1
+craftTime: 0.1
+updateEffect: smeltsmoke
+consumes: {
+  surge/1
+  power: 100000000
+}
+requirements: [
+  copper/1
+]
+group: transportation
+category: distribution
+outputLiquid: water/0
