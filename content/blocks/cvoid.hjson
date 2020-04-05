@@ -11,10 +11,9 @@ updateEffect: smeltsmoke
 consumes: {
   items: {
     items: [
-      surge-alloy/1
+        surge-alloy/1
     ]
   }
-  power: 100000000
 }
 requirements: [
   copper/1
