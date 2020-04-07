@@ -1,7 +1,7 @@
 type: liquidBridge
 name: PhaseBoost Conduit
 description: Phase Conduit with higher range and speed but lower capacity
-range: 50
+range: 200
 transportTime: 0.0
 liquidCapacity: 1.0
 consumes: {

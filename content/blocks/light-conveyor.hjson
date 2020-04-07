@@ -2,7 +2,7 @@ type: conveyor
 name: Hyper Conveyor
 description: Conveyor with high speed
 itemCapacity: 4
-speed: 0.16
+speed: 0.24
 requirements: [
   copper/1
 ]

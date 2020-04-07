@@ -1,7 +1,7 @@
 type: itemBridge
 name: PhaseBoost Conveyor
 description: Phase Conveyors with higher range and speed but lower capacity
-range: 50
+range: 200
 transportTime: 0.0
 itemCapacity: 1
 consumes: {
