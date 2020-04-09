@@ -14,10 +14,10 @@ const switchpass=extendContent(Sorter,"switchpass",{
 });
 switchpass.entityType=prov(()=>extend(Sorter.SorterEntity,{
   setInvert(a){
-    this._invert=a;
+    this._invert =  a;
   },
   getInvert(){
     return this._invert;
   },
-  _invert=false,
+  _invert: false,
 }));
