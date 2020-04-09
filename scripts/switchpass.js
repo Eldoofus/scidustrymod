@@ -1,24 +1,18 @@
 const switchpass=extendContent(Sorter,"switchpass",{
-  // update(tile){
-  //   var invert = this.invert;
-  //   var entity = tile.ent();
-  //   if(tile.entity.cons.valid()){
-  //     invert = true;
-  //     entity.cons.trigger();
-  //   }
-  //   else {
-  //     invert = false;
-  //   }
-  //   return;
-  // }
-  getTileTarget(item, dest, source, flip){
+  customInvert(tile){
+    var entity = tile.ent();
     if(tile.entity.cons.valid()){
       entity.cons.trigger();
-      return this.super$getTileTarget(item, dest, source, !(flip));
+      return false;
     }
     else {
-      return this.super$getTileTarget(item, dest, source, flip);
+      return true;
     }
-    
+  },
+  update(tile){
+    var entity = tile.ent();
+    this.super$update(tile);
+    this.invert = this.customInvert(tile);
+    return;
   }
 });
