@@ -3,17 +3,26 @@ const switchpass=extendContent(Sorter,"switchpass",{
     var entity = tile.ent();
     if(tile.entity.cons.valid()){
       entity.cons.trigger();
-      return false;
+      return entity.setInvert(false);
     }
     else {
-      return true;
+      return entity.setInvert(true);
     }
   },
   update(tile){
     var entity = tile.ent();
     this.super$update(tile);
-    this.invert = this.customInvert(tile);
+    this.invert = entity.getInvert();
     return;
   }
   
 });
+switchpass.entityType=prov(()=>extend(Sorter.SorterEntity,{
+  setInvert(a){
+    this._invert=a;
+  },
+  getInvert(){
+    return this._invert;
+  },
+  _invert=false,
+}));
