@@ -12,7 +12,7 @@ const switchpass=extendContent(Sorter,"switchpass",{
   update(tile){
     var entity = tile.ent();
     this.super$update(tile);
-    entity.invert = this.customInvert(tile);
+    this.invert = this.customInvert(tile);
     return;
   }
 });
