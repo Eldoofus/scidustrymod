@@ -1,0 +1,14 @@
+localizedName: Switch Pass
+description: Behaves like an inverted sorter when unpowered but switches to a sorter when powered.
+size: 1
+invert: true
+breakable: true
+update: true
+configurable: true
+consumes: {
+  power: 0.3
+}
+category: distribution
+requirements: [
+  copper/1
+]
