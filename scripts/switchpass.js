@@ -2,9 +2,9 @@ const switchpass=extendContent(Sorter,"switchpass",{
   update(tile){
     var entity=tile.ent();
     if(tile.entity.cons.valid()){
-      invert = true;
+      this.invert = true;
       entity.cons.trigger();
     }
-    else invert = false;
+    else {this.invert = false};
   }
 });
