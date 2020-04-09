@@ -5,6 +5,9 @@ const switchpass=extendContent(Sorter,"switchpass",{
       this.invert = true;
       entity.cons.trigger();
     }
-    else {this.invert = false};
+    else {
+      this.invert = false;
+    }
+    return;
   }
 });
