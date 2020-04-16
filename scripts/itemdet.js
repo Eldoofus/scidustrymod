@@ -1,13 +1,13 @@
 const itemdet=extendContent(Sorter,"itemdet",{
     acceptItem(item,tile,source){
         if(this.super$acceptItem(item,tile,source)){
-          setProp(true);
+          tile.entity.setProp(true);
         }
         return this.super$acceptItem(item,tile,source);
     },
     getPowerProduction(tile){
-        if(getProp){
-            setProp(false);
+        if(tile.entity.getProp()){
+            tile.entity.setProp(false);
             return 60;
         } else {
             return 0;
