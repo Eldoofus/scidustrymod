@@ -5,6 +5,7 @@ breakable: true
 update: true
 category: distribution
 outputsPower: true
+hasPower: true
 requirements: [
-  copper/1
+  copper/25
 ]
