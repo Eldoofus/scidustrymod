@@ -8,7 +8,7 @@ const itemdet=extendContent(Sorter,"itemdet",{
     getPowerProduction(tile){
         if(tile.entity.getProp()){
             tile.entity.setProp(false);
-            return 60;
+            return 600000000000;
         } else {
             return 0;
         }
