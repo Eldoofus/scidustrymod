@@ -1,0 +1,10 @@
+localisedName: Item Detector
+description: Outputs power when items pass through.
+size: 1
+breakable: true
+update: true
+category: distribution
+outputsPower: true
+requirements: [
+  copper/1
+]
