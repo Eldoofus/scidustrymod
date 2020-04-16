@@ -6,12 +6,12 @@ const itemdet=extendContent(Sorter,"itemdet",{
         return this.super$acceptItem(item,tile,source);
     },
     getPowerProduction(tile){
-        if(tile.entity.getProp()){
-            tile.entity.setProp(false);
-            return 600000000000;
-        } else {
-            return 0;
-        }
+        // if(tile.entity.getProp()){
+        //     tile.entity.setProp(false);
+        return 60;
+        // } else {
+        //     return 0;
+        // }
     }
   });  
 itemdet.entityType=prov(()=>extendContent(Sorter.SorterEntity,itemdet,{
