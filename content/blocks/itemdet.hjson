@@ -1,4 +1,4 @@
-localisedName: Item Detector
+localizedName: Item Detector
 description: Outputs power when items pass through.
 size: 1
 breakable: true
