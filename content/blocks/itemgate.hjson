@@ -1,5 +1,5 @@
-localizedName: Item Detector (Passing)
-description: Outputs power when items pass through.
+localizedName: Item Detector (Containing)
+description: Outputs power when there are items in the block.
 size: 1
 breakable: true
 update: true
@@ -7,7 +7,6 @@ category: distribution
 hasPower: true
 consumesPower: false
 outputsPower: true
-invert: true
 requirements: [
   copper/25
 ]
