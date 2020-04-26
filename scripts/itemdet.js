@@ -9,7 +9,7 @@ const itemdet=extendContent(Sorter,"itemdet",{
     },
     acceptItem(item, tile, source){
         var entity=tile.ent();
-        if(tile.entity.items.total()>0) tile.ent().timer.reset(timerid,0);
+        if(this.super$acceptItem(item, tile, source)) entity.timer.reset(timerid,0);
         return this.super$acceptItem(item, tile, source);
     },
     getPowerProduction(tile){
