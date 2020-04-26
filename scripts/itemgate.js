@@ -4,9 +4,10 @@ const itemgate=extendContent(OverflowGate,"itemgate",{
         this.super$placed(tile);
         tile.ent().timer.reset(timerid,presstick+1);
     },
-    acceptItem(item, tile, source){
+    update(item){
         var entity=tile.ent();
         if(tile.entity.items.total()>0) entity.timer.reset(timerid,0);
+        this.super$update(item);
     },
     getPowerProduction(tile){
       return (tile.ent().timer.check(timerid,presstick)) ? 0: 1;

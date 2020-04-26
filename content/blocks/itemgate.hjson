@@ -6,6 +6,7 @@ update: true
 category: distribution
 hasPower: true
 consumesPower: false
+itemCapacity: 1
 outputsPower: true
 requirements: [
   copper/25
