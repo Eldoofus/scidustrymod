@@ -1,11 +1,8 @@
-const presstick=10; const timerid=0;
+const presstick=8; const timerid=0;
 const itemdet=extendContent(Sorter,"itemdet",{
     placed(tile) {
         this.super$placed(tile);
         tile.ent().timer.reset(timerid,presstick+1);
-    },
-    draw(tile) {
-        Draw.rect(Core.atlas.find(this.name + ((tile.ent().timer.check(timerid,presstick)) ? "":"-trig")), tile.drawx(), tile.drawy());
     },
     acceptItem(item, tile, source){
         var entity=tile.ent();
