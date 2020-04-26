@@ -7,10 +7,10 @@ const itemdet=extendContent(Sorter,"itemdet",{
     draw(tile) {
         Draw.rect(Core.atlas.find(this.name + ((tile.ent().timer.check(timerid,presstick)) ? "":"-trig")), tile.drawx(), tile.drawy());
     },
-    acceptItem(tile){
+    acceptItem(item, tile, source){
         var entity=tile.ent();
         if(tile.entity.items.total()>0) tile.ent().timer.reset(timerid,0);
-        return this.super$acceptItem(tile);
+        return this.super$acceptItem(item, tile, source);
     },
     getPowerProduction(tile){
       return (tile.ent().timer.check(timerid,presstick)) ? 0: 1;
