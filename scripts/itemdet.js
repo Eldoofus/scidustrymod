@@ -6,10 +6,12 @@ const itemdet=extendContent(Sorter,"itemdet",{
         return this.super$acceptItem(item,tile,source);
     },
     getPowerProduction(tile){
-        if(tile.entity.getProp()){
+        if(tile.entity.getProp() || _tick < 2){
             tile.entity.setProp(false);
+            _tick += 1;
             return 1;
         } else {
+            _tick = 0;
             return 0;
         }
     },
@@ -26,4 +28,5 @@ itemdet.entityType=prov(()=>extendContent(Sorter.SorterEntity,itemdet,{
         this._prop=a;
     },
     _prop:false,
+    _tick:0,
 }))
