@@ -1,5 +1,8 @@
 const presstick=8; const timerid=0;
 const itemdet=extendContent(Sorter,"itemdet",{
+    isSame(other){
+        return false;
+    },
     placed(tile) {
         this.super$placed(tile);
         tile.ent().timer.reset(timerid,presstick+1);
