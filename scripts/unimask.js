@@ -1,6 +1,6 @@
-const unimask=extendContent(Sorter,"unimask",{
+const unimask=extendcontent(Sorter,"unimask",{
     getTT(item, dest, source, flip){
-        item = Vars.Content.items(15);
+        item = Vars.content.items(15);
         var entity = dest.ent();
         var dir = source.relativeTo(dest.x, dest.y);
         if(dir == -1) return null;
@@ -69,11 +69,11 @@ const unimask=extendContent(Sorter,"unimask",{
         var to = this.getTT(item, tile, source, false);
         if(tile.entity.cons.valid()){
             tile.entity.cons.trigger();
-            return to != null && to.block().acceptItem(Vars.Content.items(15), to, tile) && to.getTeam() == tile.getTeam();;
+            return to != null && to.block().acceptItem(Vars.content.items(15), to, tile) && to.getTeam() == tile.getTeam();;
         } else return false;
     },
     handleItem(item, tile, source){
         var to = this.getTT(item, tile, source, true);
-        return to.handleItem(Vars.Content.items(15), to, tile);
+        return to.handleItem(Vars.content.items(15), to, tile);
     }
 });
