@@ -66,14 +66,14 @@ const unimask=extendContent(Sorter,"unimask",{
         return to;
     },
     acceptItem(item, tile, source){
-        var to = getTT(item, tile, source, false);
+        var to = this.getTT(item, tile, source, false);
         if(tile.entity.cons.valid()){
             tile.entity.cons.trigger();
             return to != null && to.block().acceptItem(Vars.Content.items(15), to, tile) && to.getTeam() == tile.getTeam();;
         } else return false;
     },
     handleItem(item, tile, source){
-        var to = getTT(item, tile, source, true);
+        var to = this.getTT(item, tile, source, true);
         return to.handleItem(Vars.Content.items(15), to, tile);
     }
 });
