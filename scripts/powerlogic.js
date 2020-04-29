@@ -41,8 +41,8 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       return (Number(logicn[input])==0)?false:true;
     },
     getPowerProduction(tile){
-      var in1=tole.getNearby((tile.rotation()+1)%4);
-      var in2=tole.getNearby((tile.rotation()+3)%4);
+      var in1=tile.getNearby((tile.rotation()+1)%4);
+      var in2=tile.getNearby((tile.rotation()+3)%4);
       if(!((in1.block() instanceof PowerNode)&&(in2.block() instanceof PowerNode))) return 0;
       try{
         return (this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance())) ? 0: 1;
