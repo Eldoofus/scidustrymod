@@ -71,7 +71,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       //var in1=tile.getNearby((tile.rotation()+1)%4);
       //var in2=tile.getNearby((tile.rotation()+3)%4);
       if(!((in1.block() instanceof PowerNode)&&(in2.block() instanceof PowerNode))) return 0;
-      Vars.ui.showInfoToast(this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance()));
+      Vars.ui.showInfoToast(this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance()),1);
       return (this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance())) ? 1: 0;
     }
     /*
