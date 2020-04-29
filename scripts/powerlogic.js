@@ -72,7 +72,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       //var in2=tile.getNearby((tile.rotation()+3)%4);
       if(!((in1.block() instanceof PowerNode)&&(in2.block() instanceof PowerNode))) return 0;
       if(in1.ent().power.graph.getID()==tile.ent().power.graph.getID()||in2.ent().power.graph.getID()==tile.ent().power.graph.getID()){
-        Vars.ui.showInfoToast("Do not connect oitput with input!",1);
+        Vars.ui.showInfoToast("Do not connect output with input!",1);
         return 0;
       }
       //Vars.ui.showInfoToast(this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance()),1);
