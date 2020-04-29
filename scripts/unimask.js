@@ -1,6 +1,6 @@
 const unimask=extendContent(Sorter,"unimask",{
     getTT(item, dest, source, flip){
-        item = Vars.content.items(15);
+        item = Vars.content.item(15);
         var entity = dest.ent();
         var dir = source.relativeTo(dest.x, dest.y);
         if(dir == -1) return null;
