@@ -36,6 +36,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       tmparr.push(in1); tmparr.push(in2);
       var input=logict.indexOf(tmparr);
       print("LG INPUT:"+input);
+      print("LG LIST:"+tmparr);
       var logicn=tile.ent().message.split(" ");
       if(logicn.indexOf(input)<0) return false;
       return (Number(logicn[input])==0)?false:true;
@@ -64,7 +65,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       //var in2=tile.getNearby((tile.rotation()+3)%4);
       if(!((in1.block() instanceof PowerNode)&&(in2.block() instanceof PowerNode))) return 0;
       try{
-        return (this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance())) ? 0: 1;
+        return (this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance())) ? 1: 0;
       }
       catch(err){
         print("E:"+err);
