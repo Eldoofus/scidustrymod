@@ -33,7 +33,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       else in1=false;
       if(in2>0) in2=true;
       else in2=false;
-      print("LG INPUTS:"+in1+","+in2);
+      //print("LG INPUTS:"+in1+","+in2);
       var input=-1;
       if(in1&&in2) input=0;
       else if(in1&& (!in2)) input=1;
@@ -42,10 +42,10 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       //var tmparr=[];
       //tmparr.push(in1); tmparr.push(in2);
       //var input=logict.indexOf(tmparr);
-      print("LG INPUT:"+input);
+      //print("LG INPUT:"+input);
       //print("LG LIST:"+tmparr);
       var logicn=tile.ent().message.split(" ");
-      if(logicn.indexOf(input)<0) return false;
+      //if(logicn.indexOf(input)<0) return false;
       return (Number(logicn[input])==0)?false:true;
     },
     getPowerProduction(tile){
