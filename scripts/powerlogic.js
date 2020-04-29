@@ -1,4 +1,4 @@
-const presstick=8; const timerid=0;
+const presstick=1; const timerid=0;
 //var logict=[1,1,1,0];//TT TF FT FF
 //abuse tables, hmm
 const logict=[[1,1],[1,0],[0,1],[0,0]];
@@ -16,6 +16,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
     placed(tile) {
         this.super$placed(tile);
         this.setMessageBlockText(null,tile,"1 1 1 0");
+        tile.ent().timer.reset(timerid,presstick+1);
     },
 /*
     buildConfiguration(tile, table){
@@ -29,6 +30,11 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
 	},
 */
     logiccheck(tile,in1,in2){
+      if(tile.ent().timer.getTime(timerid)<=0){
+        Vars.ui.showInfoToast("Do not create infinite loops!",1);
+        return false;
+      }
+      tile.ent().timer.reset(timerid,0);
       if(in1.getPowerProduced()-in1.getPowerNeeded()>0) in1=true;
       else in1=false;
       if(in2.getPowerProduced()-in2.getPowerNeeded()>0) in2=true;
