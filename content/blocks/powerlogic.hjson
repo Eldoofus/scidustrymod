@@ -1,0 +1,13 @@
+localizedName: Power Logic Gate
+description: Uses two adjacent nodes' power graphs as inputs, and outputs power accordingly.
+size: 1
+breakable: true
+update: true
+category: power
+hasPower: true
+consumesPower: false
+outputsPower: true
+requirements: [
+  silicon/25
+]
+insulated: true

@@ -3,3 +3,4 @@ require("powsort");
 require("itemdet");
 require("itemgate");
 require("unimask");
+require("powerlogic");
