@@ -27,16 +27,21 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
 		})).size(40);
 	},
     logiccheck(tile,in1,in2){
-      print("LG INPUTS:"+in1+","+in2);
-      if(in1>0) in1=1;
-      else in1=0;
-      if(in2>0) in2=1;
-      else in2=0;
-      var tmparr=[];
-      tmparr.push(in1); tmparr.push(in2);
-      var input=logict.indexOf(tmparr);
-      print("LG INPUT:"+input);
-      print("LG LIST:"+tmparr);
+      //print("LG INPUTS:"+in1+","+in2);
+      if(in1>0) in1=true;
+      else in1=false;
+      if(in2>0) in2=true;
+      else in2=false;
+      var input=-1;
+      if(in1&&in2) input=0;
+      else if(in1&& (!in2)) input=1;
+      else if(in2) input=2;
+      else input=3;
+      //var tmparr=[];
+      //tmparr.push(in1); tmparr.push(in2);
+      //var input=logict.indexOf(tmparr);
+      //print("LG INPUT:"+input);
+      //print("LG LIST:"+tmparr);
       var logicn=tile.ent().message.split(" ");
       if(logicn.indexOf(input)<0) return false;
       return (Number(logicn[input])==0)?false:true;
