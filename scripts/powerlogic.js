@@ -90,4 +90,10 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       Draw.rect(Core.atlas.find(this.name+"-top"), tile.drawx(), tile.drawy());
     */ //lag concerns, was gonna use logicg
     //TODO:table, draw
-})
+});
+
+powerlogic.entityType=prov(()=>extendContent(MessageBlock.MessageBlockEntity,powerlogic,{
+  config(){
+    return this.message;
+  }
+}));
