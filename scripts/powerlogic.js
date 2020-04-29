@@ -17,6 +17,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
         this.super$placed(tile);
         this.setMessageBlockText(null,tile,"1 1 1 0");
     },
+/*
     buildConfiguration(tile, table){
     this.super$buildConfiguration(tile,table);
 		table.addImageButton(Icon.commandRally, run(() => {
@@ -26,6 +27,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
 
 		})).size(40);
 	},
+*/
     logiccheck(tile,in1,in2){
       //print("LG INPUTS:"+in1+","+in2);
       if(in1>0) in1=true;
