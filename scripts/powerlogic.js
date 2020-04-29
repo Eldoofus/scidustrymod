@@ -29,9 +29,9 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
 	},
 */
     logiccheck(tile,in1,in2){
-      if(in1>0) in1=true;
+      if(in1.getPowerProduced()-in1.getPowerNeeded()>0) in1=true;
       else in1=false;
-      if(in2>0) in2=true;
+      if(in2.getPowerProduced()-in2.getPowerNeeded()>0) in2=true;
       else in2=false;
       //print("LG INPUTS:"+in1+","+in2);
       var input=-1;
@@ -71,8 +71,8 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       //var in1=tile.getNearby((tile.rotation()+1)%4);
       //var in2=tile.getNearby((tile.rotation()+3)%4);
       if(!((in1.block() instanceof PowerNode)&&(in2.block() instanceof PowerNode))) return 0;
-      Vars.ui.showInfoToast(this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance()),1);
-      return (this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance())) ? 1: 0;
+      //Vars.ui.showInfoToast(this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance()),1);
+      return (this.logiccheck(tile,in1.ent().power.graph,in2.ent().power.graph)) ? 1: 0;
     }
     /*
     draw(tile){
