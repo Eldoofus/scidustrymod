@@ -43,5 +43,10 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
         return 0;
       }
     }
+    /*
+    draw(tile){
+      this.super$draw(tile);
+      Draw.rect(Core.atlas.find(this.name+"-top"), tile.drawx(), tile.drawy());
+    */ //lag concerns, was gonna use logicg
     //TODO:table, draw
 })
