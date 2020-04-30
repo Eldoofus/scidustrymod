@@ -10,6 +10,14 @@ const unimasksk=extendContent(Router,"unimasksk",{
         entity.time = 0;
         entity.lastInput = source;
         */
+    },
+    update(tile){
+      var entity=tile.ent();
+      if(tile.entity.cons.valid()){
+        this.super$update(tile);
+        entity.cons.trigger();
+      }
+      else return;
     }
 });
 // const unimask=extendContent(Sorter,"unimask",{
