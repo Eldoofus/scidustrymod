@@ -1,5 +1,5 @@
 const presstick=1; const timerid=0; const loopthresh=150;
-var gloops=0;
+var gloops=500;//crash it if you can idk
 //var logict=[1,1,1,0];//TT TF FT FF
 //abuse tables, hmm
 const logict=[[1,1],[1,0],[0,1],[0,0]];
