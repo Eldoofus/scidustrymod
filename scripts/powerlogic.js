@@ -14,26 +14,30 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
         this.setMessageBlockText(null,tile,"1-1-1-0");
         tile.ent().timer.reset(timerid,presstick+1);
     },
+    updateTableAlign(tile,table){
+      var pos = Core.input.mouseScreen(tile.drawx(), tile.drawy() - Vars.tilesize - tile.block().size * Vars.tilesize / 2 - 1);
+      table.setPosition(pos.x, pos.y, Align.top);
+    },
     buildConfiguration(tile, table){
       //this.super$buildConfiguration(tile,table);
       var args=tile.ent().message.split("-");
-      table.addImage(Icon.settingsSmall).size(ts);
+      table.addImage(Icon.settings).size(ts);
       table.addImage(Icon.lineSmall,color1).size(ts);
       table.addImage(Icon.commandRallySmall,color1).size(ts);
       table.row();
       table.addImage(Icon.lineSmall,color2).size(ts);
-      table.addImageButton(Icon[tficon[Number(args[0])]], run(() => {
+      table.addImageButton(Icon[tficon[Number(args[0])]],Styles.clearToggleTransi, run(() => {
         tile.configure(16);
   		})).size(40);
-      table.addImageButton(Icon[tficon[Number(args[1])]], run(() => {
+      table.addImageButton(Icon[tficon[Number(args[1])]],Styles.clearToggleTransi, run(() => {
         tile.configure(17);
   		})).size(40);
       table.row();
       table.addImage(Icon.commandRallySmall,color2).size(ts);
-      table.addImageButton(Icon[tficon[Number(args[2])]], run(() => {
+      table.addImageButton(Icon[tficon[Number(args[2])]],Styles.clearToggleTransi, run(() => {
         tile.configure(18);
   		})).size(40);
-      table.addImageButton(Icon[tficon[Number(args[3])]], run(() => {
+      table.addImageButton(Icon[tficon[Number(args[3])]],Styles.clearToggleTransi, run(() => {
         tile.configure(19);
   		})).size(40);
       /*
