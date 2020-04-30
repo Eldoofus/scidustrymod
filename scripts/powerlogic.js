@@ -2,15 +2,7 @@ const presstick=1; const timerid=0;
 //var logict=[1,1,1,0];//TT TF FT FF
 //abuse tables, hmm
 const logict=[[1,1],[1,0],[0,1],[0,0]];
-const logicg={
-  "and":[1,0,0,0],
-  "or":[1,1,1,0],
-  "not":[0,0,1,1],
-  "nor":[0,0,0,1],
-  "nand":[0,1,1,1],
-  "xor":[0,1,1,0],
-  "arrow":[1,0,1,1]
-}
+const logicg=["1-1-1-1","1-1-1-0","1-1-0-1","1-0-1-1","0-1-1-1","1-1-0-0","1-0-1-0","1-0-0-1","0-1-1-0","0-1-0-1","0-0-1-1","0-0-0-1","0-0-1-0","0-1-0-0","1-0-0-0","0-0-0-0"];
 
 const powerlogic=extendContent(MessageBlock,"powerlogic",{
     placed(tile) {
@@ -29,10 +21,6 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
 		})).size(40);
 	},
 */
-    setMessageBlockText(player,tile,message){
-      message=message.replace(/ /g,"-");
-      this.super$setMessageBlockText(player,tile,message);
-    },
     logiccheck(tile,in1,in2){
       if(tile.ent().timer.getTime(timerid)<=0){
         Vars.ui.showInfoToast("Do not create infinite loops!",1);
@@ -92,7 +80,10 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
     draw(tile){
       //this.super$draw(tile);
       Draw.rect(Core.atlas.find(this.name+"-base"), tile.drawx(), tile.drawy());
-      Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy());
+      if(!logicg.indexOf(tile.ent().message)<0){
+        Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy());
+      }
+      else Draw.rect(Core.atlas.find(this.name+"-ohno"), tile.drawx(), tile.drawy());
     }
     //TODO:table, draw
 });
