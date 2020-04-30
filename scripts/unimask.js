@@ -2,8 +2,8 @@ const unimask=extendContent(ItemSource,"unimask",{
     update(tile){
         var entity=tile.ent();
         if(tile.entity.cons.valid()){
-            //if((tile.entity.outputItem == null) || (tile.entity.items.total() == 0)) return;
-            tile.entity.items.add(tile.entity.outputItem, 1);
+            if((tile.entity.outputItem == null) || (tile.entity.items.total() == 0)) return;
+            tile.entity.items.add(entity.outputItem, 1);
             dump(tile.entity.outputItem);
             tile.entity.items.clear();
           entity.cons.trigger();
