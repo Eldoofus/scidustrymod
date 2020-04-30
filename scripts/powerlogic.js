@@ -57,7 +57,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       return (Number(logicn[input])==0)?false:true;
     },
     getPowerProduction(tile){
-      if(tile.ent()message=="") this.setMessageBlockText(null,tile,"1-1-1-0");
+      if(tile.ent().message=="") this.setMessageBlockText(null,tile,"1-1-1-0");
       var tx1=0; var ty1=0; var tx2=0; var ty2=0;
       if(tile.rotation()==0){
         tx1=-1; ty1=1;
