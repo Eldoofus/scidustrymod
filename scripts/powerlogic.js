@@ -1,9 +1,12 @@
 const presstick=1; const timerid=0; const loopthresh=150;
 var gloops=500;//crash it if you can idk
+const color1=Color.valueOf("ffaa5f"); const color2=Color.valueOf("84f491");//color of pyratite and mender
+const ts=40;//table size
 //var logict=[1,1,1,0];//TT TF FT FF
 //abuse tables, hmm
 const logict=[[1,1],[1,0],[0,1],[0,0]];
 const logicg=["1-1-1-1","1-1-1-0","1-1-0-1","1-0-1-1","0-1-1-1","1-1-0-0","1-0-1-0","1-0-0-1","0-1-1-0","0-1-0-1","0-0-1-1","0-0-0-1","0-0-1-0","0-1-0-0","1-0-0-0","0-0-0-0"];
+const tficon=["commandRallySmall","lineSmall"];
 
 const powerlogic=extendContent(MessageBlock,"powerlogic",{
     placed(tile) {
@@ -11,17 +14,37 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
         this.setMessageBlockText(null,tile,"1-1-1-0");
         tile.ent().timer.reset(timerid,presstick+1);
     },
-/*
     buildConfiguration(tile, table){
-    this.super$buildConfiguration(tile,table);
-		table.addImageButton(Icon.commandRally, run(() => {
+      //this.super$buildConfiguration(tile,table);
+      var args=tile.ent().message.split("-");
+      table.addImage(Icon.settingsSmall).size(ts);
+      table.addImage(Icon.lineSmall,color1).size(ts);
+      table.addImage(Icon.commandRallySmall,color1).size(ts);
+      table.row();
+      table.addImage(Icon.lineSmall,color2).size(ts);
+      table.addImageButton(Icon[tficon[Number(args[0])]], run(() => {
+        tile.configure(16);
+  		})).size(40);
+      table.addImageButton(Icon[tficon[Number(args[1])]], run(() => {
+        tile.configure(17);
+  		})).size(40);
+      table.row();
+      table.addImage(Icon.commandRallySmall,color2).size(ts);
+      table.addImageButton(Icon[tficon[Number(args[2])]], run(() => {
+        tile.configure(18);
+  		})).size(40);
+      table.addImageButton(Icon[tficon[Number(args[3])]], run(() => {
+        tile.configure(19);
+  		})).size(40);
+      /*
+  		table.addImageButton(Icon.lineSmall, run(() => {
 
-		})).size(40);
-    table.addImageButton(Icon.line, run(() => {
+  		})).size(40);
+      table.addImageButton(Icon.commandRallySmall, run(() => {
 
-		})).size(40);
-	},
-*/
+  		})).size(40);
+      */
+	 },
     logiccheck(tile,in1,in2){
       if(tile.ent().timer.getTime(timerid)<=0){
         if(gloops>loopthresh){
@@ -95,6 +118,11 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
     configured(tile,player,value){
       //if(!value) return;
       if(value>=0&&value<16) this.setMessageBlockText(null,tile,Math.floor(value/8)%2+"-"+Math.floor(value/4)%2+"-"+Math.floor(value/2)%2+"-"+Math.floor(value)%2);
+      if(value>=16&&value<20){
+        var args=tile.ent().message.split("-");
+        args[value-16]=1-args[value-16];
+        this.setMessageBlockText(null,tile,args.join("-"));
+      }
     },
     drawConfigure(tile){
       var tx1=0; var ty1=0; var tx2=0; var ty2=0;
@@ -116,8 +144,9 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       }
       var in1=Vars.world.tile(tile.x+tx1,tile.y+ty1);
       var in2=Vars.world.tile(tile.x+tx2,tile.y+ty2);
-      Draw.color(Pal.place);
+      Draw.color(color1);
       Lines.square(in1.drawx(), in1.drawy(),1 * Vars.tilesize / 2 + 1);
+      Draw.color(color2);
       Lines.square(in2.drawx(), in2.drawy(),1 * Vars.tilesize / 2 + 1);
       this.super$drawConfigure(tile);
     },
