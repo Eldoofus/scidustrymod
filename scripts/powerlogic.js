@@ -89,7 +89,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
     },
     configured(tile,player,value){
       //if(!value) return;
-      this.setMessageBlockText(null,tile,value);
+      if(value>=0&&value<16) this.setMessageBlockText(null,tile,Math.floor(value/8)%2+"-"+Math.floor(value/4)%2+"-"+Math.floor(value/2)%2+"-"+Math.floor(value)%2);
     },
     drawConfigure(tile){
       var tx1=0; var ty1=0; var tx2=0; var ty2=0;
@@ -127,7 +127,9 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
 
 powerlogic.entityType=prov(() => extendContent(MessageBlock.MessageBlockEntity , powerlogic , {
   config(){
-    return this.message;
+    var nums=this.message.split("-");
+    if(nums.length!=4 || nums[0]>1||nums[1]>1||nums[2]>1||nums[3]>1|| nums[0]<0||nums[1]<0||nums[2]<0||nums[3]<0) return 14;
+    return Number(nums[0])*8+Number(nums[1])*4+Number(nums[2])*2+Number(nums[3]);
   },
   getLastOutput(){
     return this._last;
