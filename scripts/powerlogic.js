@@ -31,7 +31,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
           tile.configure(16);
     		})).get();
         tt.update(run(() => {
-          tt.replaceImage(Icon[tficon[Number(args[0])]]);
+          tt.replaceImage(Image(Icon[tficon[Number(args[0])]]));
         }));
         var tf=table.addImageButton(Icon[tficon[Number(args[1])]],Styles.clearTransi,ts, run(() => {
           tile.configure(17);
