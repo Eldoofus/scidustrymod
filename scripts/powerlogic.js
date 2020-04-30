@@ -53,7 +53,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       //print("LG LIST:"+tmparr);
       var logicn=tile.ent().message.split("-");
       //if(logicn.indexOf(input)<0) return false;
-      tile.setLastOutput((Number(logicn[input])==0)?false:true);
+      tile.ent().setLastOutput((Number(logicn[input])==0)?false:true);
       return (Number(logicn[input])==0)?false:true;
     },
     getPowerProduction(tile){
@@ -129,5 +129,6 @@ powerlogic.entityType=prov(()=>extendContent(MessageBlock.MessageBlockEntity,pow
   setLastOutput(a){
     this.last=a;
   },
+  _loops:0,
   _last:false
 }));
