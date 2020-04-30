@@ -25,7 +25,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       //this.super$buildConfiguration(tile,table);
       try{
         var args=tile.ent().message.split("-");
-        table.add().size(ts).style(Styles.outlineLabel);
+        table.add().size(ts);
         table.addImage(Icon.lineSmall,color1).size(ts);
         table.addImage(Icon.commandRallySmall,color1).size(ts);
         table.row();
