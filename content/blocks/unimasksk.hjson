@@ -1,12 +1,14 @@
 localizedName: Universal Mask 2
-description: Converts any item to a single type of item.
+description: Converts any item to pyratite using power.
 size: 1
 breakable: true
 update: true
 category: distribution
-
+consumes: {
+    power: 0.3
+}
+hasPower: true
 itemCapacity: 1
 requirements: [
   copper/25
 ]
-//power may screw stuff up,readd later
