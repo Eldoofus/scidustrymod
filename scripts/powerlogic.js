@@ -88,7 +88,8 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       return (this.logiccheck(tile,in1.ent().power.graph,in2.ent().power.graph)) ? 1: 0;
     },
     configured(tile,player,value){
-      if(logicg.indexOf(value)>-1) this.setMessageBlockText(null,tile,value);
+      if(!value) return;
+      this.setMessageBlockText(null,tile,value);
     },
     drawConfigure(tile){
       var tx1=0; var ty1=0; var tx2=0; var ty2=0;
