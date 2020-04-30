@@ -5,7 +5,7 @@ var gloops=0;
 const logict=[[1,1],[1,0],[0,1],[0,0]];
 const logicg=["1-1-1-1","1-1-1-0","1-1-0-1","1-0-1-1","0-1-1-1","1-1-0-0","1-0-1-0","1-0-0-1","0-1-1-0","0-1-0-1","0-0-1-1","0-0-0-1","0-0-1-0","0-1-0-0","1-0-0-0","0-0-0-0"];
 
-var powerlogic=extendContent(MessageBlock,"powerlogic",{
+const powerlogic=extendContent(MessageBlock,"powerlogic",{
     placed(tile) {
         this.super$placed(tile);
 
@@ -121,7 +121,7 @@ var powerlogic=extendContent(MessageBlock,"powerlogic",{
     //TODO:table, draw
 });
 
-powerlogic.entityType=prov(()=>extendContent(MessageBlock.MessageBlockEntity,powerlogic,{
+powerlogic.entityType=prov(() => extendContent(MessageBlock.MessageBlockEntity , powerlogic , {
   config(){
     return this.message;
   },
@@ -129,7 +129,7 @@ powerlogic.entityType=prov(()=>extendContent(MessageBlock.MessageBlockEntity,pow
     return this._last;
   },
   setLastOutput(a){
-    this.last=a;
+    this._last=a;
   },
   _loops:0,
   _last:false
