@@ -77,7 +77,6 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       return (this.logiccheck(tile,in1.ent().power.graph,in2.ent().power.graph)) ? 1: 0;
     },
     drawConfigure(tile){
-      this.super$drawConfigure(tile);
       var tx1=0; var ty1=0; var tx2=0; var ty2=0;
       if(tile.rotation()==0){
         tx1=-1; ty1=1;
@@ -99,6 +98,8 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       var in2=Vars.world.tile(tile.x+tx2,tile.y+ty2);
       Draw.color(Pal.place);
       Lines.square(in1.drawx(), in1.drawy(),1 * Vars.tilesize / 2 + 1);
+      Lines.square(in2.drawx(), in2.drawy(),1 * Vars.tilesize / 2 + 1);
+      this.super$drawConfigure(tile);
     },
     draw(tile){
       //this.super$draw(tile);
