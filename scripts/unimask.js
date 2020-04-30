@@ -3,15 +3,16 @@ const unimask=extendContent(ItemSource,"unimask",{
         var entity=tile.ent();
         if(tile.entity.cons.valid()){
             //if((tile.entity.outputItem == null) || (tile.entity.items.total() == 0)) return;
-            tile.entity.items.set(tile.entity.outputItem, 1);
+            tile.entity.items.add(tile.entity.outputItem, 1);
             dump(tile.entity.outputItem);
-            tile.entity.items.set(tile.entity.outputItem, 0);
+            tile.entity.items.clear();
           entity.cons.trigger();
         }
         else return;
     },
     acceptItem(item, tile, source){
-        return true;
+        if(tile.entity.cons.valid()) return true;
+        return false;
     }
 });
 // const unimask=extendContent(Sorter,"unimask",{
