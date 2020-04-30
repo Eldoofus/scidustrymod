@@ -28,6 +28,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
           return false;
         }
         else tile.ent().setLoops();
+        print("Looping:"+tile.ent().getLoops());
       }
       else tile.ent().resetLoops();
       tile.ent().timer.reset(timerid,0);
