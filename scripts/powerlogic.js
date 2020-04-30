@@ -1,4 +1,5 @@
-const presstick=1; const timerid=0; const loopthresh=500;
+const presstick=1; const timerid=0; const loopthresh=150;
+var gloops=0;
 //var logict=[1,1,1,0];//TT TF FT FF
 //abuse tables, hmm
 const logict=[[1,1],[1,0],[0,1],[0,0]];
@@ -23,14 +24,17 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
 */
     logiccheck(tile,in1,in2){
       if(tile.ent().timer.getTime(timerid)<=0){
-        if(tile.ent().getLoops()>loopthresh){
-          Vars.ui.showInfoToast("Do not create infinite loops!",1);
+        if(gloops>loopthresh){
+          Vars.ui.showInfoToast("Do not overuse!",1);
           return false;
         }
-        else tile.ent().setLoops();
-        print("Looping:"+tile.ent().getLoops());
+        else{
+          gloops+=1;
+          return tile.ent().getLastOutput();
+        }
+        //print("Looping:"+tile.ent().getLoops());
       }
-      else tile.ent().resetLoops();
+      gloops=0;
       tile.ent().timer.reset(timerid,0);
       if(in1.getPowerProduced()-in1.getPowerNeeded()>0) in1=true;
       else in1=false;
@@ -49,6 +53,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       //print("LG LIST:"+tmparr);
       var logicn=tile.ent().message.split("-");
       //if(logicn.indexOf(input)<0) return false;
+      tile.setLastOutput((Number(logicn[input])==0)?false:true);
       return (Number(logicn[input])==0)?false:true;
     },
     getPowerProduction(tile){
@@ -118,14 +123,11 @@ powerlogic.entityType=prov(()=>extendContent(MessageBlock.MessageBlockEntity,pow
   config(){
     return this.message;
   },
-  getLoops(){
-    return this._loops;
+  getLastOutput(){
+    return this._last;
   },
-  setLoops(){
-    this._loops+=1;
+  setLastOutput(a){
+    this.last=a;
   },
-  resetLoops(){
-    this._loops=0;
-  },
-  _loops:0
+  _last:false
 }));
