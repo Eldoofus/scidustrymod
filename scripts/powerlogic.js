@@ -25,7 +25,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       //this.super$buildConfiguration(tile,table);
       try{
         var args=tile.ent().message.split("-");
-        table.add().size(ts);
+        table.add().size(ts).style(Styles.outlineLabel);
         table.addImage(Icon.lineSmall,color1).size(ts);
         table.addImage(Icon.commandRallySmall,color1).size(ts);
         table.row();
@@ -38,15 +38,24 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
         }));
         var tf=table.addImageButton(Icon[tficon[Number(args[1])]],Styles.clearTransi,ts, run(() => {
           tile.configure(17);
-    		}));
+    		})).get();
+        tf.update(run(() => {
+          tf.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(2))]]));
+        }));
         table.row();
         table.addImage(Icon.commandRallySmall,color2).size(ts);
         var ft=table.addImageButton(Icon[tficon[Number(args[2])]],Styles.clearTransi,ts, run(() => {
           tile.configure(18);
-    		}));
+    		})).get();
+        ft.update(run(() => {
+          ft.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(4))]]));
+        }));
         var ff=table.addImageButton(Icon[tficon[Number(args[3])]],Styles.clearTransi,ts, run(() => {
           tile.configure(19);
-    		}));
+    		})).get();
+        ff.update(run(() => {
+          ff.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(6))]]));
+        }));
       }
       catch(err){
         print(err);
