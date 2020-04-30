@@ -1,0 +1,12 @@
+localizedName: Universal Mask 2
+description: Converts any item to a single type of item.
+size: 1
+breakable: true
+update: true
+category: distribution
+
+itemCapacity: 1
+requirements: [
+  copper/25
+]
+//power may screw stuff up,readd later
