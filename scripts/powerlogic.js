@@ -5,7 +5,7 @@ var gloops=0;
 const logict=[[1,1],[1,0],[0,1],[0,0]];
 const logicg=["1-1-1-1","1-1-1-0","1-1-0-1","1-0-1-1","0-1-1-1","1-1-0-0","1-0-1-0","1-0-0-1","0-1-1-0","0-1-0-1","0-0-1-1","0-0-0-1","0-0-1-0","0-1-0-0","1-0-0-0","0-0-0-0"];
 
-const powerlogic=extendContent(MessageBlock,"powerlogic",{
+var powerlogic=extendContent(MessageBlock,"powerlogic",{
     placed(tile) {
         this.super$placed(tile);
 
