@@ -29,7 +29,8 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
         }
         else tile.ent().setLoops();
       }
-      tile.ent().timer.reset(timerid,0); tile.ent().resetLoops();
+      else tile.ent().resetLoops();
+      tile.ent().timer.reset(timerid,0);
       if(in1.getPowerProduced()-in1.getPowerNeeded()>0) in1=true;
       else in1=false;
       if(in2.getPowerProduced()-in2.getPowerNeeded()>0) in2=true;
