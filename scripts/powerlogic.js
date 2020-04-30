@@ -29,7 +29,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
         table.addImage(Icon.lineSmall,color2).size(ts);
         var tt=table.addImageButton(Icon[tficon[Number(args[0])]],Styles.clearTransi,ts, run(() => {
           tile.configure(16);
-    		}));
+    		})).get();
         tt.update(run(() => {
           tt.replaceImage(Icon[tficon[Number(args[0])]]);
         }));
