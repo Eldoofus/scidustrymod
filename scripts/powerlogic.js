@@ -80,10 +80,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
     draw(tile){
       //this.super$draw(tile);
       Draw.rect(Core.atlas.find(this.name+"-base"), tile.drawx(), tile.drawy());
-      if(!logicg.indexOf(tile.ent().message)<0){
-        Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy());
-      }
-      else Draw.rect(Core.atlas.find(this.name+"-ohno"), tile.drawx(), tile.drawy());
+      Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy());
     }
     //TODO:table, draw
 });
