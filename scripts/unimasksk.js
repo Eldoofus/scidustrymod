@@ -3,10 +3,13 @@ var filtitem=Items.pyratite;//UI later
 const unimasksk=extendContent(Router,"unimasksk",{
   handleItem(item,tile, source){
         var entity = tile.ent();
+        this.super$handleItem(filtitem,tile,source);
+        /*
         entity.items.add(filtitem, 1);
         entity.lastItem = filtitem;
         entity.time = 0;
         entity.lastInput = source;
+        */
     }
 });
 // const unimask=extendContent(Sorter,"unimask",{
