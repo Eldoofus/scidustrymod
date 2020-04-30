@@ -15,7 +15,7 @@ const logicg={
 const powerlogic=extendContent(MessageBlock,"powerlogic",{
     placed(tile) {
         this.super$placed(tile);
-        this.setMessageBlockText(null,tile,"1 1 1 0");
+        this.setMessageBlockText(null,tile,"1-1-1-0");
         tile.ent().timer.reset(timerid,presstick+1);
     },
 /*
@@ -29,6 +29,10 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
 		})).size(40);
 	},
 */
+    setMessageBlockText(player,tile,message){
+      message=message.replace(/ /g,"-");
+      this.super$setMessageBlockText(player,tile,message);
+    },
     logiccheck(tile,in1,in2){
       if(tile.ent().timer.getTime(timerid)<=0){
         Vars.ui.showInfoToast("Do not create infinite loops!",1);
@@ -50,7 +54,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       //var input=logict.indexOf(tmparr);
       //print("LG INPUT:"+input);
       //print("LG LIST:"+tmparr);
-      var logicn=tile.ent().message.split(" ");
+      var logicn=tile.ent().message.split("-");
       //if(logicn.indexOf(input)<0) return false;
       return (Number(logicn[input])==0)?false:true;
     },
@@ -83,12 +87,13 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       }
       //Vars.ui.showInfoToast(this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance()),1);
       return (this.logiccheck(tile,in1.ent().power.graph,in2.ent().power.graph)) ? 1: 0;
-    }
-    /*
+    },
+
     draw(tile){
-      this.super$draw(tile);
-      Draw.rect(Core.atlas.find(this.name+"-top"), tile.drawx(), tile.drawy());
-    */ //lag concerns, was gonna use logicg
+      //this.super$draw(tile);
+      Draw.rect(Core.atlas.find(this.name+"-base"), tile.drawx(), tile.drawy());
+      Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy());
+    }
     //TODO:table, draw
 });
 
