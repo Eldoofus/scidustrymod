@@ -79,13 +79,18 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       var in2=Vars.world.tile(tile.x+tx2,tile.y+ty2);
       //var in1=tile.getNearby((tile.rotation()+1)%4);
       //var in2=tile.getNearby((tile.rotation()+3)%4);
-      if(!((in1.block() instanceof PowerBlock)&&(in2.block() instanceof PowerBlock))) return 0;
-      if(in1.ent().power.graph.getID()==tile.ent().power.graph.getID()||in2.ent().power.graph.getID()==tile.ent().power.graph.getID()){
-        Vars.ui.showInfoToast("Do not connect output with input!",1);
+      //if(!((in1.ent().hasOwnProperty("power"))&&(in2.ent().hasOwnProperty("power")))) return 0;
+      try{
+        if(in1.ent().power.graph.getID()==tile.ent().power.graph.getID()||in2.ent().power.graph.getID()==tile.ent().power.graph.getID()){
+          Vars.ui.showInfoToast("Do not connect output with input!",1);
+          return 0;
+        }
+        //Vars.ui.showInfoToast(this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance()),1);
+        return (this.logiccheck(tile,in1.ent().power.graph,in2.ent().power.graph)) ? 1: 0;
+      }
+      catch(err){
         return 0;
       }
-      //Vars.ui.showInfoToast(this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance()),1);
-      return (this.logiccheck(tile,in1.ent().power.graph,in2.ent().power.graph)) ? 1: 0;
     },
     configured(tile,player,value){
       //if(!value) return;
