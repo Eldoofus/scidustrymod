@@ -14,6 +14,9 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
         this.setMessageBlockText(null,tile,"1-1-1-0");
         tile.ent().timer.reset(timerid,presstick+1);
     },
+    drawSelect(tile){
+      //kill the words
+    },
     updateTableAlign(tile,table){
       var pos = Core.input.mouseScreen(tile.drawx(), tile.drawy() - Vars.tilesize - tile.block().size * Vars.tilesize / 2 - 1);
       table.setPosition(pos.x, pos.y, Align.top);
@@ -31,7 +34,7 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
           tile.configure(16);
     		})).get();
         tt.update(run(() => {
-          tt.replaceImage(Image(Icon[tficon[Number(args[0])]]));
+          tt.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(0))]]));
         }));
         var tf=table.addImageButton(Icon[tficon[Number(args[1])]],Styles.clearTransi,ts, run(() => {
           tile.configure(17);
