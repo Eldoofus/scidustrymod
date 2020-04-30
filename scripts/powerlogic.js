@@ -34,12 +34,14 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
           tile.configure(16);
     		})).get();
         tt.update(run(() => {
+          if(tile.block().name!=this.name) return;
           tt.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(0))]]));
         }));
         var tf=table.addImageButton(Icon[tficon[Number(args[1])]],Styles.clearTransi,ts, run(() => {
           tile.configure(17);
     		})).get();
         tf.update(run(() => {
+          if(tile.block().name!=this.name) return;
           tf.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(2))]]));
         }));
         table.row();
@@ -48,12 +50,14 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
           tile.configure(18);
     		})).get();
         ft.update(run(() => {
+          if(tile.block().name!=this.name) return;
           ft.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(4))]]));
         }));
         var ff=table.addImageButton(Icon[tficon[Number(args[3])]],Styles.clearTransi,ts, run(() => {
           tile.configure(19);
     		})).get();
         ff.update(run(() => {
+          if(tile.block().name!=this.name) return;
           ff.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(6))]]));
         }));
       }
