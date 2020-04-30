@@ -20,27 +20,34 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
     },
     buildConfiguration(tile, table){
       //this.super$buildConfiguration(tile,table);
-      var args=tile.ent().message.split("-");
-      table.add().size(ts);
-      table.addImage(Icon.lineSmall,color1).size(ts);
-      table.addImage(Icon.commandRallySmall,color1).size(ts);
-      table.row();
-      table.addImage(Icon.lineSmall,color2).size(ts);
-      var tt=table.addImageButton(Icon[tficon[Number(args[0])]],Styles.clearTransi,ts, run(() => {
-        tile.configure(16);
-  		}));
-
-      var tf=table.addImageButton(Icon[tficon[Number(args[1])]],Styles.clearTransi,ts, run(() => {
-        tile.configure(17);
-  		}));
-      table.row();
-      table.addImage(Icon.commandRallySmall,color2).size(ts);
-      var ft=table.addImageButton(Icon[tficon[Number(args[2])]],Styles.clearTransi,ts, run(() => {
-        tile.configure(18);
-  		}));
-      var ff=table.addImageButton(Icon[tficon[Number(args[3])]],Styles.clearTransi,ts, run(() => {
-        tile.configure(19);
-  		}));
+      try{
+        var args=tile.ent().message.split("-");
+        table.add().size(ts);
+        table.addImage(Icon.lineSmall,color1).size(ts);
+        table.addImage(Icon.commandRallySmall,color1).size(ts);
+        table.row();
+        table.addImage(Icon.lineSmall,color2).size(ts);
+        var tt=table.addImageButton(Icon[tficon[Number(args[0])]],Styles.clearTransi,ts, run(() => {
+          tile.configure(16);
+    		}));
+        tt.update(run(() => {
+          tt.replaceImage(Icon[tficon[Number(args[0])]]);
+        }));
+        var tf=table.addImageButton(Icon[tficon[Number(args[1])]],Styles.clearTransi,ts, run(() => {
+          tile.configure(17);
+    		}));
+        table.row();
+        table.addImage(Icon.commandRallySmall,color2).size(ts);
+        var ft=table.addImageButton(Icon[tficon[Number(args[2])]],Styles.clearTransi,ts, run(() => {
+          tile.configure(18);
+    		}));
+        var ff=table.addImageButton(Icon[tficon[Number(args[3])]],Styles.clearTransi,ts, run(() => {
+          tile.configure(19);
+    		}));
+      }
+      catch(err){
+        print(err);
+      }
       /*
   		table.addImageButton(Icon.lineSmall, run(() => {
 
