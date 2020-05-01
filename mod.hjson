@@ -1,6 +1,6 @@
 name: "scidustrymod"
 displayName: "[orange]Scidustry[gold] Mod" //what displays in the mod selection menu
 author: "Eldoofus"
-description: "A mod for Scidustry. Thanks to sk7725 for helping with the Item Detector and KK6 for the some sprites."
+description: "A mod for Scidustry. Thanks to sk7725 for helping with the Item Detector, Universal Mask, Logic Blocks, and KK6 for the some sprites."
 version: "1.0"
-minGameVersion: "102"
+minGameVersion: "104"

@@ -4,16 +4,16 @@ description: Randomly outputs items
 size: 1
 results: [
   copper/1
-  titanium/1
+  lead/1
 ]
 requirements: [
   copper/1
 ]
 consumes: {
-  liquid: water/1.0
+  liquid: water/0.0
   power: 0.1
 }
-craftTime: 6
+craftTime: 1
 spinnerRadius:2.5
 spinnerLength:1
 spinnerThickness:1
