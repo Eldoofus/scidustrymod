@@ -188,9 +188,10 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       return Math.floor(value/8)%2+"-"+Math.floor(value/4)%2+"-"+Math.floor(value/2)%2+"-"+Math.floor(value)%2;
     },
     drawRequestConfig(req, list){
+      this.super$drawRequestConfig(req,list);
       //var logicshape=this.numtostr(req.config);
-      Draw.rect(Core.atlas.find(this.name+"-base"), req.drawx(), req.drawy());
-      Draw.rect(Core.atlas.find(this.name+"-top"), req.drawx(), req.drawy(),90*req.rotation);
+      //Draw.rect(Core.atlas.find(this.name+"-base"), req.drawx(), req.drawy());
+      //Draw.rect(Core.atlas.find(this.name+"-top"), req.drawx(), req.drawy(),90*req.rotation);
       Draw.rect(Core.atlas.find(this.name+"-"+Math.floor(req.config/8)%2+"-"+Math.floor(req.config/4)%2+"-"+Math.floor(req.config/2)%2+"-"+Math.floor(req.config)%2), req.drawx(), req.drawy(),90*req.rotation);
         //this.drawRequestConfigCenter(req, Vars.content.item(req.config), Core.atlas.find("center"));
     }
