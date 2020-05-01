@@ -22,10 +22,10 @@ const unimasksk=extendContent(Router,"unimasksk",{
     },
     buildConfiguration(tile, table){
         var entity = tile.ent();
-        ItemSelection.buildTable(table, Vars.content.items(), () => entity.getItem(), item => {
+        ItemSelection.buildTable(table, Vars.content.items(), prov(() => entity.getItem()), cons(item => {
             lastitem = item;
             tile.configure(item == null ? -1 : item.id);
-        });
+        }));
     },
     configured(tile, player, value){
         tile.ent().setitem(Vars.content.item(value));
