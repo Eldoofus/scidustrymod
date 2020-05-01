@@ -12,6 +12,12 @@ const unimasksk=extendContent(Router,"unimasksk",{
         entity.lastInput = source;
         */
     },
+    setBars(){
+      this.super$setBars();
+    //initialize
+    //this.bars.remove("liquid");
+      this.bars.remove("items");
+    },
     update(tile){
       var entity=tile.ent();
       if(tile.entity.cons.valid()){
@@ -34,7 +40,19 @@ const unimasksk=extendContent(Router,"unimasksk",{
       if(lastitem != null){
           tile.configure(lastitem.id);
       }
+    },
+    draw(tile){
+      this.super$draw(tile);
+      var item = tile.ent().getItem();
+      if(item == null) return;
+      Draw.color(item.color);
+      Draw.rect("center", tile.drawx(), tile.drawy());
+      Draw.color();
+    },
+    drawRequestConfig(req, list){
+        this.drawRequestConfigCenter(req, Vars.content.item(req.config), "center");
     }
+
 });
 
 unimasksk.entityType=prov(() => extendContent(Router.RouterEntity , unimasksk , {
