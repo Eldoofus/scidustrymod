@@ -183,6 +183,16 @@ const powerlogic=extendContent(MessageBlock,"powerlogic",{
       Draw.rect(Core.atlas.find(this.name+"-base"), tile.drawx(), tile.drawy());
       Draw.rect(Core.atlas.find(this.name+"-top"), tile.drawx(), tile.drawy(),90*tile.rotation());
       Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
+    },
+    numtostr(value){
+      return Math.floor(value/8)%2+"-"+Math.floor(value/4)%2+"-"+Math.floor(value/2)%2+"-"+Math.floor(value)%2;
+    },
+    drawRequestConfig(req, list){
+
+      Draw.rect(Core.atlas.find(this.name+"-base"), req.drawx(), req.drawy());
+      Draw.rect(Core.atlas.find(this.name+"-top"), req.drawx(), req.drawy(),90*req.rotation);
+      Draw.rect(Core.atlas.find(this.name+"-"+this.numtostr(req.config)), req.drawx(), req.drawy(),90*req.rotation);
+        //this.drawRequestConfigCenter(req, Vars.content.item(req.config), Core.atlas.find("center"));
     }
     //TODO:table, draw
 });
