@@ -1,5 +1,5 @@
-localizedName: Universal Mask 2
-description: Converts any item to pyratite using power.
+localizedName: Universal Mask
+description: Converts any item to a certain item using power.
 size: 1
 breakable: true
 update: true
@@ -8,7 +8,10 @@ consumes: {
     power: 0.3
 }
 hasPower: true
+outputsPower: false
 itemCapacity: 1
 requirements: [
   copper/25
 ]
+configurable: true
+sync: true

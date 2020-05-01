@@ -1,9 +1,10 @@
 //my take
 var filtitem=Items.pyratite;//UI later
+var lastitem=null;
 const unimasksk=extendContent(Router,"unimasksk",{
   handleItem(item,tile, source){
         var entity = tile.ent();
-        this.super$handleItem(filtitem,tile,source);
+        this.super$handleItem(tile.ent().getItem()==null?item:tile.ent().getItem(),tile,source);
         /*
         entity.items.add(filtitem, 1);
         entity.lastItem = filtitem;
@@ -18,84 +19,41 @@ const unimasksk=extendContent(Router,"unimasksk",{
         entity.cons.trigger();
       }
       else return;
+    },
+    buildConfiguration(tile, table){
+        var entity = tile.ent();
+        ItemSelection.buildTable(table, Vars.content.items(), () => entity.getItem(), item => {
+            lastitem = item;
+            tile.configure(item == null ? -1 : item.id);
+        });
+    },
+    configured(tile, player, value){
+        tile.ent().setitem(Vars.content.item(value));
+    },
+    playerPlaced(tile){
+      if(lastitem != null){
+          tile.configure(lastitem.id);
+      }
     }
 });
-// const unimask=extendContent(Sorter,"unimask",{
-//     getTT(item, dest, source, flip){
-//         item = Vars.content.item(15);
-//         var entity = dest.ent();
-//         var dir = source.relativeTo(dest.x, dest.y);
-//         if(dir == -1) return null;
-//         var a = dest.getNearby(Mathf.mod(dir - 1, 4));
-//         var b = dest.getNearby(Mathf.mod(dir, 4));
-//         var c = dest.getNearby(Mathf.mod(dir + 1, 4));
-//         var ac = a != null && !(a.block().instantTransfer && source.block().instantTransfer) && a.block().acceptItem(item, a, dest);
-//         var bc = b != null && !(b.block().instantTransfer && source.block().instantTransfer) && b.block().acceptItem(item, b, dest);
-//         var cc = c != null && !(c.block().instantTransfer && source.block().instantTransfer) && c.block().acceptItem(item, c, dest);
-//         if(ac && !bc && !cc){
-//             to = a;
-//         } else if(bc && !ac && !cc){
-//             to = b;
-//         } else if(cc && !ac && !bc){
-//             to = c;
-//         } else if(ac && bc && !cc){
-//             if(dest.rotation() == 0){
-//                 to = a;
-//                 if(flip)dest.rotation(1);
-//             } else if(dest.rotation == 1){
-//                 to = b;
-//                 if(flip)dest.rotation(2);
-//             } else {
-//                 if(flip)dest.rotation(0);
-//                 return null;
-//             }
-//         } else if(ac && !bc && cc){
-//             if(dest.rotation() == 0){
-//                 to = a;
-//                 if(flip)dest.rotation(1);
-//             } else if(dest.rotation == 1){
-//                 if(flip)dest.rotation(2);
-//                 return null;
-//             } else {
-//                 to = c;
-//                 if(flip)dest.rotation(0);
-//             }
-//         } else if(!ac && bc && cc){
-//             if(dest.rotation() == 0){
-//                 if(flip)dest.rotation(1);
-//                 return null;
-//             } else if(dest.rotation == 1){
-//                 to = b;
-//                 if(flip)dest.rotation(2);
-//             } else {
-//                 to = c;
-//                 if(flip)dest.rotation(0);
-//             }
-//         } else if(!ac && !bc && !cc){
-//             return null;
-//         } else if(ac && bc && cc){
-//             if(dest.rotation() == 0){
-//                 to = a;
-//                 if(flip)dest.rotation(1);
-//             } else if(dest.rotation == 1){
-//                 to = b;
-//                 if(flip)dest.rotation(2);
-//             } else {
-//                 to = c;
-//                 if(flip)dest.rotation(0);
-//             }
-//         }
-//         return to;
-//     },
-//     acceptItem(item, tile, source){
-//         var to = this.getTT(item, tile, source, false);
-//         if(tile.entity.cons.valid()){
-//             tile.entity.cons.trigger();
-//             return to != null && to.block().acceptItem(Vars.content.item(15), to, tile) && to.getTeam() == tile.getTeam();;
-//         } else return false;
-//     },
-//     handleItem(item, tile, source){
-//         var to = this.getTT(item, tile, source, true);
-//         return to.handleItem(Vars.content.item(15), to, tile);
-//     }
-// });
+
+unimasksk.entityType=prov(() => extendContent(Router.RouterEntity , unimasksk , {
+  config(){
+    return this._outputItem == null ? -1 : this._outputItem.id;
+  },
+  write(stream){
+    this.super$write(stream);
+    stream.writeShort(this._outputItem == null ? -1 : this._outputItem.id);
+  },
+  read(stream,revision){
+    this.super$read(stream,revision);
+    this._outputItem=Vars.content.item(stream.readShort());
+  },
+  _outputItem:null,
+  getItem(){
+    return this._outputItem;
+  },
+  setitem(item){
+    this._outputItem=item;
+  }
+}));
