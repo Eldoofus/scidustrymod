@@ -10,12 +10,12 @@ Adds:
     Phase conveyors and conduits with infinite range
     Instant combustion and steam generators
     A special Twin Generator with quirky behavior
-    Item detectors
+    Item detectors - sk7725
     Faster conveyors
     Sorter that requires power to let items through
     An item teleporter
     An ultra-powerful Overdrive
     A small container
     Randomiser that randomly switches between copper and lead
-    Universal Item masks
-    And Power Logic Gates
+    Universal Item masks - sk7725
+    And Power Logic Gates - sk7725
