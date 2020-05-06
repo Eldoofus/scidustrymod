@@ -1,0 +1,10 @@
+localizedName: Memory Node
+description: A node with limited range and connections, but remembers connections in schematics
+size: 1
+breakable: true
+update: true
+group: power
+category: power
+requirements: [
+  copper/25
+]

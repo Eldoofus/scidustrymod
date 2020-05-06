@@ -1,6 +1,6 @@
 type: GenericCrafter
 name: Copper Generator
-description: Generates pyratite from power
+description: Generates copper from power
 size: 1
 hasPower: true
 hasLiquids: false
