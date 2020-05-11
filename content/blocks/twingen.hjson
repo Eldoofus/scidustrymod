@@ -4,7 +4,7 @@ description: Generates power from 2 items instead of 1
 size: 1
 hasPower: true
 hasItems: true
-itemDuration: 1
+itemDuration: 5
 powerProduction: 4.5
 itemCapacity: 1
 consumes: {
