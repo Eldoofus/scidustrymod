@@ -1,5 +1,5 @@
 # scidustrymod
-Mod for Scidustry
+Mod for Scidustry.
 Adds:
     Tiny Impact Reactor to stabilise flickering outputs
     A low charge battery
