@@ -18,4 +18,5 @@ Adds:
     A small container,
     Randomiser that randomly switches between copper and lead,
     Universal Item masks - sk7725,
-    And Power Logic Gates - sk7725,
+    And Power Logic Gates - sk7725.
+    Many Sprites by KK6
