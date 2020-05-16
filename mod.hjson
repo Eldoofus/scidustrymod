@@ -1,6 +1,6 @@
 name: "scidustrymod"
 displayName: "[orange]Scidustry[gold] Mod" //what displays in the mod selection menu
 author: "Eldoofus"
-description: "A mod for Scidustry. Thanks to sk7725 for helping with the Item Detector, Universal Mask, Logic Blocks, and KK6 for the some sprites."
+description: "A mod for Scidustry. Thanks to sk7725 for helping with the Item Detector, Universal Mask, Logic Blocks, and KK6 for the some sprites. It is reccommended to install sk7725/Commandblocks alongside this mod."
 version: "1.0"
 minGameVersion: "104"
