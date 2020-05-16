@@ -1,0 +1,14 @@
+localizedName: Power Switch
+description: Turns all node connections on of off with the flick of a switch.
+size: 1
+breakable: true
+update: true
+category: power
+hasPower: true
+consumesPower: false
+outputsPower: false
+requirements: [
+  lead/25
+]
+consumesTap: true
+layer: power

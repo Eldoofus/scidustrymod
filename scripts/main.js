@@ -3,5 +3,7 @@ require("powsort");
 require("itemdet");
 require("itemgate");
 require("powerlogic");
+require("powertranssk");
+require("powerlogicsk");
 require("unimasksk");
 //require("unimask");

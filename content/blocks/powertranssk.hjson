@@ -1,0 +1,17 @@
+localizedName: Power Transistor
+description: Uses an adjacent node's power graph as a base, and toggles the connected nodes.\nAll connected nodes serve as both emitters and collectors.
+size: 1
+breakable: true
+update: true
+category: power
+hasPower: true
+consumesPower: false
+outputsPower: false
+requirements: [
+  lead/9
+  silicon/16
+]
+configurable: true
+layer: power
+insulated: true
+rotate: true
