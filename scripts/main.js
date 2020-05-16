@@ -2,8 +2,10 @@ require("poweredsource");
 require("powsort");
 require("itemdet");
 require("itemgate");
+
+require("powerswitchsk");
 require("powerlogic");
 require("powertranssk");
-require("powerlogicsk");
+
 require("unimasksk");
 //require("unimask");
