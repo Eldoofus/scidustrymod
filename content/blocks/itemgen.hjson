@@ -18,3 +18,4 @@ requirements: [
 group: transportation
 category: distribution
 outputItem: pyratite/1
+insulated: true

@@ -15,3 +15,4 @@ requirements: [
 ]
 configurable: true
 sync: true
+insulated: true

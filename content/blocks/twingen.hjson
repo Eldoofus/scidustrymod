@@ -20,3 +20,4 @@ requirements: [
   lead/15
 ]
 category: power
+insulated: true

@@ -14,3 +14,4 @@ requirements: [
   phase-fabric/5
 ]
 category: liquid
+insulated: true

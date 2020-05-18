@@ -20,5 +20,6 @@ requirements: [
   silicon/300
   surge-alloy/250
 ]
+insulated: true
 group: power
 category: power

@@ -22,3 +22,4 @@ requirements: [
 group: transportation
 category: distribution
 outputLiquid: water/0.0
+insulated: true

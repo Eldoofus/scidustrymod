@@ -20,3 +20,4 @@ consumes: {
 requirements: [
   copper/1
 ]
+insulated: true

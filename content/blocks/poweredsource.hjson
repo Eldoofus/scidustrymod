@@ -11,3 +11,4 @@ category: distribution
 requirements: [
   copper/1
 ]
+insulated: true

@@ -18,3 +18,4 @@ spinnerRadius:2.5
 spinnerLength:1
 spinnerThickness:1
 category: crafting
+insulated: true

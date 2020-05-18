@@ -10,3 +10,4 @@ requirements: [
   plastanium/30
 ]
 category: effect
+insulated: true

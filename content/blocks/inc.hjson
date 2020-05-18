@@ -12,3 +12,4 @@ requirements: [
 ]
 category: power
 outputItem: copper/0
+insulated: true
