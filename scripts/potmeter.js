@@ -174,7 +174,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     //Lines.square(in2.drawx(), in2.drawy(),1 * Vars.tilesize / 2 + 1);
     this.super$drawConfigure(tile);
   },
-  */
+
   checkState(tile){
     var tx1=0; var ty1=0;
     if(tile.rotation()==0){
@@ -200,6 +200,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
       return false;
     }
   },
+  */
   draw(tile){
     //this.super$draw(tile);
     Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
@@ -210,7 +211,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
   update(tile){
     this.super$update(tile);
     var in1=tile.ent().power.graph;
-    var currentpow=in1.getPowerProduced()-in1.getPowerNeeded();
+    var currentpow=in1.getLastPowerProduced()-in1.getLastPowerNeeded();
     var setpow=tile.ent().getVal();
     if(currentpow>setpow) tile.ent().setPow(setpow-currentpow);
     else tile.ent().setPow(0);
