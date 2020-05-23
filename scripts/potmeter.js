@@ -220,7 +220,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     if(tile.ent().timer.getTime(timerid)<=0) return tile.ent().getLastOutput();
     tile.ent().timer.reset(timerid,0);
     var in1=tile.ent().power.graph;
-    var currentpow=in1.getPowerBalance()*60-tile.ent().getLastOutput();
+    var currentpow=in1.getPowerBalance()*60;
     var setpow=tile.ent().getVal();
     if(currentpow>setpow){
       tile.ent().setLastOutput(setpow-currentpow);
