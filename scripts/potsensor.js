@@ -177,10 +177,12 @@ const potsensor=extendContent(PowerBlock,"potsensor",{
     this.super$update(tile);
     if(!tile.ent().getConnected()) return;
 
+    /*
     var link=Vars.world.tile(tile.ent().getConf());
     link=link.ent().power.graph;
     Vars.ui.showInfoToast(link.getSatisfaction()*60,0);
-    
+    */
+
     var link=Vars.world.tile(tile.ent().getConf());
     if(link==null||(!this.linkValid(tile,link))) tile.ent().setConnected(false);
     if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
@@ -195,7 +197,7 @@ const potsensor=extendContent(PowerBlock,"potsensor",{
     tile.ent().timer.reset(timerid,0);
     var link=Vars.world.tile(tile.ent().getConf());
     link=link.ent().power.graph;
-    if(Math.round(link.getSatisfaction()*60)==tile.ent().getVal()){
+    if(Math.round(link.getPowerBalance()*60)==tile.ent().getVal()){
       tile.ent().setLastOutput(1);
       return 1;
     }
