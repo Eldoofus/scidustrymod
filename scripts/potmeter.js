@@ -1,5 +1,5 @@
 const presstick=1; const timerid=0;
-const color1=Color.valueOf("ffaa5f"); const color2=Color.valueOf("84f491");//color of pyratite and mender
+const color1=Color.valueOf("ffaa5f"); const color2=Color.valueOf("84f491"); const color1off=Color.valueOf("cc8343");//color of pyratite and mender
 //const coloroff=Color.valueOf("6974c4");
 const degrees=360;
 const potmeter=extendContent(PowerBlock,"potmeter",{
@@ -47,7 +47,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
 
     Lines.stroke(1.5);
     Lines.circle(tile.drawx(), tile.drawy(), tile.block().size * Vars.tilesize / 2 + 1 + Mathf.absin(Time.time(), 4, 1));
-
+    Draw.color(color1);
     Drawf.circles(tile.drawx(), tile.drawy(), this.laserRange * Vars.tilesize);
 
     Lines.stroke(1.5);
@@ -82,7 +82,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
 
     var fract = 1 - tile.ent().power.graph.getSatisfaction();
     var nowtick=tile.ent().timer.getTime(timerid);
-    Draw.color(Color.white, color1, fract * 0.86 + Mathf.absin(3, 0.1));
+    Draw.color(color1, color1off, fract * 0.86 + Mathf.absin(3, 0.1));
     Draw.alpha(opacity);
     Drawf.laser(this.laser, this.laserEnd, x1, y1, x2, y2, 0.25);
     Draw.color();

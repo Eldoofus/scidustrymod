@@ -1,5 +1,5 @@
 localizedName: Potentiometer
-description: "Outputs a fraction of the input. Set the output value(0~360) and the power grid will be capped."
+description: "Outputs a fraction of the input. Set the output value(0~360) and configure an input. The input will be marked orange."
 size: 1
 breakable: true
 update: true
