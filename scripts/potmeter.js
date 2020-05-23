@@ -210,15 +210,29 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
   },
   update(tile){
     this.super$update(tile);
+    /*
     var in1=tile.ent().power.graph;
-    var currentpow=in1.getLastPowerProduced()-in1.getLastPowerNeeded();
+    var currentpow=in1.getPowerProduced()-in1.getPowerNeeded();
     var setpow=tile.ent().getVal();
     if(currentpow>setpow) tile.ent().setPow(setpow-currentpow);
     else tile.ent().setPow(0);
     Vars.ui.showInfoToast("c:"+currentpow,0);
+    */
   },
   getPowerProduction(tile){
-    return tile.ent().getPow();
+    //return tile.ent().getPow();
+    if(tile.ent().timer.getTime(timerid)<=0) return tile.ent().getLastOutput();
+    var in1=tile.ent().power.graph;
+    var currentpow=in1.getPowerProduced()-in1.getPowerNeeded()-tile.ent().getLastOutput();
+    var setpow=tile.ent().getVal();
+    if(currentpow>setpow){
+      tile.ent().setLastOutput(setpow-currentpow);
+      return setpow-currentpow;
+    }
+    else{
+      tile.ent().setLastOutput(0);
+      return 0;
+    }
   }
 });
 
@@ -248,11 +262,11 @@ potmeter.entityType=prov(() => extend(TileEntity , {
     this.super$read(stream,revision);
     this._val=stream.readShort();
   },
-  getPow(){
-    return this._pow;
+  getLastOutput(){
+    return this._last;
   },
-  setPow(a){
-    this._pow=a;
+  setLastOutput(a){
+    this._last=a;
   },
-  _pow:0
+  _last:0
 }));
