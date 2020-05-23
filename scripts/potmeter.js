@@ -217,8 +217,8 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
   },
   getPowerProduction(tile){
     //return tile.ent().getPow();
-    if(tile.ent().timer.getTime(timerid)<=0) return tile.ent().getLastOutput();
-    tile.ent().timer.reset(timerid,0);
+    //if(tile.ent().timer.getTime(timerid)<=0) return tile.ent().getLastOutput();
+    //tile.ent().timer.reset(timerid,0);
     var in1=tile.ent().power.graph;
     var currentpow=in1.getLastPowerProduced()*60;
     var setpow=tile.ent().getVal();
