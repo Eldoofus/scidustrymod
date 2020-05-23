@@ -21,7 +21,10 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     this.drawPlaceText(tile.ent().getVal(),tile.x,tile.y,true);
   },
   configured(tile, player, value){
-    if(value<=0) return;
+    if(value<0){
+      tile.ent().setVal(value*-1);
+      return;
+    }
     var other=Vars.world.tile(value);
     if(tile==other) tile.ent().setConnected(false);
     else if(tile.ent().getConf()==other.pos()&&tile.ent().getConnected()) tile.ent().setConnected(false);
@@ -36,6 +39,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
       return false;
     }
     else if(this.linkValid(tile,other)){
+      if(other.pos()<0) return true;
       tile.configure(other.pos());
       return false;
     }
@@ -199,7 +203,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
 
 potmeter.entityType=prov(() => extend(TileEntity , {
   config(){
-    return this._val;
+    return this._val*-1;
   },
   getVal(){
     return this._val;
