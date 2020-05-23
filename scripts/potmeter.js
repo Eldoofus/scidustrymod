@@ -200,12 +200,16 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(630-tile.ent().getVal())%360);
     //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
   },
-  getPowerProduction(tile){
+  update(tile){
+    this.super$update(tile);
     var in1=tile.ent().power.graph;
-    var currentpow=in1.getPowerProduced()-in1.getPowerNeeded();
+    var currentpow=in1.getPowerProduced()-in1.getPowerNeeded()-tile.ent().getPow();
     var setpow=tile.ent().getVal();
-    if(currentpow>setpow) return setpow-currentpow;
-    else return 0;
+    if(currentpow>setpow) tile.ent().setPow(setpow-currentpow);
+    else tile.ent().setPow(0);
+  },
+  getPowerProduction(tile){
+    return tile.ent().getPow();
   }
 });
 
@@ -214,7 +218,7 @@ potmeter.entityType=prov(() => extend(TileEntity , {
     return this._val;
   },
   setVal(a){
-    if(isNaN(Number(a))||a<=0||a>degrees) return;
+    if(isNaN(Number(a))||a<1||a>degrees) return;
     this._val=Math.floor(a);
   },
   incVal(){
@@ -231,5 +235,12 @@ potmeter.entityType=prov(() => extend(TileEntity , {
   read(stream,revision){
     this.super$read(stream,revision);
     this._val=stream.readShort();
-  }
+  },
+  getPow(){
+    return this._pow;
+  },
+  setPow(a){
+    this._pow=a;
+  },
+  _pow:0
 }));
