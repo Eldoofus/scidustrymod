@@ -211,7 +211,7 @@ potmeter.entityType=prov(() => extend(TileEntity , {
     if(this._val<degrees) this._val++;
   },
   decVal(){
-    if(this._val>) this._val--;
+    if(this._val>1) this._val--;
   },
   _val:1,
   write(stream){
