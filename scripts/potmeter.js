@@ -47,14 +47,14 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
 
     Lines.stroke(1.5);
     Lines.circle(tile.drawx(), tile.drawy(), tile.block().size * Vars.tilesize / 2 + 1 + Mathf.absin(Time.time(), 4, 1));
-    Draw.color(color1);
+    //Draw.color(color1);
     Drawf.circles(tile.drawx(), tile.drawy(), this.laserRange * Vars.tilesize);
 
     Lines.stroke(1.5);
     if(tile.ent().getConnected()){
       var other=Vars.world.tile(tile.ent().getConf());
       if(!(other==null)){
-        Drawf.square(other.drawx(), other.drawy(), other.block().size * Vars.tilesize / 2 + 1, Pal.place);
+        Drawf.square(other.drawx(), other.drawy(), other.block().size * Vars.tilesize / 2 + 1,color1);
       }
     }
     //Draw.color(color1);
