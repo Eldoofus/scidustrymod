@@ -14,3 +14,4 @@ insulated: true
 rotate: false
 configurable: true
 timers: 1
+layer: power

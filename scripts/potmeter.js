@@ -42,7 +42,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     else return true;
   },
   drawConfigure(tile){
-    this.super$drawConfigure(tile);
+    //this.super$drawConfigure(tile);
     Draw.color(Pal.accent);
 
     Lines.stroke(1.5);
@@ -53,7 +53,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     Lines.stroke(1.5);
     if(tile.ent().getConnected()){
       var other=Vars.world.tile(tile.ent().getConf());
-      if(!other==null){
+      if(!(other==null)){
         Drawf.square(other.drawx(), other.drawy(), other.block().size * Vars.tilesize / 2 + 1, Pal.place);
       }
     }
@@ -187,12 +187,12 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     var link=Vars.world.tile(tile.ent().getConf());
     link=link.ent().power.graph;
     if(link.getPowerProduced()-link.getPowerNeeded()>0){
-      tile.ent().setLastOutput(true);
-      return true;
+      tile.ent().setLastOutput(tile.ent().getVal()/60);
+      return tile.ent().getVal()/60;
     }
     else{
-      tile.ent().setLastOutput(false);
-      return false;
+      tile.ent().setLastOutput(0);
+      return 0;
     }
   }
 });
@@ -247,5 +247,5 @@ potmeter.entityType=prov(() => extend(TileEntity , {
   setLastOutput(a){
     this._last=a;
   },
-  _last:false
+  _last:0
 }));
