@@ -215,6 +215,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     var setpow=tile.ent().getVal();
     if(currentpow>setpow) tile.ent().setPow(setpow-currentpow);
     else tile.ent().setPow(0);
+    Vars.ui.showInfoToast("c:"+currentpow,0);
   },
   getPowerProduction(tile){
     return tile.ent().getPow();
