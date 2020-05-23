@@ -5,8 +5,8 @@ breakable: true
 update: true
 category: power
 hasPower: true
-consumesPower: true
-outputsPower: false
+consumesPower: false
+outputsPower: true
 requirements: [
   silicon/25
 ]

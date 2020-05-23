@@ -199,6 +199,13 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     //Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),90*tile.rotation());
     Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(630-tile.ent().getVal())%360);
     //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
+  },
+  getPowerProduction(tile){
+    var in1=tile.ent().power.graph;
+    var currentpow=in1.getPowerProduced()-in1.getPowerNeeded();
+    var setpow=tile.ent().getVal();
+    if(currentpow>setpow) return setpow-currentpow;
+    else return 0;
   }
 });
 
