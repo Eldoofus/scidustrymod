@@ -210,14 +210,10 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
   },
   update(tile){
     this.super$update(tile);
-    /*
     var in1=tile.ent().power.graph;
     var currentpow=in1.getPowerProduced()-in1.getPowerNeeded();
     var setpow=tile.ent().getVal();
-    if(currentpow>setpow) tile.ent().setPow(setpow-currentpow);
-    else tile.ent().setPow(0);
     Vars.ui.showInfoToast("c:"+currentpow,0);
-    */
   },
   getPowerProduction(tile){
     //return tile.ent().getPow();
