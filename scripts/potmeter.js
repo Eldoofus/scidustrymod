@@ -94,7 +94,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
 
           // Mobile and desktop version have different dialogs
           const input = new Input.TextInput();
-          input.text = entity.gatVal();
+          input.text = entity.getVal();
           input.multiline = false;
           input.numeric = true;
           input.accepted = cons(text => entity.setVal(text));
@@ -210,7 +210,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
   update(tile){
     this.super$update(tile);
     var in1=tile.ent().power.graph;
-    var currentpow=in1.getPowerProduced()-in1.getPowerNeeded()-tile.ent().getPow();
+    var currentpow=in1.getPowerProduced()-in1.getPowerNeeded();
     var setpow=tile.ent().getVal();
     if(currentpow>setpow) tile.ent().setPow(setpow-currentpow);
     else tile.ent().setPow(0);
@@ -221,6 +221,9 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
 });
 
 potmeter.entityType=prov(() => extend(TileEntity , {
+  config(){
+    return this._val;
+  },
   getVal(){
     return this._val;
   },
