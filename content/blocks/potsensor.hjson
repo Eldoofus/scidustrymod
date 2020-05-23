@@ -1,5 +1,5 @@
-localizedName: Potentiometer
-description: "Outputs a fraction of the input. Set the output value(1~360) and configure an input. The input will be marked orange."
+localizedName: Potentiosensor
+description: "Outputs power if input(rounded) is equal to the input value. Set the input value(1~360) and configure an input. The input will be marked orange."
 size: 1
 breakable: true
 update: true
