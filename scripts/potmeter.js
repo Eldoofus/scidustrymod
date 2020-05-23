@@ -1,4 +1,4 @@
-const presstick=1; const timerid=0; 
+const presstick=1; const timerid=0;
 const color1=Color.valueOf("ffaa5f"); const color2=Color.valueOf("84f491");//color of pyratite and mender
 //const coloroff=Color.valueOf("6974c4");
 const degrees=360;
@@ -83,9 +83,63 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     //tmp
   },
   */
+  buildConfiguration(tile,table){
+    var entity=tile.ent();
+    table.addImageButton(Icon.pencil, run(() => {
+      if (Vars.mobile) {
+
+        // Mobile and desktop version have different dialogs
+        const input = new Input.TextInput();
+        input.text = entity.gatVal();
+        input.multiline = false;
+        input.numeric = true;
+        input.accepted = cons(text => entity.setVal(text));
+
+        Core.input.getTextInput(input);
+      } else {
+        // Create dialog
+        const dialog = new FloatingDialog(Core.bundle.get("Set Value"));
+        dialog.setFillParent(false);
+
+        // Add text area to dialog
+        const textArea = new TextArea(entity.getVal());
+        dialog.cont.add(textArea).size(380, 160);
+
+        // Add "ok" button to dialog
+        dialog.buttons.addButton("$ok", run(() => {
+            entity.setVal(textArea.getText());
+            dialog.hide();
+        }));
+
+        // Show it
+        dialog.show();
+      }
+    })).size(40);
+    table.addImageButton(Icon.upOpen, run(() => {
+      Vars.ui.showInfoToast(tile.ent().getVal()+1,1);
+			tile.configure(-1);
+		})).size(40);
+		table.addImageButton(Icon.downOpen, run(() => {
+      Vars.ui.showInfoToast(tile.ent().getVal()-1,1);
+			tile.configure(-3);
+		})).size(40);
+    table.row();
+    var myslider=table.addSlider(1,360,1,entity.getVal(),null).width(240).get();
+		//myslider.setStyle(Styles.vSlider);
+		//myslider.width(240);
+		myslider.changed(run(() => {
+      tile.configure(myslider.getValue());
+      Vars.ui.showInfoToast(myslider.getValue(),0);
+		}));
+  },
+  configured(tile,player,value){
+    if(value==-1) tile.ent().incVal();
+    else if(value==-3) tile.ent().decVal();
+    else tile.ent().setVal(value);
+  },
   load(){
     this.super$load();
-    this.baseRegion=Core.atlas.find("scidustrymod-powerlogic-base");
+    this.baseRegion=Core.atlas.find(this.name+"-base");
     this.topRegion=Core.atlas.find(this.name+"-top");
     this.needleRegion=Core.atlas.find(this.name+"-needle");
   },
@@ -150,7 +204,8 @@ potmeter.entityType=prov(() => extend(TileEntity , {
     return this._val;
   },
   setVal(a){
-    this._val=a;
+    if(isNaN(Number(a))||a<=0||a>degrees) return;
+    this._val=Math.floor(a);
   },
   incVal(){
     if(this._val<degrees) this._val++;
