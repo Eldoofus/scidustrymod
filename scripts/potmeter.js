@@ -6,85 +6,95 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
   placed(tile) {
     this.super$placed(tile);
   },
- /*
-  logiccheck(tile,in1,in2){
-    if(tile.ent().timer.getTime(timerid)<=0){
-      if(gloops>loopthresh){
-        Vars.ui.showInfoToast("Do not overuse!",1);
-        return false;
-      }
-      else{
-        gloops+=1;
-        return tile.ent().getLastOutput();
-      }
-      //print("Looping:"+tile.ent().getLoops());
-    }
-    gloops=0;
-    tile.ent().timer.reset(timerid,0);
-    if(in1.getPowerProduced()-in1.getPowerNeeded()>0) in1=true;
-    else in1=false;
-    if(in2.getPowerProduced()-in2.getPowerNeeded()>0) in2=true;
-    else in2=false;
-    //print("LG INPUTS:"+in1+","+in2);
-    var input=-1;
-    if(in1&&in2) input=0;
-    else if(in1&& (!in2)) input=1;
-    else if(in2) input=2;
-    else input=3;
-    //var tmparr=[];
-    //tmparr.push(in1); tmparr.push(in2);
-    //var input=logict.indexOf(tmparr);
-    //print("LG INPUT:"+input);
-    //print("LG LIST:"+tmparr);
-    var logicn=tile.ent().message.split("-");
-    //if(logicn.indexOf(input)<0) return false;
-    tile.ent().setLastOutput((Number(logicn[input])==0)?false:true);
-    return (Number(logicn[input])==0)?false:true;
+  overlaps(src, other, range){
+    return Intersector.overlaps(Tmp.cr1.set(src.drawx(), src.drawy(), range), other.getHitbox(Tmp.r1));
   },
-  */
-  /*
-  getPowerProduction(tile){
-    //if(tile.ent().message=="") this.setMessageBlockText(null,tile,"1-1-1-0");
-    var tx1=0; var ty1=0; var tx2=0; var ty2=0;
-    if(tile.rotation()==0){
-      tx1=-1; ty1=1;
-      tx2=-1; ty2=-1;
+  linkValid(tile, link){
+    if(tile == link || link == null || link.ent() == null || tile.ent() == null || !link.block().hasPower || tile.getTeam() != link.getTeam()) return false;
+
+    if(this.overlaps(tile, link, this.laserRange * Vars.tilesize) || (link.block() instanceof PowerNode && this.overlaps(link, tile, link.cblock().laserRange * Vars.tilesize))){
+      return true;
     }
-    else if(tile.rotation()==1){
-      tx1=-1; ty1=-1;
-      tx2=1; ty2=-1;
-    }
-    else if(tile.rotation()==2){
-      tx1=1; ty1=-1;
-      tx2=1; ty2=1;
-    }
-    else if(tile.rotation()==3){
-      tx1=1; ty1=1;
-      tx2=-1; ty2=1;
-    }
-    var in1=Vars.world.tile(tile.x+tx1,tile.y+ty1);
-    var in2=Vars.world.tile(tile.x+tx2,tile.y+ty2);
-    //var in1=tile.getNearby((tile.rotation()+1)%4);
-    //var in2=tile.getNearby((tile.rotation()+3)%4);
-    //if(!((in1.ent().hasOwnProperty("power"))&&(in2.ent().hasOwnProperty("power")))) return 0;
-    try{
-      if(in1.ent().power.graph.getID()==tile.ent().power.graph.getID()||in2.ent().power.graph.getID()==tile.ent().power.graph.getID()){
-        Vars.ui.showInfoToast("Do not connect output with input!",1);
-        return 0;
-      }
-      //Vars.ui.showInfoToast(this.logiccheck(tile,in1.ent().power.graph.getPowerBalance(),in2.ent().power.graph.getPowerBalance()),1);
-      return (this.logiccheck(tile,in1.ent().power.graph,in2.ent().power.graph)) ? 1: 0;
-    }
-    catch(err){
-      return 0;
-    }
+    return false;
   },
-  configured(tile,player,value){
-    //tmp
-  },
-  */
   drawSelect(tile){
     this.drawPlaceText(tile.ent().getVal(),tile.x,tile.y,true);
+  },
+  configured(tile, player, value){
+    if(value<=0) return;
+    var other=Vars.world.tile(value);
+    if(tile==other) tile.ent().setConnected(false);
+    else if(tile.ent().getConf()==other.pos()&&tile.ent().getConnected()) tile.ent().setConnected(false);
+    else if(this.linkValid(tile,other)&&other.block()!=tile.block()){
+      tile.ent().setConf(value,tile);
+      tile.ent().setConnected(true);
+    }
+  },
+  onConfigureTileTapped(tile,other){
+    if(tile==other){
+      tile.configure(other.pos());
+      return false;
+    }
+    else if(this.linkValid(tile,other)){
+      tile.configure(other.pos());
+      return false;
+    }
+    else return true;
+  },
+  drawConfigure(tile){
+    this.super$drawConfigure(tile);
+    Draw.color(Pal.accent);
+
+    Lines.stroke(1.5);
+    Lines.circle(tile.drawx(), tile.drawy(), tile.block().size * Vars.tilesize / 2 + 1 + Mathf.absin(Time.time(), 4, 1));
+
+    Drawf.circles(tile.drawx(), tile.drawy(), this.laserRange * Vars.tilesize);
+
+    Lines.stroke(1.5);
+    if(tile.ent().getConnected()){
+      var other=Vars.world.tile(tile.ent().getConf());
+      if(!other==null){
+        Drawf.square(other.drawx(), other.drawy(), other.block().size * Vars.tilesize / 2 + 1, Pal.place);
+      }
+    }
+    //Draw.color(color1);
+    //Lines.square(other.drawx(), other.drawy(),other.block().size * Vars.tilesize / 2 + 1);
+    //Draw.color();
+
+    Draw.reset();
+  },
+  drawLaser(tile,target){
+    var opacityPercentage = Core.settings.getInt("lasersopacity");
+    if(opacityPercentage == 0) return;
+    var opacity = opacityPercentage / 100;
+
+    var x1 = tile.drawx(); var y1 = tile.drawy();
+    var x2 = target.drawx(); var y2 = target.drawy();
+
+    var angle1 = Angles.angle(x1, y1, x2, y2);
+    this.t1.trns(angle1, tile.block().size * Vars.tilesize / 2 - 1.5);
+    this.t2.trns(angle1 + 180, target.block().size * Vars.tilesize / 2 - 1.5);
+
+    x1 += this.t1.x;
+    y1 += this.t1.y;
+    x2 += this.t2.x;
+    y2 += this.t2.y;
+
+    var fract = 1 - tile.ent().power.graph.getSatisfaction();
+    var nowtick=tile.ent().timer.getTime(timerid);
+    Draw.color(Color.white, color1, fract * 0.86 + Mathf.absin(3, 0.1));
+    Draw.alpha(opacity);
+    Drawf.laser(this.laser, this.laserEnd, x1, y1, x2, y2, 0.25);
+    Draw.color();
+  },
+  drawLayer(tile){
+    if(Core.settings.getInt("lasersopacity") == 0) return;
+    if(!tile.ent().getConnected()) return;
+    var link=Vars.world.tile(tile.ent().getConf());
+    if(link!=null){
+      this.drawLaser(tile, link);
+      Draw.reset();
+    }
   },
   buildConfiguration(tile,table){
     var entity=tile.ent();
@@ -123,6 +133,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
         print("err:"+err);
       }
     })).size(40);
+    /*
     table.addImageButton(Icon.upOpen, run(() => {
       Vars.ui.showInfoToast(tile.ent().getVal()+1,1);
 			tile.configure(-1);
@@ -139,68 +150,18 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
       tile.configure(myslider.getValue());
       Vars.ui.showInfoToast(myslider.getValue(),0);
 		}));
-  },
-  configured(tile,player,value){
-    if(value==-1) tile.ent().incVal();
-    else if(value==-3) tile.ent().decVal();
-    else tile.ent().setVal(value);
+    */
   },
   load(){
     this.super$load();
     this.baseRegion=Core.atlas.find(this.name+"-base");
     this.topRegion=Core.atlas.find(this.name+"-top");
     this.needleRegion=Core.atlas.find(this.name+"-needle");
+    this.laserRange=6;
+    this.laser=Core.atlas.find("laser");
+    this.laserEnd=Core.atlas.find("laser-end");
+    this.t1=new Vec2(); this.t2=new Vec2();
   },
-  /*
-  drawConfigure(tile){
-    var tx1=0; var ty1=0;
-    if(tile.rotation()==0){
-      tx1=-1; ty1=1;
-    }
-    else if(tile.rotation()==1){
-      tx1=-1; ty1=-1;
-    }
-    else if(tile.rotation()==2){
-      tx1=1; ty1=-1;
-    }
-    else if(tile.rotation()==3){
-      tx1=1; ty1=1;
-    }
-    var in1=Vars.world.tile(tile.x+tx1,tile.y+ty1);
-    //var in2=Vars.world.tile(tile.x+tx2,tile.y+ty2);
-    Draw.color(color1);
-    Lines.square(in1.drawx(), in1.drawy(),1 * Vars.tilesize / 2 + 1);
-    //Draw.color(color2);
-    //Lines.square(in2.drawx(), in2.drawy(),1 * Vars.tilesize / 2 + 1);
-    this.super$drawConfigure(tile);
-  },
-
-  checkState(tile){
-    var tx1=0; var ty1=0;
-    if(tile.rotation()==0){
-      tx1=-1; ty1=1;
-    }
-    else if(tile.rotation()==1){
-      tx1=-1; ty1=-1;
-    }
-    else if(tile.rotation()==2){
-      tx1=1; ty1=-1;
-    }
-    else if(tile.rotation()==3){
-      tx1=1; ty1=1;
-    }
-    var in1=Vars.world.tile(tile.x+tx1,tile.y+ty1);
-    //if(!(in1.ent().hasOwnProperty("power"))) return false;
-    try{
-      in1=in1.ent().power.graph;
-      if(in1.getPowerProduced()-in1.getPowerNeeded()>0) return true;
-      else return false;
-    }
-    catch(err){
-      return false;
-    }
-  },
-  */
   draw(tile){
     //this.super$draw(tile);
     Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
@@ -210,25 +171,28 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
   },
   update(tile){
     this.super$update(tile);
-    var in1=tile.ent().power.graph;
-    var currentpow=in1.getPowerBalance()*60;
-    var setpow=tile.ent().getVal();
-    Vars.ui.showInfoToast("c:"+currentpow,0);
+    if(!tile.ent().getConnected()) return;
+    var link=Vars.world.tile(tile.ent().getConf());
+    if(link==null||(!this.linkValid(tile,link))) tile.ent().setConnected(false);
+    if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
+      Vars.ui.showInfoToast("Do not connect output with input!",1);
+      tile.ent().setConnected(false);
+    }
   },
   getPowerProduction(tile){
     //return tile.ent().getPow();
-    //if(tile.ent().timer.getTime(timerid)<=0) return tile.ent().getLastOutput();
-    //tile.ent().timer.reset(timerid,0);
-    var in1=tile.ent().power.graph;
-    var currentpow=in1.getLastPowerProduced()*60;
-    var setpow=tile.ent().getVal();
-    if(currentpow>setpow){
-      tile.ent().setLastOutput(setpow-currentpow);
-      return setpow-currentpow;
+    if(!tile.ent().getConnected()) return 0;
+    if(tile.ent().timer.getTime(timerid)<=0) return tile.ent().getLastOutput();
+    tile.ent().timer.reset(timerid,0);
+    var link=Vars.world.tile(tile.ent().getConf());
+    link=link.ent().power.graph;
+    if(link.getPowerProduced()-link.getPowerNeeded()>0){
+      tile.ent().setLastOutput(true);
+      return true;
     }
     else{
-      tile.ent().setLastOutput(0);
-      return 0;
+      tile.ent().setLastOutput(false);
+      return false;
     }
   }
 });
@@ -254,10 +218,28 @@ potmeter.entityType=prov(() => extend(TileEntity , {
   write(stream){
     this.super$write(stream);
     stream.writeShort(this._val);
+    stream.writeBoolean(this._connected);
+    stream.writeInt(this._inpos);
   },
   read(stream,revision){
     this.super$read(stream,revision);
     this._val=stream.readShort();
+    this._connected=stream.readBoolean();
+    this._inpos=stream.readInt();
+  },
+  _inpos:0,
+  _connected:false,
+  getConf(){
+    return this._inpos;
+  },
+  getConnected(){
+    return this._connected;
+  },
+  setConf(a,tile){
+    this._inpos=a;
+  },
+  setConnected(a){
+    this._connected=a;
   },
   getLastOutput(){
     return this._last;
@@ -265,5 +247,5 @@ potmeter.entityType=prov(() => extend(TileEntity , {
   setLastOutput(a){
     this._last=a;
   },
-  _last:0
+  _last:false
 }));
