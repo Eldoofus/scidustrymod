@@ -193,8 +193,8 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
   draw(tile){
     //this.super$draw(tile);
     Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
-    Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),90*tile.rotation());
-    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),630-tile.ent().getVal()+90*tile.rotation());
+    //Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),90*tile.rotation());
+    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),630-tile.ent().getVal());
     //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
   }
 });
