@@ -89,33 +89,38 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
   buildConfiguration(tile,table){
     var entity=tile.ent();
     table.addImageButton(Icon.pencil, run(() => {
-      if (Vars.mobile) {
+      try{
+        if (Vars.mobile) {
 
-        // Mobile and desktop version have different dialogs
-        const input = new Input.TextInput();
-        input.text = entity.gatVal();
-        input.multiline = false;
-        input.numeric = true;
-        input.accepted = cons(text => entity.setVal(text));
+          // Mobile and desktop version have different dialogs
+          const input = new Input.TextInput();
+          input.text = entity.gatVal();
+          input.multiline = false;
+          input.numeric = true;
+          input.accepted = cons(text => entity.setVal(text));
 
-        Core.input.getTextInput(input);
-      } else {
-        // Create dialog
-        const dialog = new FloatingDialog(Core.bundle.get("Set Value"));
-        dialog.setFillParent(false);
+          Core.input.getTextInput(input);
+        } else {
+          // Create dialog
+          const dialog = new FloatingDialog(Core.bundle.get("Set Value"));
+          dialog.setFillParent(false);
 
-        // Add text area to dialog
-        const textArea = new TextArea(entity.getVal());
-        dialog.cont.add(textArea).size(380, 160);
+          // Add text area to dialog
+          const textArea = new TextArea(entity.getVal());
+          dialog.cont.add(textArea).size(380, 160);
 
-        // Add "ok" button to dialog
-        dialog.buttons.addButton("$ok", run(() => {
-            entity.setVal(textArea.getText());
-            dialog.hide();
-        }));
+          // Add "ok" button to dialog
+          dialog.buttons.addButton("$ok", run(() => {
+              entity.setVal(textArea.getText());
+              dialog.hide();
+          }));
 
-        // Show it
-        dialog.show();
+          // Show it
+          dialog.show();
+        }
+      }
+      catch(err){
+        print("err:"+err);
       }
     })).size(40);
     table.addImageButton(Icon.upOpen, run(() => {
@@ -126,8 +131,8 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
       Vars.ui.showInfoToast(tile.ent().getVal()-1,1);
 			tile.configure(-3);
 		})).size(40);
-    table.row();
-    var myslider=table.addSlider(1,360,1,entity.getVal(),null).width(240).get();
+    //table.row();
+    var myslider=table.addSlider(1,360,1,entity.getVal(),null).width(180).get();
 		//myslider.setStyle(Styles.vSlider);
 		//myslider.width(240);
 		myslider.changed(run(() => {
@@ -146,6 +151,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     this.topRegion=Core.atlas.find(this.name+"-top");
     this.needleRegion=Core.atlas.find(this.name+"-needle");
   },
+  /*
   drawConfigure(tile){
     var tx1=0; var ty1=0;
     if(tile.rotation()==0){
@@ -168,6 +174,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     //Lines.square(in2.drawx(), in2.drawy(),1 * Vars.tilesize / 2 + 1);
     this.super$drawConfigure(tile);
   },
+  */
   checkState(tile){
     var tx1=0; var ty1=0;
     if(tile.rotation()==0){
@@ -197,7 +204,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     //this.super$draw(tile);
     Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
     //Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),90*tile.rotation());
-    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(630-tile.ent().getVal())%360);
+    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(540-tile.ent().getVal())%360);
     //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
   },
   update(tile){
