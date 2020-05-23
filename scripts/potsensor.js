@@ -84,7 +84,7 @@ const potsensor=extendContent(PowerBlock,"potsensor",{
     x2 += this.t2.x;
     y2 += this.t2.y;
 
-    var fract = 1 - tile.ent().power.graph.getSatisfaction();
+    var fract = 1 - target.ent().power.graph.getSatisfaction();
     var nowtick=tile.ent().timer.getTime(timerid);
     Draw.color(color1, color1off, fract * 0.86 + Mathf.absin(3, 0.1));
     Draw.alpha(opacity);
@@ -190,7 +190,7 @@ const potsensor=extendContent(PowerBlock,"potsensor",{
     tile.ent().timer.reset(timerid,0);
     var link=Vars.world.tile(tile.ent().getConf());
     link=link.ent().power.graph;
-    if(Math.round(link.getPowerProduced()-link.getPowerNeeded()*60)==tile.ent().getVal()){
+    if(Math.round((link.getPowerProduced()-link.getPowerNeeded())*60)==tile.ent().getVal()){
       tile.ent().setLastOutput(1);
       return 1;
     }
