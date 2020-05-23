@@ -177,11 +177,11 @@ const potsensor=extendContent(PowerBlock,"potsensor",{
     this.super$update(tile);
     if(!tile.ent().getConnected()) return;
 
-    /*
+
     var link=Vars.world.tile(tile.ent().getConf());
     link=link.ent().power.graph;
-    Vars.ui.showInfoToast(link.getSatisfaction()*60,0);
-    */
+    Vars.ui.showInfoToast(((link.getPowerProduced()-link.getPowerNeeded())/Time.delta()*60),0);
+
 
     var link=Vars.world.tile(tile.ent().getConf());
     if(link==null||(!this.linkValid(tile,link))) tile.ent().setConnected(false);
