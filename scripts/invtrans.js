@@ -214,7 +214,7 @@ const invtrans=extendContent(PowerBlock,"invtrans",{
   }
 });
 
-powertranssk.entityType=prov(() => extend(TileEntity , {
+invtrans.entityType=prov(() => extend(TileEntity , {
   getOffLink(){
     return this._offlink;
   },
