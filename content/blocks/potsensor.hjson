@@ -1,0 +1,17 @@
+localizedName: Potentiosensor
+description: "Outputs power if input(rounded) is equal to the input value. Set the input value(1~360) and configure an input. The input will be marked orange."
+size: 1
+breakable: true
+update: true
+category: power
+hasPower: true
+consumesPower: false
+outputsPower: true
+requirements: [
+  silicon/25
+]
+insulated: true
+rotate: false
+configurable: true
+timers: 1
+layer: power

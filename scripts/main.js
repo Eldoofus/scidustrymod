@@ -7,6 +7,8 @@ require("itemgate");
 require("powerswitchsk");
 require("powerlogic");
 require("powertranssk");
+require("potmeter");
+require("potsensor");
 
 require("unimasksk");
 
