@@ -1,4 +1,3 @@
-Vars.maxSchematicSize = 100
 
 require("poweredsource");
 require("powsort");
