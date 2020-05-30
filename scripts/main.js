@@ -9,6 +9,7 @@ require("powerlogic");
 require("powertranssk");
 require("potmeter");
 require("potsensor");
+require("invtrans");
 
 require("unimasksk");
 
