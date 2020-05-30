@@ -210,7 +210,7 @@ const invtrans=extendContent(PowerBlock,"invtrans",{
       if(!(link.block() instanceof PowerNode)) continue;
       this.drawLaser(tile, link);
     }
-    Draw.reset();
+    Draw.reset();  
   }
 });
 
