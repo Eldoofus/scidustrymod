@@ -95,7 +95,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     if(Core.settings.getInt("lasersopacity") == 0) return;
     if(!tile.ent().getConnected()) return;
     var link=Vars.world.tile(tile.ent().getConf());
-    if(link!=null){
+    if(this.linkValid(tile, link)){
       this.drawLaser(tile, link);
       Draw.reset();
     }
@@ -177,7 +177,10 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     this.super$update(tile);
     if(!tile.ent().getConnected()) return;
     var link=Vars.world.tile(tile.ent().getConf());
-    if(link==null||(!this.linkValid(tile,link))) tile.ent().setConnected(false);
+    if(link==null||(!this.linkValid(tile,link))){
+      tile.ent().setConnected(false);
+      return;
+    }
     if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
       Vars.ui.showInfoToast("Do not connect output with input!",1);
       tile.ent().setConnected(false);
@@ -189,6 +192,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     if(tile.ent().timer.getTime(timerid)<=0) return tile.ent().getLastOutput();
     tile.ent().timer.reset(timerid,0);
     var link=Vars.world.tile(tile.ent().getConf());
+    if(!this.linkValid(tile, link)) return 0;
     link=link.ent().power.graph;
     if(link.getPowerProduced()-link.getPowerNeeded()>0){
       tile.ent().setLastOutput(tile.ent().getVal()/60);
