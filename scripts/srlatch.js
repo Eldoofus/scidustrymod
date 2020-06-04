@@ -180,7 +180,7 @@ const srlatch=extendContent(PowerBlock,"srlatch",{
     draw(tile){
       //this.super$draw(tile);
       Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
-      Draw.rect((tile.ent().getOffLink().length<=0)?this.topRegion:this.topRegionOff, tile.drawx(), tile.drawy(),90*tile.rotation());
+      //Draw.rect((tile.ent().getOffLink().length<=0)?this.topRegion:this.topRegionOff, tile.drawx(), tile.drawy(),90*tile.rotation());
       //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
     },
     // update(tile){
