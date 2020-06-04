@@ -70,7 +70,7 @@ const pulser=extendContent(PowerBlock,"pulser",{
   },
   draw(tile){
     Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
-    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(360-(tile.ent().getPulse()-tile.ent().timer.getTime(pulseid))/tile.ent().getPulse() * 360)%360);
+    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(tile.ent().getPulse()-tile.ent().timer.getTime(pulseid))/tile.ent().getPulse() * 360);
     Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),(360-tile.ent().getPulse())%360);
   },
 });
