@@ -1,15 +1,15 @@
 const timerid=0; const maxPulse=360;
 const pulser=extendContent(PowerBlock,"pulser",{
     getPowerProduction(tile){
-        return Mathf.num(tile.ent().timer.check(timerid,tile.ent().getPulse()));
+        return (tile.ent().timer.get(timerid,tile.ent().getPulse()))?1:0;
     }
 });
 pulser.entityType=prov(() => extend(TileEntity, {
+    _pulse:60,
     getPulse(){
-        return this.pulse;
+        return this._pulse;
     },
     setPulse(a){
-        this.pulse = a;
-    },
-    pulse: 60
+        this._pulse = a;
+    }
 }));
