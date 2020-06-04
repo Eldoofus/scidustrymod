@@ -1,5 +1,5 @@
 localizedName: Pulser
-description: Pulses power on a customisable-length cycle
+description: Pulses power on a configurable-length cycle
 size: 1
 breakable: true
 update: true
@@ -12,6 +12,6 @@ requirements: [
   silicon/16
 ]
 configurable: true
-layer: power
 insulated: true
-rotate: true
+rotate: false
+timer: 1
