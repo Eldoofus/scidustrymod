@@ -38,22 +38,22 @@ const pulser=extendContent(PowerBlock,"pulser",{
           }
         })).size(40);
         
-        table.addImageButton(Icon.upOpen, run(() => {
-          Vars.ui.showInfoToast(tile.ent().getPulse()+1,1);
-                tile.configure(-1);
-            })).size(40);
-            table.addImageButton(Icon.downOpen, run(() => {
-          Vars.ui.showInfoToast(tile.ent().getVal()-1,1);
-                tile.configure(-3);
-            })).size(40);
-        table.row();
-        var myslider=table.addSlider(1,360,1,entity.getPulse(),null).width(180).get();
-            myslider.setStyle(Styles.vSlider);
-            myslider.width(240);
-            myslider.changed(run(() => {
-          tile.configure(myslider.getValue());
-          Vars.ui.showInfoToast(myslider.getValue(),0);
-            }));
+        // table.addImageButton(Icon.upOpen, run(() => {
+        //   Vars.ui.showInfoToast(tile.ent().getPulse()+1,1);
+        //         tile.configure(-1);
+        //     })).size(40);
+        //     table.addImageButton(Icon.downOpen, run(() => {
+        //   Vars.ui.showInfoToast(tile.ent().getVal()-1,1);
+        //         tile.configure(-3);
+        //     })).size(40);
+        // table.row();
+        // var myslider=table.addSlider(1,360,1,entity.getPulse(),null).width(180).get();
+        //     myslider.setStyle(Styles.vSlider);
+        //     myslider.width(240);
+        //     myslider.changed(run(() => {
+        //   tile.configure(myslider.getValue());
+        //   Vars.ui.showInfoToast(myslider.getValue(),0);
+        //     }));
         
     },
   getPowerProduction(tile){
