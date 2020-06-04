@@ -1,4 +1,5 @@
 const timerid=0; const pulseid=1; const maxPulse=360;
+//(pulse - getTime)/pulse*360 pulse/maxpulse*360
 const pulser=extendContent(PowerBlock,"pulser",{
     buildConfiguration(tile,table){
         var entity=tile.ent();
@@ -66,7 +67,12 @@ const pulser=extendContent(PowerBlock,"pulser",{
     this.baseRegion=Core.atlas.find(this.name+"-base");
     this.topRegion=Core.atlas.find(this.name+"-needle");
     this.needleRegion=Core.atlas.find(this.name+"-needle-pulse");
-  }
+  },
+  draw(tile){
+    Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
+    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(450-(tile.ent().getPulse()-tile.ent().timer.getTime(pulseid))/tile.ent().getPulse() * 360)%360);
+    Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),(450-tile.ent().getPulse())%360);
+  },
 });
 
 pulser.entityType=prov(() => extend(TileEntity, {
