@@ -14,4 +14,4 @@ requirements: [
 configurable: true
 insulated: true
 rotate: false
-timer: 1
+timers: 1
