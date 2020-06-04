@@ -11,7 +11,7 @@ const pulser=extendContent(PowerBlock,"pulser",{
               input.text = entity.getPulse();
               input.multiline = false;
               input.numeric = true;
-              input.accepted = cons(text => entity.setPulse(text));
+              input.accepted = cons(text => tile.configure(text));
 
               Core.input.getTextInput(input);
             } else {
@@ -25,7 +25,7 @@ const pulser=extendContent(PowerBlock,"pulser",{
 
               // Add "ok" button to dialog
               dialog.buttons.addButton("$ok", run(() => {
-                  entity.setPulse(textArea.getText());
+                  tile.configure(textArea.getText());
                   dialog.hide();
               }));
 
@@ -38,24 +38,22 @@ const pulser=extendContent(PowerBlock,"pulser",{
           }
         })).size(40);
 
-        // table.addImageButton(Icon.upOpen, run(() => {
-        //   Vars.ui.showInfoToast(tile.ent().getPulse()+1,1);
-        //         tile.configure(-1);
-        //     })).size(40);
-        //     table.addImageButton(Icon.downOpen, run(() => {
-        //   Vars.ui.showInfoToast(tile.ent().getVal()-1,1);
-        //         tile.configure(-3);
-        //     })).size(40);
-        // table.row();
-        // var myslider=table.addSlider(1,360,1,entity.getPulse(),null).width(180).get();
-        //     myslider.setStyle(Styles.vSlider);
-        //     myslider.width(240);
-        //     myslider.changed(run(() => {
-        //   tile.configure(myslider.getValue());
-        //   Vars.ui.showInfoToast(myslider.getValue(),0);
-        //     }));
-
+        table.row();
+        var myslider=table.addSlider(1,maxPulse,1,entity.getPulse(),null).width(180).get();
+        //myslider.setStyle(Styles.vSlider);
+        myslider.width(240);
+        myslider.changed(run(() => {
+          tile.configure(myslider.getValue());
+          Vars.ui.showInfoToast(myslider.getValue(),0);
+        }));//this needs its other half
     },
+  configured(tile, player, value){
+    if(value<=0||value>maxPulse) return;
+    tile.ent().setPulse(value);
+    //I use tile.configure to sync
+    //oh rite the armored conveyors are broken in multi mybe
+    //fuck you printer
+  },
   getPowerProduction(tile){
     if(tile.ent().timer.getTime(timerid)<=0) return (tile.ent().getLastOutput())?1:0;
     tile.ent().timer.reset(timerid,0);
