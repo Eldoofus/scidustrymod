@@ -1,11 +1,13 @@
-const presstick=30; const timerid=0;
-const itemdet=extendContent(PowerBlock,"itemdet",{
+const presstick=30; const timerid=0; const maxPulse=360;
+const pulser=extendContent(PowerBlock,"pulser",{
     placed(tile) {
         this.super$placed(tile);
         tile.ent().timer.reset(timerid,presstick+1);
     },
     getPowerProduction(tile){
-        var timecheck = tile.ent().timer.check(timerid,presstick);
-        return (timecheck) ? 0: 1;
+        return Mathf.num(tile.ent().timer.get(timerid,this.pulse));
     }
-})
+});
+pulser.entityType=prov(() => extend(TileEntity, {
+    pulse: 60,
+}));
