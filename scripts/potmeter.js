@@ -195,7 +195,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     if(!this.linkValid(tile, link)) return 0;
     link=link.ent().power.graph;
     if(link.getPowerProduced()-link.getPowerNeeded()>0){
-      tile.ent().setLastOutput(tile.ent().getVal()/60);
+      tile.ent().setLastOutput(Math.min(tile.ent().getVal()/60,link.getPowerProduced()-link.getPowerNeeded()));
       return Math.min(tile.ent().getVal()/60,link.getPowerProduced()-link.getPowerNeeded());
     }
     else{

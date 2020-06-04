@@ -1,8 +1,7 @@
 const presstick=1; const timerid=0;
-const color1=Color.valueOf("ffaa5f"); const color2=Color.valueOf("84f491"); const color1off=Color.valueOf("cc8343");//color of pyratite and mender
+const color1=Color.valueOf("84f491"); const color1off=Color.valueOf("45854c");//color of pyratite and mender
 //const coloroff=Color.valueOf("6974c4");
-const degrees=360;
-const potsensor=extendContent(PowerBlock,"potsensor",{
+const flipflopt=extendContent(PowerBlock,"flipflopt",{
   placed(tile) {
     this.super$placed(tile);
   },
@@ -18,7 +17,7 @@ const potsensor=extendContent(PowerBlock,"potsensor",{
     return false;
   },
   drawSelect(tile){
-    this.drawPlaceText(tile.ent().getVal(),tile.x,tile.y,true);
+    //
   },
   configured(tile, player, value){
     if(value<0){
@@ -95,94 +94,24 @@ const potsensor=extendContent(PowerBlock,"potsensor",{
     if(Core.settings.getInt("lasersopacity") == 0) return;
     if(!tile.ent().getConnected()) return;
     var link=Vars.world.tile(tile.ent().getConf());
-    if(link!=null&&this.linkValid(tile, link)){
+    if(this.linkValid(tile, link)){
       this.drawLaser(tile, link);
       Draw.reset();
     }
   },
   buildConfiguration(tile,table){
-    var entity=tile.ent();
-    table.addImageButton(Icon.pencil, run(() => {
-      try{
-        if (Vars.mobile) {
-
-          // Mobile and desktop version have different dialogs
-          const input = new Input.TextInput();
-          input.text = entity.getVal();
-          input.multiline = false;
-          input.numeric = true;
-          input.accepted = cons(text => entity.setVal(text));
-
-          Core.input.getTextInput(input);
-        } else {
-          // Create dialog
-          const dialog = new FloatingDialog(Core.bundle.get("Set Value"));
-          dialog.setFillParent(false);
-
-          // Add text area to dialog
-          const textArea = new TextArea(entity.getVal());
-          dialog.cont.add(textArea).size(380, 160);
-
-          // Add "ok" button to dialog
-          dialog.buttons.addButton("$ok", run(() => {
-              entity.setVal(textArea.getText());
-              dialog.hide();
-          }));
-
-          // Show it
-          dialog.show();
-        }
-      }
-      catch(err){
-        print("err:"+err);
-      }
-    })).size(40);
-    /*
-    table.addImageButton(Icon.upOpen, run(() => {
-      Vars.ui.showInfoToast(tile.ent().getVal()+1,1);
-			tile.configure(-1);
-		})).size(40);
-		table.addImageButton(Icon.downOpen, run(() => {
-      Vars.ui.showInfoToast(tile.ent().getVal()-1,1);
-			tile.configure(-3);
-		})).size(40);
-    //table.row();
-    var myslider=table.addSlider(1,360,1,entity.getVal(),null).width(180).get();
-		//myslider.setStyle(Styles.vSlider);
-		//myslider.width(240);
-		myslider.changed(run(() => {
-      tile.configure(myslider.getValue());
-      Vars.ui.showInfoToast(myslider.getValue(),0);
-		}));
-    */
+    //hm
   },
   load(){
     this.super$load();
-    this.baseRegion=Core.atlas.find(this.name+"-base");
-    //this.topRegion=Core.atlas.find(this.name+"-top");
-    this.needleRegion=Core.atlas.find("scidustrymod-potmeter-needle");
     this.laserRange=6;
     this.laser=Core.atlas.find("laser");
     this.laserEnd=Core.atlas.find("laser-end");
     this.t1=new Vec2(); this.t2=new Vec2();
   },
-  draw(tile){
-    //this.super$draw(tile);
-    Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
-    //Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),90*tile.rotation());
-    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(540-tile.ent().getVal())%360);
-    //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
-  },
   update(tile){
     this.super$update(tile);
     if(!tile.ent().getConnected()) return;
-
-    /*
-    var link=Vars.world.tile(tile.ent().getConf());
-    link=link.ent().power.graph;
-    Vars.ui.showInfoToast(((link.getPowerProduced()-link.getPowerNeeded())/Time.delta()*60),0);
-    */
-
     var link=Vars.world.tile(tile.ent().getConf());
     if(link==null||(!this.linkValid(tile,link))){
       tile.ent().setConnected(false);
@@ -196,49 +125,54 @@ const potsensor=extendContent(PowerBlock,"potsensor",{
   getPowerProduction(tile){
     //return tile.ent().getPow();
     if(!tile.ent().getConnected()) return 0;
-    if(tile.ent().timer.getTime(timerid)<=0) return tile.ent().getLastOutput();
+    if(tile.ent().timer.getTime(timerid)<=0) return Mathf.num(tile.ent().getLastOutput());
     tile.ent().timer.reset(timerid,0);
     var link=Vars.world.tile(tile.ent().getConf());
     if(!this.linkValid(tile, link)) return 0;
     link=link.ent().power.graph;
-    if(Math.round(((link.getPowerProduced()-link.getPowerNeeded())/Time.delta()*60))==tile.ent().getVal()){
-      tile.ent().setLastOutput(1);
-      return 1;
+    if(link.getPowerProduced()-link.getPowerNeeded()>0){
+      tile.ent().flipVal();
+      tile.ent().setLastOutput(tile.ent().getVal());
+      return Mathf.num(tile.ent().getVal());
     }
     else{
-      tile.ent().setLastOutput(0);
-      return 0;
+      tile.ent().setTrig(false);
+      tile.ent().setLastOutput(tile.ent().getVal());
+      return Mathf.num(tile.ent().getVal());
     }
   }
 });
 
-potsensor.entityType=prov(() => extend(TileEntity , {
-  config(){
-    return this._val*-1;
-  },
+flipflopt.entityType=prov(() => extend(TileEntity , {
   getVal(){
     return this._val;
   },
   setVal(a){
-    if(isNaN(Number(a))||a<1||a>degrees) return;
-    this._val=Math.floor(a);
+    this._val=a;
   },
-  incVal(){
-    if(this._val<degrees) this._val++;
+  flipVal(){
+    if(this._trig) return false;
+    this._val=!this._val;
+    this._trig=true;
+    return true;
   },
-  decVal(){
-    if(this._val>1) this._val--;
+  setTrig(a){
+    if(!this._trig) return;
+    this._trig=a;
   },
-  _val:1,
+  _val:false,
+  _trig:false,
   write(stream){
     this.super$write(stream);
-    stream.writeShort(this._val);
+    stream.writeBoolean(this._val);
+    stream.writeBoolean(this._trig);
     stream.writeBoolean(this._connected);
     stream.writeInt(this._inpos);
   },
   read(stream,revision){
     this.super$read(stream,revision);
-    this._val=stream.readShort();
+    this._val=stream.readBoolean();
+    this._trig=stream.readBoolean();
     this._connected=stream.readBoolean();
     this._inpos=stream.readInt();
   },
@@ -262,5 +196,5 @@ potsensor.entityType=prov(() => extend(TileEntity , {
   setLastOutput(a){
     this._last=a;
   },
-  _last:0
+  _last:false
 }));
