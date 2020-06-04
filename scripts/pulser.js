@@ -65,6 +65,10 @@ const pulser=extendContent(PowerBlock,"pulser",{
 
 pulser.entityType=prov(() => extend(TileEntity, {
   _pulse:60,
+  config(){
+    return this._pulse;
+    //saves pulse in schems
+  },
   getPulse(){
     return this._pulse;
   },
