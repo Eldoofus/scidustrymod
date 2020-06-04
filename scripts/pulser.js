@@ -60,6 +60,12 @@ const pulser=extendContent(PowerBlock,"pulser",{
     var res=tile.ent().timer.get(pulseid,tile.ent().getPulse());
     tile.ent().setLastOutput(res);
     return (res)?1:0;
+  },
+  load(){
+    this.super$load();
+    this.baseRegion=Core.atlas.find(this.name+"-base");
+    this.topRegion=Core.atlas.find(this.name+"-needle");
+    this.needleRegion=Core.atlas.find(this.name+"-needle-pulse");
   }
 });
 
