@@ -2,7 +2,7 @@
 Mod for Scidustry.
 Adds:
     Tiny Impact Reactor to stabilise flickering outputs,
-    A low charge battery,
+    A low capacity battery,
     Item Generators,
     Power block that voids power when holding an item,
     Pixel blocks,
@@ -18,6 +18,8 @@ Adds:
     A small container,
     Randomiser that randomly switches between copper and lead,
     Universal Item masks - sk7725,
-    And Power Logic Gates - sk7725.
+    Power Logic Gates - sk7725,
+    Transistors - sk7725,
+    And a Pulser - sk7725.
     Many Sprites by KK6.
-Reccommended: Install sk7725/Commandblocks alongside this mod for extra features such as switches, buttons, transistors, and many more.
+Reccommended: Install sk7725/Commandblocks alongside this mod for extra features such as switches, buttons, and many more. Join Scidustry at https://discord.gg/QFdfc6T
