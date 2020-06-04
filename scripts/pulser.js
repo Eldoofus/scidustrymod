@@ -39,7 +39,7 @@ const pulser=extendContent(PowerBlock,"pulser",{
         })).size(40);
 
         table.row();
-        var myslider=table.addSlider(1,maxPulse,1,entity.getPulse(),null).width(180).get();
+        var myslider=table.addSlider(1,maxPulse,1,entity.getPulse(),null).width(240).get();
         //myslider.setStyle(Styles.vSlider);
         //myslider.width(240);
         myslider.changed(run(() => {
