@@ -41,7 +41,7 @@ const pulser=extendContent(PowerBlock,"pulser",{
         table.row();
         var myslider=table.addSlider(1,maxPulse,1,entity.getPulse(),null).width(180).get();
         //myslider.setStyle(Styles.vSlider);
-        myslider.width(240);
+        //myslider.width(240);
         myslider.changed(run(() => {
           tile.configure(myslider.getValue());
           Vars.ui.showInfoToast(myslider.getValue(),0);
