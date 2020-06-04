@@ -5,30 +5,30 @@ const pulser=extendContent(PowerBlock,"pulser",{
         table.addImageButton(Icon.pencil, run(() => {
           try{
             if (Vars.mobile) {
-    
+
               // Mobile and desktop version have different dialogs
               const input = new Input.TextInput();
               input.text = entity.getPulse();
               input.multiline = false;
               input.numeric = true;
               input.accepted = cons(text => entity.setPulse(text));
-    
+
               Core.input.getTextInput(input);
             } else {
               // Create dialog
-              const dialog = new FloatingDialog(Core.bundle.get("Set Value"));
+              const dialog = new FloatingDialog(Core.bundle.get("editmessage"));
               dialog.setFillParent(false);
-    
+
               // Add text area to dialog
               const textArea = new TextArea(entity.getPulse());
               dialog.cont.add(textArea).size(380, 160);
-    
+
               // Add "ok" button to dialog
               dialog.buttons.addButton("$ok", run(() => {
                   entity.setPulse(textArea.getText());
                   dialog.hide();
               }));
-    
+
               // Show it
               dialog.show();
             }
@@ -37,7 +37,7 @@ const pulser=extendContent(PowerBlock,"pulser",{
             print("err:"+err);
           }
         })).size(40);
-        
+
         // table.addImageButton(Icon.upOpen, run(() => {
         //   Vars.ui.showInfoToast(tile.ent().getPulse()+1,1);
         //         tile.configure(-1);
@@ -54,7 +54,7 @@ const pulser=extendContent(PowerBlock,"pulser",{
         //   tile.configure(myslider.getValue());
         //   Vars.ui.showInfoToast(myslider.getValue(),0);
         //     }));
-        
+
     },
   getPowerProduction(tile){
     if(tile.ent().timer.getTime(timerid)<=0) return (tile.ent().getLastOutput())?1:0;

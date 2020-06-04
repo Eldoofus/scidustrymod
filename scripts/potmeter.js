@@ -116,7 +116,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
           Core.input.getTextInput(input);
         } else {
           // Create dialog
-          const dialog = new FloatingDialog(Core.bundle.get("Set Value"));
+          const dialog = new FloatingDialog(Core.bundle.get("editmessage"));
           dialog.setFillParent(false);
 
           // Add text area to dialog
