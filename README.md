@@ -23,6 +23,9 @@ Adds:
     Power Logic Gates - sk7725,
     Transistors - sk7725,
     And a Pulser - sk7725.
-    Many Sprites by KK6.
+
+Many Sprites by KK6.
+
 Reccommended: Install sk7725/Commandblocks alongside this mod for extra features such as switches, buttons, and many more.
+
 Join Scidustry at https://discord.gg/QFdfc6T
