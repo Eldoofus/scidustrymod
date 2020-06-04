@@ -10,6 +10,7 @@ require("powertranssk");
 require("potmeter");
 require("potsensor");
 require("invtrans");
+require("srlatch");
 
 require("unimasksk");
 
