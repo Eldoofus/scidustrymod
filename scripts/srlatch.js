@@ -105,25 +105,29 @@ const srlatch=extendContent(PowerBlock,"srlatch",{
       this.t1=new Vec2(); this.t2=new Vec2();
     },
     drawConfigure(tile){
-      var tx1=0; var ty1=0;
-      if(tile.rotation()==0){
-        tx1=-1; ty1=1;
-      }
-      else if(tile.rotation()==1){
-        tx1=-1; ty1=-1;
-      }
-      else if(tile.rotation()==2){
-        tx1=1; ty1=-1;
-      }
-      else if(tile.rotation()==3){
-        tx1=1; ty1=1;
-      }
-      var in1=Vars.world.tile(tile.x+tx1,tile.y+ty1);
-      //var in2=Vars.world.tile(tile.x+tx2,tile.y+ty2);
+        var tx1=0; var ty1=0; var tx2=0; var ty2=0;
+        if(tile.rotation()==0){
+          tx1=-1; ty1=1;
+          tx2=-1; ty2=-1;
+        }
+        else if(tile.rotation()==1){
+          tx1=-1; ty1=-1;
+          tx2=1; ty2=-1;
+        }
+        else if(tile.rotation()==2){
+          tx1=1; ty1=-1;
+          tx2=1; ty2=1;
+        }
+        else if(tile.rotation()==3){
+          tx1=1; ty1=1;
+          tx2=-1; ty2=1;
+        }
+        var in1=Vars.world.tile(tile.x+tx1,tile.y+ty1);
+        var in2=Vars.world.tile(tile.x+tx2,tile.y+ty2);
       Draw.color(color1);
       Lines.square(in1.drawx(), in1.drawy(),1 * Vars.tilesize / 2 + 1);
-      //Draw.color(color2);
-      //Lines.square(in2.drawx(), in2.drawy(),1 * Vars.tilesize / 2 + 1);
+      Draw.color(color2);
+      Lines.square(in2.drawx(), in2.drawy(),1 * Vars.tilesize / 2 + 1);
       this.super$drawConfigure(tile);
     },
     getPowerProduction(tile){
