@@ -1,0 +1,17 @@
+localizedName: Set-Reset Latch Block
+description: Stores a single bit of information
+size: 1
+breakable: true
+update: true
+category: power
+hasPower: true
+consumesPower: false
+outputsPower: true
+requirements: [
+  lead/9
+  silicon/16
+]
+configurable: true
+layer: power
+insulated: true
+rotate: true
