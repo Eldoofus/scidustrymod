@@ -155,13 +155,16 @@ const srlatch=extendContent(PowerBlock,"srlatch",{
         in2=in2.ent().power.graph;
         in1=in1.getPowerProduced()-in1.getPowerNeeded();
         in2=in2.getPowerProduced()-in2.getPowerNeeded();
-        if(in2<=0) return getState();
-        else if (in1>0){
+        if (in1>0 && in2>0){
+            return 0;
+        } else if (in1>0){
             setState(true);
             return 1;
-        } else {
+        } else if (in2>0){
             setState(false);
             return 0;
+        } else {
+            return getState();
         }
         // if(in1.ent().power.graph.getID()==tile.ent().power.graph.getID()||in2.ent().power.graph.getID()==tile.ent().power.graph.getID()){
         //   Vars.ui.showInfoToast("Do not connect output with input!",1);
