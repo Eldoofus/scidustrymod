@@ -11,7 +11,6 @@ require("potmeter");
 require("potsensor");
 require("flipflopt");
 require("invtrans");
-require("srlatch");
 
 require("unimasksk");
 
