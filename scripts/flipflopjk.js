@@ -2,16 +2,10 @@ const presstick=1; const timerid=0; const loopthresh=150;
 var gloops=500;//crash it if you can idk
 const color1=Color.valueOf("ffaa5f"); const color2=Color.valueOf("84f491");//color of pyratite and mender
 const ts=40;//table size
-//var logict=[1,1,1,0];//TT TF FT FF
-//abuse tables, hmm
-const logict=[[1,1],[1,0],[0,1],[0,0]];
-const logicg=["1-1-1-1","1-1-1-0","1-1-0-1","1-0-1-1","0-1-1-1","1-1-0-0","1-0-1-0","1-0-0-1","0-1-1-0","0-1-0-1","0-0-1-1","0-0-0-1","0-0-1-0","0-1-0-0","1-0-0-0","0-0-0-0"];
-const tficon=["commandRallySmall","lineSmall"];
 
-const flipflopjk=extendContent(MessageBlock,"flipflopjk",{
+const flipflopjk=extendContent(PowerBlock,"flipflopjk",{
     placed(tile) {
         this.super$placed(tile);
-        this.setMessageBlockText(null,tile,"1-1-1-0");
         tile.ent().timer.reset(timerid,presstick+1);
     },
     drawSelect(tile){
@@ -21,6 +15,7 @@ const flipflopjk=extendContent(MessageBlock,"flipflopjk",{
       var pos = Core.input.mouseScreen(tile.drawx(), tile.drawy() - Vars.tilesize - tile.block().size * Vars.tilesize / 2 - 1);
       table.setPosition(pos.x, pos.y, Align.top);
     },
+    /*
     buildConfiguration(tile, table){
       //this.super$buildConfiguration(tile,table);
       try{
@@ -73,39 +68,22 @@ const flipflopjk=extendContent(MessageBlock,"flipflopjk",{
   		})).size(40);
       */
 	 },
+    */
     logiccheck(tile,in1,in2){
       if(tile.ent().timer.getTime(timerid)<=0){
-        if(gloops>loopthresh){
-          Vars.ui.showInfoToast("Do not overuse!",1);
-          return false;
-        }
-        else{
-          gloops+=1;
-          return tile.ent().getLastOutput();
-        }
-        //print("Looping:"+tile.ent().getLoops());
+        return tile.ent().getLastOutput();
       }
-      gloops=0;
       tile.ent().timer.reset(timerid,0);
       if(in1.getPowerProduced()-in1.getPowerNeeded()>0) in1=true;
       else in1=false;
       if(in2.getPowerProduced()-in2.getPowerNeeded()>0) in2=true;
       else in2=false;
-      //print("LG INPUTS:"+in1+","+in2);
       var input=-1;
-      if(in1&&in2) input=0;
-      else if(in1&& (!in2)) input=1;
-      else if(in2) input=2;
-      else input=3;
-      //var tmparr=[];
-      //tmparr.push(in1); tmparr.push(in2);
-      //var input=logict.indexOf(tmparr);
-      //print("LG INPUT:"+input);
-      //print("LG LIST:"+tmparr);
-      var logicn=tile.ent().message.split("-");
-      //if(logicn.indexOf(input)<0) return false;
-      tile.ent().setLastOutput((Number(logicn[input])==0)?false:true);
-      return (Number(logicn[input])==0)?false:true;
+      if(in1&&in2) input=0;//toggle
+      else if(in1&& (!in2)) input=1;//set 0
+      else if(in2) input=2;//set 1
+      else input=3;//do nothing
+      
     },
     getPowerProduction(tile){
       //if(tile.ent().message=="") this.setMessageBlockText(null,tile,"1-1-1-0");
@@ -143,15 +121,6 @@ const flipflopjk=extendContent(MessageBlock,"flipflopjk",{
         return 0;
       }
     },
-    configured(tile,player,value){
-      //if(!value) return;
-      if(value>=0&&value<16) this.setMessageBlockText(null,tile,Math.floor(value/8)%2+"-"+Math.floor(value/4)%2+"-"+Math.floor(value/2)%2+"-"+Math.floor(value)%2);
-      if(value>=16&&value<20){
-        var args=tile.ent().message.split("-");
-        args[value-16]=1-args[value-16];
-        this.setMessageBlockText(null,tile,args.join("-"));
-      }
-    },
     drawConfigure(tile){
       var tx1=0; var ty1=0; var tx2=0; var ty2=0;
       if(tile.rotation()==0){
@@ -182,34 +151,6 @@ const flipflopjk=extendContent(MessageBlock,"flipflopjk",{
       //this.super$draw(tile);
       Draw.rect(Core.atlas.find(this.name+"-base"), tile.drawx(), tile.drawy());
       Draw.rect(Core.atlas.find(this.name+"-top"), tile.drawx(), tile.drawy(),90*tile.rotation());
-      Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
-    },
-    numtostr(value){
-      return Math.floor(value/8)%2+"-"+Math.floor(value/4)%2+"-"+Math.floor(value/2)%2+"-"+Math.floor(value)%2;
-    },
-    drawRequestConfig(req, list){
-      this.super$drawRequestConfig(req,list);
-      //var logicshape=this.numtostr(req.config);
-      //Draw.rect(Core.atlas.find(this.name+"-base"), req.drawx(), req.drawy());
-      //Draw.rect(Core.atlas.find(this.name+"-top"), req.drawx(), req.drawy(),90*req.rotation);
-      Draw.rect(Core.atlas.find(this.name+"-"+Math.floor(req.config/8)%2+"-"+Math.floor(req.config/4)%2+"-"+Math.floor(req.config/2)%2+"-"+Math.floor(req.config)%2), req.drawx(), req.drawy(),90*req.rotation);
-        //this.drawRequestConfigCenter(req, Vars.content.item(req.config), Core.atlas.find("center"));
+      //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
     }
-    //TODO:table, draw
 });
-
-flipflopjk.entityType=prov(() => extendContent(MessageBlock.MessageBlockEntity , flipflopjk , {
-  config(){
-    var nums=this.message.split("-");
-    if(nums.length!=4 || nums[0]>1||nums[1]>1||nums[2]>1||nums[3]>1|| nums[0]<0||nums[1]<0||nums[2]<0||nums[3]<0) return 14;
-    return Number(nums[0])*8+Number(nums[1])*4+Number(nums[2])*2+Number(nums[3]);
-  },
-  getLastOutput(){
-    return this._last;
-  },
-  setLastOutput(a){
-    this._last=a;
-  },
-  _loops:0,
-  _last:false
-}));
