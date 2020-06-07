@@ -71,7 +71,7 @@ const flipflopjk=extendContent(PowerBlock,"flipflopjk",{
     */
     logiccheck(tile,in1,in2){
       if(tile.ent().timer.getTime(timerid)<=0){
-        return tile.ent().getLastOutput();
+        return (tile.ent().getLastOutput())?1:0;
       }
       tile.ent().timer.reset(timerid,0);
       if(in1.getPowerProduced()-in1.getPowerNeeded()>0) in1=true;
@@ -83,7 +83,12 @@ const flipflopjk=extendContent(PowerBlock,"flipflopjk",{
       else if(in1&& (!in2)) input=1;//set 0
       else if(in2) input=2;//set 1
       else input=3;//do nothing
-      
+      if(input!=0) tile.ent().setTrig(false);
+      if(input==0) tile.ent().flipVal();
+      if(input==1) tile.ent().setVal(false);
+      if(input==2) tile.ent().setVal(true);
+      tile.ent().setLastOutput(tile.ent().getVal());
+      return (tile.ent().getVal())?1:0;
     },
     getPowerProduction(tile){
       //if(tile.ent().message=="") this.setMessageBlockText(null,tile,"1-1-1-0");
@@ -154,3 +159,59 @@ const flipflopjk=extendContent(PowerBlock,"flipflopjk",{
       //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
     }
 });
+
+flipflopjk.entityType=prov(() => extend(TileEntity , {
+  getVal(){
+    return this._val;
+  },
+  setVal(a){
+    this._val=a;
+  },
+  flipVal(){
+    if(this._trig) return false;
+    this._val=!this._val;
+    this._trig=true;
+    return true;
+  },
+  setTrig(a){
+    if(!this._trig) return;
+    this._trig=a;
+  },
+  _val:false,
+  _trig:false,
+  write(stream){
+    this.super$write(stream);
+    stream.writeBoolean(this._val);
+    stream.writeBoolean(this._trig);
+    stream.writeBoolean(this._connected);
+    stream.writeInt(this._inpos);
+  },
+  read(stream,revision){
+    this.super$read(stream,revision);
+    this._val=stream.readBoolean();
+    this._trig=stream.readBoolean();
+    this._connected=stream.readBoolean();
+    this._inpos=stream.readInt();
+  },
+  _inpos:0,
+  _connected:false,
+  getConf(){
+    return this._inpos;
+  },
+  getConnected(){
+    return this._connected;
+  },
+  setConf(a,tile){
+    this._inpos=a;
+  },
+  setConnected(a){
+    this._connected=a;
+  },
+  getLastOutput(){
+    return this._last;
+  },
+  setLastOutput(a){
+    this._last=a;
+  },
+  _last:false
+}));
