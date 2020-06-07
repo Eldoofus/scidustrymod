@@ -15,60 +15,6 @@ const flipflopjk=extendContent(PowerBlock,"flipflopjk",{
       var pos = Core.input.mouseScreen(tile.drawx(), tile.drawy() - Vars.tilesize - tile.block().size * Vars.tilesize / 2 - 1);
       table.setPosition(pos.x, pos.y, Align.top);
     },
-    /*
-    buildConfiguration(tile, table){
-      //this.super$buildConfiguration(tile,table);
-      try{
-        var args=tile.ent().message.split("-");
-        table.add().size(ts);
-        table.addImage(Icon.lineSmall,color1).size(ts);
-        table.addImage(Icon.commandRallySmall,color1).size(ts);
-        table.row();
-        table.addImage(Icon.lineSmall,color2).size(ts);
-        var tt=table.addImageButton(Icon[tficon[Number(args[0])]],Styles.clearTransi,ts, run(() => {
-          tile.configure(16);
-    		})).get();
-        tt.update(run(() => {
-          if(tile.block().name!=this.name) return;
-          tt.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(0))]]));
-        }));
-        var tf=table.addImageButton(Icon[tficon[Number(args[1])]],Styles.clearTransi,ts, run(() => {
-          tile.configure(17);
-    		})).get();
-        tf.update(run(() => {
-          if(tile.block().name!=this.name) return;
-          tf.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(2))]]));
-        }));
-        table.row();
-        table.addImage(Icon.commandRallySmall,color2).size(ts);
-        var ft=table.addImageButton(Icon[tficon[Number(args[2])]],Styles.clearTransi,ts, run(() => {
-          tile.configure(18);
-    		})).get();
-        ft.update(run(() => {
-          if(tile.block().name!=this.name) return;
-          ft.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(4))]]));
-        }));
-        var ff=table.addImageButton(Icon[tficon[Number(args[3])]],Styles.clearTransi,ts, run(() => {
-          tile.configure(19);
-    		})).get();
-        ff.update(run(() => {
-          if(tile.block().name!=this.name) return;
-          ff.replaceImage(Image(Icon[tficon[Number(tile.ent().message.charAt(6))]]));
-        }));
-      }
-      catch(err){
-        print(err);
-      }
-      /*
-  		table.addImageButton(Icon.lineSmall, run(() => {
-
-  		})).size(40);
-      table.addImageButton(Icon.commandRallySmall, run(() => {
-
-  		})).size(40);
-      */
-	 },
-    */
     logiccheck(tile,in1,in2){
       if(tile.ent().timer.getTime(timerid)<=0){
         return (tile.ent().getLastOutput())?1:0;
