@@ -183,29 +183,15 @@ flipflopjk.entityType=prov(() => extend(TileEntity , {
     this.super$write(stream);
     stream.writeBoolean(this._val);
     stream.writeBoolean(this._trig);
-    stream.writeBoolean(this._connected);
-    stream.writeInt(this._inpos);
+    //stream.writeBoolean(this._connected);
+    //stream.writeInt(this._inpos);
   },
   read(stream,revision){
     this.super$read(stream,revision);
     this._val=stream.readBoolean();
     this._trig=stream.readBoolean();
-    this._connected=stream.readBoolean();
-    this._inpos=stream.readInt();
-  },
-  _inpos:0,
-  _connected:false,
-  getConf(){
-    return this._inpos;
-  },
-  getConnected(){
-    return this._connected;
-  },
-  setConf(a,tile){
-    this._inpos=a;
-  },
-  setConnected(a){
-    this._connected=a;
+    //this._connected=stream.readBoolean();
+    //this._inpos=stream.readInt();
   },
   getLastOutput(){
     return this._last;
