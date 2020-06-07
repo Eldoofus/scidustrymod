@@ -100,7 +100,7 @@ const flipflopjk=extendContent(PowerBlock,"flipflopjk",{
     },
     draw(tile){
       //this.super$draw(tile);
-      Draw.rect(Core.atlas.find(this.name+"-base"), tile.drawx(), tile.drawy());
+      Draw.rect(Core.atlas.find("scidustrymod-powerlogic-base"), tile.drawx(), tile.drawy());
       Draw.rect(Core.atlas.find(this.name+"-top"), tile.drawx(), tile.drawy(),90*tile.rotation());
       //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
     }
