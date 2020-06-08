@@ -1,0 +1,15 @@
+localizedName: Gated D Latch
+description: Uses two adjacent nodes' power graphs as inputs, and outputs power accordingly. Orange is Enable, Green is Data.
+size: 1
+breakable: true
+update: true
+category: power
+hasPower: true
+consumesPower: false
+outputsPower: true
+requirements: [
+  silicon/25
+]
+insulated: true
+rotate: true
+configurable: true
