@@ -3,7 +3,7 @@ var gloops=500;//crash it if you can idk
 const color1=Color.valueOf("ffaa5f"); const color2=Color.valueOf("84f491");//color of pyratite and mender
 const ts=40;//table size
 
-const flipflopjk=extendContent(PowerBlock,"flipflopjk",{
+const dlatch=extendContent(PowerBlock,"dlatch",{
     placed(tile) {
         this.super$placed(tile);
         tile.ent().timer.reset(timerid,presstick+1);
@@ -107,7 +107,7 @@ const flipflopjk=extendContent(PowerBlock,"flipflopjk",{
     }
 });
 
-flipflopjk.entityType=prov(() => extend(TileEntity , {
+dlatch.entityType=prov(() => extend(TileEntity , {
   getVal(){
     return this._val;
   },
