@@ -12,6 +12,7 @@ require("potmeter");
 require("potsensor");
 require("flipflopt");
 require("flipflopjk");
+require("dlatch");
 require("pulser");
 
 require("unimasksk");
