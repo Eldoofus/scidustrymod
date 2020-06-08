@@ -1,0 +1,17 @@
+type: itemBridge
+name: PhaseRoof
+description: A Phase Conveyor that can be used to hide things under it. Affected by Bridge Opacity.
+range: 200
+transportTime: 0.0
+itemCapacity: 1
+consumes: {
+  power: 0.3
+}
+requirements: [
+  lead/10
+  graphite/10
+  silicon/7
+  phase-fabric/5
+]
+category: distribution
+insulated: true
