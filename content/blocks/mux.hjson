@@ -1,0 +1,17 @@
+localizedName: 2:1 Multiplexer
+description: Outputs the power surplus of a node depending on the control input. Orange is 0 and Green is 1
+size: 1
+breakable: true
+update: true
+category: power
+hasPower: true
+consumesPower: false
+outputsPower: true
+requirements: [
+  silicon/25
+]
+insulated: true
+rotate: false
+configurable: true
+timers: 1
+layer: power
