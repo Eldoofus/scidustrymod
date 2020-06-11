@@ -46,7 +46,30 @@ const mux=extendContent(PowerBlock,"mux",{
     else return true;
   },
   drawConfigure(tile){
-    //this.super$drawConfigure(tile);
+    var tx1=0; var ty1=0; var tx2=0; var ty2=0;
+    if(tile.rotation()==0){
+      tx1=-1; ty1=1;
+      tx2=-1; ty2=-1;
+    }
+    else if(tile.rotation()==1){
+      tx1=-1; ty1=-1;
+      tx2=1; ty2=-1;
+    }
+    else if(tile.rotation()==2){
+      tx1=1; ty1=-1;
+      tx2=1; ty2=1;
+    }
+    else if(tile.rotation()==3){
+      tx1=1; ty1=1;
+      tx2=-1; ty2=1;
+    }
+    var in1=Vars.world.tile(tile.x+tx1,tile.y+ty1);
+    var in2=Vars.world.tile(tile.x+tx2,tile.y+ty2);
+    Draw.color(color1);
+    Lines.square(in1.drawx(), in1.drawy(),1 * Vars.tilesize / 2 + 1);
+    Draw.color(color2);
+    Lines.square(in2.drawx(), in2.drawy(),1 * Vars.tilesize / 2 + 1);
+    this.super$drawConfigure(tile);//this.super$drawConfigure(tile);
     Draw.color(Pal.accent);
 
     Lines.stroke(1.5);
@@ -100,62 +123,62 @@ const mux=extendContent(PowerBlock,"mux",{
       Draw.reset();
     }
   },
-  buildConfiguration(tile,table){
-    var entity=tile.ent();
-    table.addImageButton(Icon.pencil, run(() => {
-      try{
-        if (Vars.mobile) {
+//   buildConfiguration(tile,table){
+//     var entity=tile.ent();
+//     // table.addImageButton(Icon.pencil, run(() => {
+//     //   try{
+//     //     if (Vars.mobile) {
 
-          // Mobile and desktop version have different dialogs
-          const input = new Input.TextInput();
-          input.text = entity.getVal();
-          input.multiline = false;
-          input.numeric = true;
-          input.accepted = cons(text => entity.setVal(text));
+//     //       // Mobile and desktop version have different dialogs
+//     //       const input = new Input.TextInput();
+//     //       input.text = entity.getVal();
+//     //       input.multiline = false;
+//     //       input.numeric = true;
+//     //       input.accepted = cons(text => entity.setVal(text));
 
-          Core.input.getTextInput(input);
-        } else {
-          // Create dialog
-          const dialog = new FloatingDialog(Core.bundle.get("editmessage"));
-          dialog.setFillParent(false);
+//     //       Core.input.getTextInput(input);
+//     //     } else {
+//     //       // Create dialog
+//     //       const dialog = new FloatingDialog(Core.bundle.get("editmessage"));
+//     //       dialog.setFillParent(false);
 
-          // Add text area to dialog
-          const textArea = new TextArea(entity.getVal());
-          dialog.cont.add(textArea).size(380, 160);
+//     //       // Add text area to dialog
+//     //       const textArea = new TextArea(entity.getVal());
+//     //       dialog.cont.add(textArea).size(380, 160);
 
-          // Add "ok" button to dialog
-          dialog.buttons.addButton("$ok", run(() => {
-              entity.setVal(textArea.getText());
-              dialog.hide();
-          }));
+//     //       // Add "ok" button to dialog
+//     //       dialog.buttons.addButton("$ok", run(() => {
+//     //           entity.setVal(textArea.getText());
+//     //           dialog.hide();
+//     //       }));
 
-          // Show it
-          dialog.show();
-        }
-      }
-      catch(err){
-        print("err:"+err);
-      }
-    })).size(40);
-    /*
-    table.addImageButton(Icon.upOpen, run(() => {
-      Vars.ui.showInfoToast(tile.ent().getVal()+1,1);
-			tile.configure(-1);
-		})).size(40);
-		table.addImageButton(Icon.downOpen, run(() => {
-      Vars.ui.showInfoToast(tile.ent().getVal()-1,1);
-			tile.configure(-3);
-		})).size(40);
-    //table.row();
-    var myslider=table.addSlider(1,360,1,entity.getVal(),null).width(180).get();
-		//myslider.setStyle(Styles.vSlider);
-		//myslider.width(240);
-		myslider.changed(run(() => {
-      tile.configure(myslider.getValue());
-      Vars.ui.showInfoToast(myslider.getValue(),0);
-		}));
-    */
-  },
+//     //       // Show it
+//     //       dialog.show();
+//     //     }
+//     //   }
+//     //   catch(err){
+//     //     print("err:"+err);
+//     //   }
+//     // })).size(40);
+//     /*
+//     table.addImageButton(Icon.upOpen, run(() => {
+//       Vars.ui.showInfoToast(tile.ent().getVal()+1,1);
+// 			tile.configure(-1);
+// 		})).size(40);
+// 		table.addImageButton(Icon.downOpen, run(() => {
+//       Vars.ui.showInfoToast(tile.ent().getVal()-1,1);
+// 			tile.configure(-3);
+// 		})).size(40);
+//     //table.row();
+//     var myslider=table.addSlider(1,360,1,entity.getVal(),null).width(180).get();
+// 		//myslider.setStyle(Styles.vSlider);
+// 		//myslider.width(240);
+// 		myslider.changed(run(() => {
+//       tile.configure(myslider.getValue());
+//       Vars.ui.showInfoToast(myslider.getValue(),0);
+// 		}));
+//     */
+//   },
   load(){
     this.super$load();
     this.baseRegion=Core.atlas.find(this.name+"-base");
