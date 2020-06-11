@@ -230,55 +230,55 @@ const mux=extendContent(PowerBlock,"mux",{
   }
 });
 
-// potmeter.entityType=prov(() => extend(TileEntity , {
-//   config(){
-//     return this._val*-1;
-//   },
-//   getVal(){
-//     return this._val;
-//   },
-//   setVal(a){
-//     if(isNaN(Number(a))||a<1||a>degrees) return;
-//     this._val=Math.floor(a);
-//   },
-//   incVal(){
-//     if(this._val<degrees) this._val++;
-//   },
-//   decVal(){
-//     if(this._val>1) this._val--;
-//   },
-//   _val:1,
-//   write(stream){
-//     this.super$write(stream);
-//     stream.writeShort(this._val);
-//     stream.writeBoolean(this._connected);
-//     stream.writeInt(this._inpos);
-//   },
-//   read(stream,revision){
-//     this.super$read(stream,revision);
-//     this._val=stream.readShort();
-//     this._connected=stream.readBoolean();
-//     this._inpos=stream.readInt();
-//   },
-//   _inpos:0,
-//   _connected:false,
-//   getConf(){
-//     return this._inpos;
-//   },
-//   getConnected(){
-//     return this._connected;
-//   },
-//   setConf(a,tile){
-//     this._inpos=a;
-//   },
-//   setConnected(a){
-//     this._connected=a;
-//   },
-//   getLastOutput(){
-//     return this._last;
-//   },
-//   setLastOutput(a){
-//     this._last=a;
-//   },
-//   _last:0
-// }));
+mux.entityType=prov(() => extend(TileEntity , {
+  config(){
+    return this._val*-1;
+  },
+  getVal(){
+    return this._val;
+  },
+  setVal(a){
+    if(isNaN(Number(a))||a<1||a>degrees) return;
+    this._val=Math.floor(a);
+  },
+  incVal(){
+    if(this._val<degrees) this._val++;
+  },
+  decVal(){
+    if(this._val>1) this._val--;
+  },
+  _val:1,
+  write(stream){
+    this.super$write(stream);
+    stream.writeShort(this._val);
+    stream.writeBoolean(this._connected);
+    stream.writeInt(this._inpos);
+  },
+  read(stream,revision){
+    this.super$read(stream,revision);
+    this._val=stream.readShort();
+    this._connected=stream.readBoolean();
+    this._inpos=stream.readInt();
+  },
+  _inpos:0,
+  _connected:false,
+  getConf(){
+    return this._inpos;
+  },
+  getConnected(){
+    return this._connected;
+  },
+  setConf(a,tile){
+    this._inpos=a;
+  },
+  setConnected(a){
+    this._connected=a;
+  },
+  getLastOutput(){
+    return this._last;
+  },
+  setLastOutput(a){
+    this._last=a;
+  },
+  _last:0
+}));
