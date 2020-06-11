@@ -104,7 +104,7 @@ const flipflopt=extendContent(PowerBlock,"flipflopt",{
   },
   load(){
     this.super$load();
-    this.laserRange=6;
+    this.laserRange=50;
     this.laser=Core.atlas.find("laser");
     this.laserEnd=Core.atlas.find("laser-end");
     this.t1=new Vec2(); this.t2=new Vec2();

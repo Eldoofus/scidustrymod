@@ -161,7 +161,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     this.baseRegion=Core.atlas.find(this.name+"-base");
     this.topRegion=Core.atlas.find(this.name+"-top");
     this.needleRegion=Core.atlas.find(this.name+"-needle");
-    this.laserRange=6;
+    this.laserRange=50;
     this.laser=Core.atlas.find("laser");
     this.laserEnd=Core.atlas.find("laser-end");
     this.t1=new Vec2(); this.t2=new Vec2();
