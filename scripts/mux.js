@@ -191,10 +191,9 @@ const mux=extendContent(PowerBlock,"mux",{
   },
   draw(tile){
     //this.super$draw(tile);
-    Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
-    //Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),90*tile.rotation());
-    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(540-tile.ent().getVal())%360);
-    //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
+    Draw.rect(Core.atlas.find(this.name+"-base"), tile.drawx(), tile.drawy());
+    Draw.rect(Core.atlas.find(this.name+"-top"), tile.drawx(), tile.drawy(),90*tile.rotation());
+    Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
   },
   update(tile){
     this.super$update(tile);
