@@ -232,8 +232,8 @@ const mux=extendContent(PowerBlock,"mux",{
         var in2=Vars.world.tile(tile.x+tx2,tile.y+ty2);
         in1=in1.ent().power.graph;
         in2=in2.ent().power.graph;
-        in1=in1.getPowerProduced()-in1.getPowerNeeded();
-        in2=in2.getPowerProduced()-in2.getPowerNeeded();
+        in1=Number((in1.getPowerProduced()-in1.getPowerNeeded()).toPrecision(3));
+        in2=Number((in2.getPowerProduced()-in2.getPowerNeeded()).toPrecision(3));
         if(!tile.ent().getConnected()) return 0;
         if(tile.ent().timer.getTime(timerid)<=0) return tile.ent().getLastOutput();
         tile.ent().timer.reset(timerid,0);
