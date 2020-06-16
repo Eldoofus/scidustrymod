@@ -1,5 +1,5 @@
 localizedName: Bit Reader
-description: Outputs power when the selected bit of the input is 1
+description: Outputs power when the selected bit of the input is 1. Note: multiply the desired input by 60
 size: 1
 breakable: true
 update: true

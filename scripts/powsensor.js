@@ -196,8 +196,8 @@ const powsensor=extendContent(PowerBlock,"powsensor",{
     link=link.ent().power.graph;
     //if(link.getPowerProduced()-link.getPowerNeeded()>0){
       tile.ent().setLastOutput(Number((Math.floor(60*(link.getPowerProduced()-link.getPowerNeeded())) >> (tile.ent().getVal())) & 1));
-      print (Number((Math.floor(60*(link.getPowerProduced()-link.getPowerNeeded())) >> (tile.ent().getVal())) & 1));
-      return (Number((Math.floor(60*(link.getPowerProduced()-link.getPowerNeeded())) >> (tile.ent().getVal())) & 1));
+      print (Number((Math.floor((link.getPowerProduced()-link.getPowerNeeded())) >> (tile.ent().getVal())) & 1));
+      return (Number((Math.floor((link.getPowerProduced()-link.getPowerNeeded())) >> (tile.ent().getVal())) & 1));
     // }
     // else{
     //   tile.ent().setLastOutput(0);
