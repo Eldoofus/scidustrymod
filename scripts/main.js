@@ -15,6 +15,7 @@ require("flipflopjk");
 require("dlatch");
 require("pulser");
 require("mux");
+require("powsensor")
 
 require("unimasksk");
 
