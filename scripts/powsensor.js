@@ -196,7 +196,7 @@ const powsensor=extendContent(PowerBlock,"powsensor",{
     link=link.ent().power.graph;
     if(link.getPowerProduced()-link.getPowerNeeded()>0){
       tile.ent().setLastOutput(((link.getPowerProduced()-link.getPowerNeeded()) << tile.ent().getVal()) & 1);
-      return ((link.getPowerProduced()-link.getPowerNeeded()) >> tile.ent().getVal()) & 1;
+      return (((link.getPowerProduced()-link.getPowerNeeded()) >> (tile.ent().getVal())) & 1);
     }
     else{
       tile.ent().setLastOutput(0);
@@ -213,7 +213,7 @@ powsensor.entityType=prov(() => extend(TileEntity , {
     return this._val;
   },
   setVal(a){
-    if(isNaN(Number(a))||a<1||a>degrees) return;
+    if(isNaN(Number(a))||a<0||a>degrees) return;
     this._val=Math.floor(a);
   },
   incVal(){
