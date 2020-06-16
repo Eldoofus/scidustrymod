@@ -241,12 +241,15 @@ const mux=extendContent(PowerBlock,"mux",{
         if(!this.linkValid(tile, link)) return 0;
         link=link.ent().power.graph;
         if(link.getPowerProduced()-link.getPowerNeeded()>0){
+            tile.ent().setLastOutput(in2);
             return in2;
         }else{
+            tile.ent().setLastOutput(in1);
             return in1;
         }
     }
     catch(err){
+        tile.ent().setLastOutput(0);
         return 0;
     }
   }
