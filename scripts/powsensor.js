@@ -194,14 +194,14 @@ const powsensor=extendContent(PowerBlock,"powsensor",{
     var link=Vars.world.tile(tile.ent().getConf());
     if(!this.linkValid(tile, link)) return 0;
     link=link.ent().power.graph;
-    if(link.getPowerProduced()-link.getPowerNeeded()>0){
+    //if(link.getPowerProduced()-link.getPowerNeeded()>0){
       tile.ent().setLastOutput(((link.getPowerProduced()-link.getPowerNeeded()) << tile.ent().getVal()) & 1);
       return (((link.getPowerProduced()-link.getPowerNeeded()) >> (tile.ent().getVal())) & 1);
-    }
-    else{
-      tile.ent().setLastOutput(0);
-      return 0;
-    }
+    // }
+    // else{
+    //   tile.ent().setLastOutput(0);
+    //   return 0;
+    // }
   }
 });
 
