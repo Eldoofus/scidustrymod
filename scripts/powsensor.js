@@ -1,7 +1,7 @@
 const presstick=1; const timerid=0;
 const color1=Color.valueOf("ffaa5f"); const color2=Color.valueOf("84f491"); const color1off=Color.valueOf("cc8343");//color of pyratite and mender
 //const coloroff=Color.valueOf("6974c4");
-const degrees=360;
+const degrees=32;
 const powsensor=extendContent(PowerBlock,"powsensor",{
   placed(tile) {
     this.super$placed(tile);

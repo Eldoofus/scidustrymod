@@ -213,7 +213,7 @@ potmeter.entityType=prov(() => extend(TileEntity , {
     return this._val;
   },
   setVal(a){
-    if(isNaN(Number(a))||a<1||a>degrees) return;
+    if(isNaN(Number(a))||a<1/*||a>degrees*/) return;
     this._val=Math.floor(a);
   },
   incVal(){
