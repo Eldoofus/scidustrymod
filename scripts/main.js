@@ -20,6 +20,13 @@ require("powsensor");
 require("nodeblue");
 require("nodegreen");
 require("nodered");
+require("nodecryo");
+require("nodethor");
+require("infnodeblue");
+require("infnodegreen");
+require("infnodered");
+require("infnodecryo");
+require("infnodethor");
 
 require("unimasksk");
 
