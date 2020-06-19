@@ -1,0 +1,12 @@
+name: Red Node
+description: Colored node for sanity purposes
+group: power
+laserRange: 500
+maxNodes: 200
+size: 1
+requirements: [
+  copper/1
+  lead/3
+]
+category: power
+insulated: true
