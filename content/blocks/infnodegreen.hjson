@@ -1,8 +1,8 @@
-name: Green Node
+name: Green Infi-Node
 description: Colored node for sanity purposes
 group: power
-laserRange: 6
-maxNodes: 20
+laserRange: 500
+maxNodes: 200
 size: 1
 requirements: [
   copper/1

@@ -1,8 +1,8 @@
 name: Red Node
 description: Colored node for sanity purposes
 group: power
-laserRange: 500
-maxNodes: 200
+laserRange: 6
+maxNodes: 20
 size: 1
 requirements: [
   copper/1
