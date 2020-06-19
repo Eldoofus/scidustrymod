@@ -15,7 +15,11 @@ require("flipflopjk");
 require("dlatch");
 require("pulser");
 require("mux");
-require("powsensor")
+require("powsensor");
+
+require("nodeblue");
+require("nodegreen");
+require("nodered");
 
 require("unimasksk");
 
