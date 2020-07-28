@@ -186,7 +186,7 @@ const dionode=extendContent(PowerBlock,"dionode",{
       Vars.ui.showInfoToast("Do not connect output with input!",1);
       tile.ent().setConnected(false);
     }
-    setArray((++delaypoint)%60, (link.ent().power.graph.getPowerProduced()-link.ent().power.graph.getPowerNeeded())/Time.delta());
+    tile.ent().setArray((++delaypoint)%60, (link.ent().power.graph.getPowerProduced()-link.ent().power.graph.getPowerNeeded())/Time.delta());
   },
   getPowerProduction(tile){
     //return tile.ent().getPow();
