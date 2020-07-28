@@ -2,7 +2,7 @@ var presstick=1; const timerid=0;
 const color1=Color.valueOf("ffaa5f"); const color2=Color.valueOf("84f491"); const color1off=Color.valueOf("cc8343");//color of pyratite and mender
 //const coloroff=Color.valueOf("6974c4");
 const ticks=60;
-var delaypoint = 0;
+//var tile.ent().getDelay() = 0;
 const dionode=extendContent(PowerBlock,"dionode",{
   placed(tile) {
     this.super$placed(tile);
@@ -176,15 +176,15 @@ const dionode=extendContent(PowerBlock,"dionode",{
   },
   update(tile){
     this.super$update(tile);
-    delaypoint = (delaypoint+1)%60
+    tile.ent().setDelay((tile.ent().getDelay()+1)%60);
     if(!tile.ent().getConnected()){
-        tile.ent().setArray(delaypoint, 0);
+        tile.ent().setArray(tile.ent().getDelay(), 0);
         return;
     }
     var link=Vars.world.tile(tile.ent().getConf());
     if(link==null||(!this.linkValid(tile,link))){
       tile.ent().setConnected(false);
-      tile.ent().setArray(delaypoint, 0);
+      tile.ent().setArray(tile.ent().getDelay(), 0);
       return;
     }
     if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
@@ -192,14 +192,14 @@ const dionode=extendContent(PowerBlock,"dionode",{
       tile.ent().setConnected(false);
     }
     if(tile.ent().getConnected()){
-        tile.ent().setArray(delaypoint, (link.ent().power.graph.getPowerProduced()-link.ent().power.graph.getPowerNeeded())/Time.delta());
-    } else tile.ent().setArray(delaypoint, 0);
-    //print(delaypoint);
+        tile.ent().setArray(tile.ent().getDelay(), (link.ent().power.graph.getPowerProduced()-link.ent().power.graph.getPowerNeeded())/Time.delta());
+    } else tile.ent().setArray(tile.ent().getDelay(), 0);
+    //print(tile.ent().getDelay());
   },
   getPowerProduction(tile){
     //return tile.ent().getPow();
     //print("making power...");
-    return tile.ent().getArray((delaypoint+60-tile.ent().getVal())%60);
+    return tile.ent().getArray((tile.ent().getDelay()+60-tile.ent().getVal())%60);
   }
 });
 
@@ -260,5 +260,12 @@ dionode.entityType=prov(() => extend(TileEntity , {
   getArray(pointer){
     return this._array[pointer]
   },
+  getDelay(){
+    return _delay;
+  },
+  setDelay(a){
+      _delay = a;
+  },
+  _delay:0,
   _array:[]
 }));
