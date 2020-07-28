@@ -6,7 +6,7 @@ update: true
 category: power
 hasPower: true
 consumesPower: false
-outputsPower: false
+outputsPower: true
 requirements: [
   silicon/25
 ]
