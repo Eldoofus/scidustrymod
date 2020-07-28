@@ -187,7 +187,9 @@ const dionode=extendContent(PowerBlock,"dionode",{
       tile.ent().setConnected(false);
     }
     delaypoint = (delaypoint+1)%60
-    tile.ent().setArray((++delaypoint)%60, (link.ent().power.graph.getPowerProduced()-link.ent().power.graph.getPowerNeeded())/Time.delta());
+    if(tile.ent().getConnected()){
+        tile.ent().setArray(delaypoint, (link.ent().power.graph.getPowerProduced()-link.ent().power.graph.getPowerNeeded())/Time.delta());
+    } else tile.ent().setArray(delaypoint, 0);
     print(delaypoint);
   },
   getPowerProduction(tile){
