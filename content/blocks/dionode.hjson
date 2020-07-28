@@ -1,0 +1,15 @@
+localizedName: Delay Node
+description: A power node that only updates itself after set delay
+size: 1
+breakable: true
+update: true
+category: power
+hasPower: true
+consumesPower: false
+outputsPower: false
+requirements: [
+  silicon/25
+]
+insulated: true
+rotate: true
+configurable: true

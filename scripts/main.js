@@ -16,6 +16,7 @@ require("dlatch");
 require("pulser");
 require("mux");
 require("powsensor");
+require("dionode");
 
 require("nodeblue");
 require("nodegreen");
