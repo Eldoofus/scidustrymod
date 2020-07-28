@@ -194,7 +194,7 @@ const dionode=extendContent(PowerBlock,"dionode",{
   }
 });
 
-potmeter.entityType=prov(() => extend(TileEntity , {
+dionode.entityType=prov(() => extend(TileEntity , {
   config(){
     return this._val*-1;
   },
