@@ -176,25 +176,29 @@ const dionode=extendContent(PowerBlock,"dionode",{
   },
   update(tile){
     this.super$update(tile);
-    if(!tile.ent().getConnected()) return;
+    delaypoint = (delaypoint+1)%60
+    if(!tile.ent().getConnected()){
+        tile.ent().setArray(delaypoint, 0);
+        return;
+    }
     var link=Vars.world.tile(tile.ent().getConf());
     if(link==null||(!this.linkValid(tile,link))){
       tile.ent().setConnected(false);
+      tile.ent().setArray(delaypoint, 0);
       return;
     }
     if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
       Vars.ui.showInfoToast("Do not connect output with input!",1);
       tile.ent().setConnected(false);
     }
-    delaypoint = (delaypoint+1)%60
     if(tile.ent().getConnected()){
         tile.ent().setArray(delaypoint, (link.ent().power.graph.getPowerProduced()-link.ent().power.graph.getPowerNeeded())/Time.delta());
     } else tile.ent().setArray(delaypoint, 0);
-    print(delaypoint);
+    //print(delaypoint);
   },
   getPowerProduction(tile){
     //return tile.ent().getPow();
-    print("making power...");
+    //print("making power...");
     return tile.ent().getArray(delaypoint);
   }
 });
