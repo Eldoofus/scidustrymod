@@ -199,7 +199,7 @@ const dionode=extendContent(PowerBlock,"dionode",{
   getPowerProduction(tile){
     //return tile.ent().getPow();
     //print("making power...");
-    return tile.ent().getArray((delaypoint+60-tile.ent().getVal()));
+    return tile.ent().getArray((delaypoint+60-tile.ent().getVal())%60);
   }
 });
 
