@@ -254,6 +254,7 @@ dionode.entityType=prov(() => extend(TileEntity , {
     this._last=a;
   },
   _last:0,
+  _delay:0,
   setArray(pointer,val){
     this._array[pointer] = val;
   },
@@ -261,11 +262,10 @@ dionode.entityType=prov(() => extend(TileEntity , {
     return this._array[pointer]
   },
   getDelay(){
-    return _delay;
+    return this._delay;
   },
   setDelay(a){
-      _delay = a;
+      this._delay = a;
   },
-  _delay:0,
   _array:[]
 }));
