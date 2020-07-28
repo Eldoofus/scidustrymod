@@ -199,7 +199,7 @@ const dionode=extendContent(PowerBlock,"dionode",{
   getPowerProduction(tile){
     //return tile.ent().getPow();
     //print("making power...");
-    return tile.ent().getArray(delaypoint);
+    return tile.ent().getArray((delaypoint+60-tile.ent().getVal()));
   }
 });
 
@@ -211,7 +211,7 @@ dionode.entityType=prov(() => extend(TileEntity , {
     return this._val;
   },
   setVal(a){
-    if(isNaN(Number(a))||a<1/*||a>degrees*/) return;
+    if(isNaN(Number(a))||a<0/*||a>degrees*/) return;
     this._val=Math.floor(a);
   },
   incVal(){
