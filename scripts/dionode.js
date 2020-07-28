@@ -250,5 +250,6 @@ dionode.entityType=prov(() => extend(TileEntity , {
   },
   getArray(pointer){
     return this._array[pointer]
-  }
+  },
+  _array:[]
 }));
