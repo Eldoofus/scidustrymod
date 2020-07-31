@@ -1,4 +1,4 @@
-const presstick=4; const timerid=0;
+const presstick=3; const timerid=0;
 const fastbtn = extendContent(Block, "fastbtn", {
   placed(tile) {
     this.super$placed(tile);
