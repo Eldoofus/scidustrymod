@@ -5,6 +5,7 @@ require("itemdet");
 require("itemgate");
 
 require("powerswitchsk");
+require("fastbtn");
 require("powerlogic");
 require("powertranssk");
 require("invtrans");
