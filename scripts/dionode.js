@@ -69,6 +69,7 @@ const dionode=extendContent(PowerBlock,"dionode",{
     Draw.reset();
   },
   drawLaser(tile,target){
+    print("bzzz");
     var opacityPercentage = Core.settings.getInt("lasersopacity");
     if(opacityPercentage == 0) return;
     var opacity = opacityPercentage / 100;
@@ -91,6 +92,7 @@ const dionode=extendContent(PowerBlock,"dionode",{
     Draw.alpha(opacity);
     Drawf.laser(this.laser, this.laserEnd, x1, y1, x2, y2, 0.25);
     Draw.color();
+    print("pew pew");
   },
   drawLayer(tile){
     if(Core.settings.getInt("lasersopacity") == 0) return;
