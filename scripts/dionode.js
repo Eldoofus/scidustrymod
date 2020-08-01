@@ -1,5 +1,5 @@
 var presstick=1; const timerid=0;
-const color1=Color.valueOf("6ecdec"); const color2=Color.valueOf("4dafcd"); const color1off=Color.valueOf("cc8343");//color of pyratite and mender
+const color1=Color.valueOf("6ecdec"); const color2=Color.valueOf("4dafcd"); const color1off=Color.valueOf("4dafcd");//color of pyratite and mender
 //const coloroff=Color.valueOf("6974c4");
 const ticks=60;
 //var tile.ent().getDelay() = 0;
@@ -69,7 +69,7 @@ const dionode=extendContent(PowerBlock,"dionode",{
     Draw.reset();
   },
   drawLaser(tile,target){
-    print("bzzz");
+    //print("bzzz");
     var opacityPercentage = Core.settings.getInt("lasersopacity");
     if(opacityPercentage == 0) return;
     var opacity = opacityPercentage / 100;
@@ -92,10 +92,10 @@ const dionode=extendContent(PowerBlock,"dionode",{
     Draw.alpha(opacity);
     Drawf.laser(this.laser, this.laserEnd, x1, y1, x2, y2, 0.25);
     Draw.color();
-    print("pew pew");
+    //print("pew pew");
   },
   drawLayer(tile){
-    print("brrr");
+    //print("brrr");
     if(Core.settings.getInt("lasersopacity") == 0) return;
     if(!tile.ent().getConnected()) return;
     var link=Vars.world.tile(tile.ent().getConf());
@@ -174,7 +174,7 @@ const dionode=extendContent(PowerBlock,"dionode",{
     //this.super$draw(tile);
     Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
     Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),90*tile.rotation());
-    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(540-tile.ent().getVal())%360);
+    Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),6*(540-tile.ent().getVal())%360);
     //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
   },
   update(tile){
