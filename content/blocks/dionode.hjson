@@ -11,6 +11,7 @@ requirements: [
   silicon/25
 ]
 insulated: true
-rotate: true
+rotate: false
 configurable: true
 timers: 1
+layer: power
