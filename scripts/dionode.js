@@ -1,5 +1,5 @@
 var presstick=1; const timerid=0;
-const color1=Color.valueOf("ffaa5f"); const color2=Color.valueOf("84f491"); const color1off=Color.valueOf("cc8343");//color of pyratite and mender
+const color1=Color.valueOf("6ecdec"); const color2=Color.valueOf("4dafcd"); const color1off=Color.valueOf("cc8343");//color of pyratite and mender
 //const coloroff=Color.valueOf("6974c4");
 const ticks=60;
 //var tile.ent().getDelay() = 0;
@@ -173,7 +173,7 @@ const dionode=extendContent(PowerBlock,"dionode",{
   draw(tile){
     //this.super$draw(tile);
     Draw.rect(this.baseRegion, tile.drawx(), tile.drawy());
-    //Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),90*tile.rotation());
+    Draw.rect(this.topRegion, tile.drawx(), tile.drawy(),90*tile.rotation());
     Draw.rect(this.needleRegion, tile.drawx(), tile.drawy(),(540-tile.ent().getVal())%360);
     //Draw.rect(Core.atlas.find(this.name+"-"+tile.ent().message), tile.drawx(), tile.drawy(),90*tile.rotation());
   },
