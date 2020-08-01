@@ -8,7 +8,7 @@ const fastbtn = extendContent(Block, "fastbtn", {
     Draw.rect(Core.atlas.find(this.name + ((tile.ent().timer.check(timerid,presstick)) ? "":"-trig")), tile.drawx(), tile.drawy());
   },
   tapped(tile,player){
-    tile.ent().timer.reset(timerid,0);
+    tile.ent().setPow(true)
     Sounds.click.at(tile.worldx(),tile.worldy());
   },
 /*
@@ -17,6 +17,26 @@ const fastbtn = extendContent(Block, "fastbtn", {
   }
 */
   getPowerProduction(tile){
-    return (tile.ent().timer.check(timerid,presstick)) ? 0: 3;
+    if(tile.ent().getPow()) {
+      tile.ent().setPow(false);
+      return 3;
+    } else return 0;
   }
 });
+
+fastbtn.entityType=prov(() => extend(TileEntity, {
+  getPow(){
+    return this._pow;
+  },
+  setPow(a){
+    this._pow = a;
+  },
+  // getLastOutput(){
+  //   return this._last;
+  // },
+  // setLastOutput(a){
+  //   this._last=a;
+  // },
+  _pow: false,
+  //_last:false
+}));
