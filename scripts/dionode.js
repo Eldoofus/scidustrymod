@@ -95,6 +95,7 @@ const dionode=extendContent(PowerBlock,"dionode",{
     print("pew pew");
   },
   drawLayer(tile){
+    print("brrr");
     if(Core.settings.getInt("lasersopacity") == 0) return;
     if(!tile.ent().getConnected()) return;
     var link=Vars.world.tile(tile.ent().getConf());
