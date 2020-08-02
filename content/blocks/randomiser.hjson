@@ -19,3 +19,4 @@ spinnerLength:1
 spinnerThickness:1
 category: crafting
 insulated: true
+sync: true

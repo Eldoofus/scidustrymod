@@ -11,3 +11,4 @@ requirements: [
 ]
 category: effect
 insulated: true
+sync: true

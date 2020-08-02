@@ -15,3 +15,4 @@ requirements: [
 ]
 category: liquid
 insulated: true
+sync: true

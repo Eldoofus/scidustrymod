@@ -10,3 +10,4 @@ requirements: [
 group: transportation
 category: distribution
 insulated: true
+sync: true

@@ -21,3 +21,4 @@ requirements: [
 ]
 category: power
 insulated: true
+sync: true

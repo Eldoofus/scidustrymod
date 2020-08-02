@@ -12,3 +12,4 @@ requirements: [
 ]
 insulated: true
 rotate: true
+sync: true

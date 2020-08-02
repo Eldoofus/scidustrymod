@@ -18,3 +18,4 @@ outputsPower: true
 consumesPower: false
 solid: true
 research: power-node
+sync: true

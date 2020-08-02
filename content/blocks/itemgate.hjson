@@ -12,3 +12,4 @@ requirements: [
   copper/25
 ]
 insulated: true
+sync: true

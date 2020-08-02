@@ -8,3 +8,4 @@ requirements: [
 size: 1
 category: effect
 insulated: true
+sync: true

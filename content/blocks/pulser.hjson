@@ -15,3 +15,4 @@ configurable: true
 insulated: true
 rotate: false
 timers: 2
+sync: true

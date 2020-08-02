@@ -19,3 +19,4 @@ group: transportation
 category: distribution
 outputItem: copper/1
 insulated: true
+sync: true
