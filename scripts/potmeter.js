@@ -92,7 +92,6 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     Draw.color();
   },
   drawLayer(tile){
-    print("drawing...");
     if(Core.settings.getInt("lasersopacity") == 0) return;
     if(!tile.ent().getConnected()) return;
     var link=Vars.world.tile(tile.ent().getConf());
