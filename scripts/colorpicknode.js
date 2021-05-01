@@ -23,14 +23,15 @@ const colorpicknode=extendContent(PowerNode,"colorpicknode",{
         Draw.color();
       },
       buildConfiguration(tile, table){
+        var col1 = 1; var col2 = 1;
         table.addImageButton(Icon.pick, run(() => {
           Vars.ui.picker.show(Tmp.c1.set(tile.ent().getColOn()), true, cons(res => {
-            var col1 = res.rgba();
+            col1 = res.rgba();
           }));
           Vars.ui.picker.show(Tmp.c1.set(tile.ent().getColOff()), true, cons(res => {
-            var col2 = res.rgba();
+            col2 = res.rgba();
           }));
-          tile.configure([col1,col2]);
+          tile.configure(col1,col2);
           Vars.control.input.frag.config.hideConfig();
         })).size(40);
       },
@@ -40,7 +41,7 @@ const colorpicknode=extendContent(PowerNode,"colorpicknode",{
         tile.ent().setColOff(value[1]);
       }
 });
-conlorpicknode.entityType = prov(() => {
+colorpicknode.entityType = prov(() => {
 	const entity = extend(TileEntity, {
 		getColOn: function(){
 			return this._colon;
@@ -55,7 +56,7 @@ conlorpicknode.entityType = prov(() => {
 			this._coloff = val;
 		}
 	});
-	entity.setColOn(Color.rgba(50,255,75,1));
-  entity.setColOff(Color.rgba(255,255,255,1));
+	entity.setColOn(Color.valueOf("32ff4b"));
+  entity.setColOff(Color.valueOf("ffffff"));
 	return entity;
 });

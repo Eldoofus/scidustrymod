@@ -1,9 +1,0 @@
-name: Duplicator
-description: Duplicates items
-breakable: true
-itemCapacity: 2
-group: transportation
-category: distribution
-requirements: [
-  copper/1
-]

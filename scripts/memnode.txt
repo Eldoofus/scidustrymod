@@ -1,8 +1,0 @@
-const memnode=extendContent(PowerNode,"powerlogic",{
-
-});
-memnode.entityType=prov(() => extendContent(PowerNode.PowerNodeEntity , memnode , {
-    config(){
-      
-    },
-  }));
