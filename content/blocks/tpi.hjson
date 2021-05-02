@@ -1,0 +1,10 @@
+type: solarGenerator
+name: True Power Infinite
+description: Truly Infinite Power
+powerProduction: 1000000000
+requirements: [
+  copper/1
+]
+category: power
+insulated: true
+sync: true
