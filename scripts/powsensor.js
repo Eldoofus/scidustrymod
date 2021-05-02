@@ -214,7 +214,7 @@ powsensor.entityType=prov(() => extend(TileEntity , {
     return this._val;
   },
   setVal(a){
-    if(isNaN(Number(a))||a<0||a>degrees) return;
+    if(isNaN(Number(a))||a<=-1||a>degrees) return;
     this._val=Math.floor(a);
   },
   incVal(){
@@ -223,7 +223,7 @@ powsensor.entityType=prov(() => extend(TileEntity , {
   decVal(){
     if(this._val>1) this._val--;
   },
-  _val:1,
+  _val:0,
   write(stream){
     this.super$write(stream);
     stream.writeShort(this._val);

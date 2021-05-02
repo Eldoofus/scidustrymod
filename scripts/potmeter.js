@@ -27,7 +27,7 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
     }
     var other=Vars.world.tile(value);
     if(tile==other) tile.ent().setConnected(false);
-    else if(tile.ent().getConf()==other.pos()&&tile.ent().getConnected()) tile.ent().setConnected(false);
+    else if(tile.ent().getConnected()&&tile.ent().getConf()==other.pos()) tile.ent().setConnected(false);
     else if(this.linkValid(tile,other)&&other.block()!=tile.block()){
       tile.ent().setConf(value,tile);
       tile.ent().setConnected(true);
@@ -225,13 +225,13 @@ potmeter.entityType=prov(() => extend(TileEntity , {
   _val:1,
   write(stream){
     this.super$write(stream);
-    stream.writeShort(this._val);
+    stream.writeInt(this._val);
     stream.writeBoolean(this._connected);
     stream.writeInt(this._inpos);
   },
   read(stream,revision){
     this.super$read(stream,revision);
-    this._val=stream.readShort();
+    this._val=stream.readInt();
     this._connected=stream.readBoolean();
     this._inpos=stream.readInt();
   },
