@@ -182,15 +182,19 @@ const potsensor=extendContent(PowerBlock,"potsensor",{
     link=link.ent().power.graph;
     Vars.ui.showInfoToast(((link.getPowerProduced()-link.getPowerNeeded())/Time.delta()*60),0);
     */
-
-    var link=Vars.world.tile(tile.ent().getConf());
-    if(link==null||(!this.linkValid(tile,link))){
-      tile.ent().setConnected(false);
-      return;
+    try{
+      var link=Vars.world.tile(tile.ent().getConf());
+      if(link==null||(!this.linkValid(tile,link))){
+        tile.ent().setConnected(false);
+        return;
+      }
+      if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
+        Vars.ui.showInfoToast("Do not connect output with input!",1);
+        tile.ent().setConnected(false);
+      }
     }
-    if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
-      Vars.ui.showInfoToast("Do not connect output with input!",1);
-      tile.ent().setConnected(false);
+    catch(err){
+      return 0;
     }
   },
   getPowerProduction(tile){

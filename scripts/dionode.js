@@ -180,28 +180,30 @@ const dionode=extendContent(PowerBlock,"dionode",{
   update(tile){
     this.super$update(tile);
     tile.ent().setDelay((tile.ent().getDelay()+1)%60);
-    if(!tile.ent().getConnected()){
+    try{
+      if(!tile.ent().getConnected()){
+          tile.ent().setArray(tile.ent().getDelay(), 0);
+          return;
+      }
+      var link=Vars.world.tile(tile.ent().getConf());
+      if(link==null||(!this.linkValid(tile,link))){
+        tile.ent().setConnected(false);
         tile.ent().setArray(tile.ent().getDelay(), 0);
         return;
+      }
+      if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
+        Vars.ui.showInfoToast("Do not connect output with input!",1);
+        tile.ent().setConnected(false);
+      }
+      if(tile.ent().getConnected()){
+          tile.ent().setArray(tile.ent().getDelay(), (link.ent().power.graph.getPowerProduced()-link.ent().power.graph.getPowerNeeded())/Time.delta());
+      } else tile.ent().setArray(tile.ent().getDelay(), 0);
     }
-    var link=Vars.world.tile(tile.ent().getConf());
-    if(link==null||(!this.linkValid(tile,link))){
-      tile.ent().setConnected(false);
-      tile.ent().setArray(tile.ent().getDelay(), 0);
-      return;
+    catch(err){
+      return 0;
     }
-    if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
-      Vars.ui.showInfoToast("Do not connect output with input!",1);
-      tile.ent().setConnected(false);
-    }
-    if(tile.ent().getConnected()){
-        tile.ent().setArray(tile.ent().getDelay(), (link.ent().power.graph.getPowerProduced()-link.ent().power.graph.getPowerNeeded())/Time.delta());
-    } else tile.ent().setArray(tile.ent().getDelay(), 0);
-    //print(tile.ent().getDelay());
   },
   getPowerProduction(tile){
-    //return tile.ent().getPow();
-    //print("making power...");
     return tile.ent().getArray((tile.ent().getDelay()+60-tile.ent().getVal())%60);
   }
 });

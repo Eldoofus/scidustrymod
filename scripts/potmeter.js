@@ -175,15 +175,20 @@ const potmeter=extendContent(PowerBlock,"potmeter",{
   },
   update(tile){
     this.super$update(tile);
-    if(!tile.ent().getConnected()) return;
-    var link=Vars.world.tile(tile.ent().getConf());
-    if(link==null||(!this.linkValid(tile,link))){
-      tile.ent().setConnected(false);
-      return;
+    try{
+      if(!tile.ent().getConnected()) return;
+      var link=Vars.world.tile(tile.ent().getConf());
+      if(link==null||(!this.linkValid(tile,link))){
+        tile.ent().setConnected(false);
+        return;
+      }
+      if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
+        Vars.ui.showInfoToast("Do not connect output with input!",1);
+        tile.ent().setConnected(false);
+      }
     }
-    if(link.ent().power.graph.getID()==tile.ent().power.graph.getID()){
-      Vars.ui.showInfoToast("Do not connect output with input!",1);
-      tile.ent().setConnected(false);
+    catch(err){
+      return;
     }
   },
   getPowerProduction(tile){
